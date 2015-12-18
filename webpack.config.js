@@ -17,7 +17,6 @@ console.log('Launched in ' + (MODE_DEV_SERVER ? 'dev-server' : 'build') + ' mode
 
 const NODE_ENV = process.env.NODE_ENV ? process.env.NODE_ENV.toLowerCase() : 'dev';
 const DEVTOOLS = process.env.DEVTOOLS ? JSON.parse(process.env.DEVTOOLS) : false;
-const API_ROOT_URL = process.env.API_ROOT_URL ? process.env.API_ROOT_URL : 'https://api.github.com';
 const DISABLE_LINTER = process.env.DISABLE_LINTER ? JSON.parse(process.env.DISABLE_LINTER) : false;
 
 const SOURCEMAPS_ACTIVE = NODE_ENV !== 'production' || DEVTOOLS === true;
@@ -38,10 +37,6 @@ if(LAZY_MODE){
   console.log('LAZY_MODE active (won\'t hot reload - will only build on request)');
 }
 
-if( !(/^https?:\/\/.*(?!\/).$/.test(API_ROOT_URL)) ) {
-  console.log('[WARNING] Your API_ROOT_URL should not have any trailing slash');
-}
-console.log('API_ROOT_URL',API_ROOT_URL);
 if(SOURCEMAPS_ACTIVE){
   console.log('SOURCEMAPS activated');
 }
@@ -63,7 +58,6 @@ plugins.push(new webpack.DefinePlugin({
   'process.env':{
     'NODE_ENV': JSON.stringify(NODE_ENV),
     'DEVTOOLS': DEVTOOLS, // I rely on the variable bellow to make a bundle with the redux devtools (or not)
-    'API_ROOT_URL': JSON.stringify(API_ROOT_URL), // The httpClient will rely on that (change it at will)
     'DISABLE_LINTER': DISABLE_LINTER // Simply to log in browser console if linting is on or off
   }
 }));

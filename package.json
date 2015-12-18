@@ -1,7 +1,7 @@
 {
   "name": "d3-react-rxjs-experiments",
   "version": "0.0.1",
-  "description": "",
+  "description": "Mix d3, react and RxJS",
   "main": "gulpfile.js",
   "scripts": {
     "test": "npm run lint",
@@ -10,6 +10,7 @@
     "build": "./node_modules/.bin/webpack --progress && ./node_modules/.bin/gulp build",
     "clean": "./node_modules/.bin/webpack --clean-only",
     "build-prod": "NODE_ENV=production ./node_modules/.bin/webpack --progress -p && NODE_ENV=production ./node_modules/.bin/gulp build",
+    "build-prod-all": "npm run build-prod && DEVTOOLS=true NODE_ENV=production npm run build",
     "serve-build": "./node_modules/.bin/serve --port 9001 build",
     "webpack": "./node_modules/.bin/webpack-dev-server --progress --colors --hot --inline",
     "webpack-dev": "DEVTOOLS=true npm run webpack"
@@ -17,7 +18,11 @@
   "pre-commit": [
     "test"
   ],
-  "author": "Christophe Rosset <tophe@topheman.com> (http://labs.topheman.com/)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/topheman/d3-react-rxjs-experiments.git"
+  },
+  "author": "Christophe Rosset",
   "license": "MIT",
   "devDependencies": {
     "babel-core": "^5.8.25",
