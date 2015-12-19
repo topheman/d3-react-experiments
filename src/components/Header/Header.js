@@ -47,7 +47,9 @@ export default class Header extends React.Component {
 
             <div className={collapsedMenuClassName} id="bs-example-navbar-collapse-1">
               <ul className="nav navbar-nav">
-                <li><Link to="/">Home</Link></li>
+                <li><Link to="/d3">d3</Link></li>
+                <li><Link to="/">RxJS</Link></li>
+                <li><Link to="/">d3/RxJS<span className="glyphicon glyphicon-flash" aria-hidden="true"></span></Link></li>
               </ul>
             </div>
           </div>
