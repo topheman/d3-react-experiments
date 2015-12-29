@@ -60,6 +60,8 @@ $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 @import "header.scss";
 @import "footer.scss";
 
+@import "../components/d3act/PieChartPanel/PieChartPanel.scss";
+
 .summary a.active {
   font-weight: bold;
 }

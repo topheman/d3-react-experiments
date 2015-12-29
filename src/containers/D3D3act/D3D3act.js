@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router';
 
 import BarChartPanel from '../../components/d3act/BarChartPanel/BarChartPanel';
+import PieChartPanel from '../../components/d3act/PieChartPanel/PieChartPanel';
 
 export default class D3D3Act extends React.Component {
 
@@ -20,6 +21,7 @@ export default class D3D3Act extends React.Component {
         </ol>
         <p style={{marginTop: '10px'}}>Todo: some introduction on d3act ...</p>
         <BarChartPanel/>
+        <PieChartPanel/>
       </div>
     );
   }
