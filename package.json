@@ -5,6 +5,7 @@
   "main": "gulpfile.js",
   "scripts": {
     "test": "npm run lint",
+    "start": "npm run webpack-dev",
     "lint": "./node_modules/.bin/eslint --ext .js --ext .jsx src test",
     "lint-watch": "./node_modules/.bin/esw --watch --ext .js --ext .jsx src test",
     "build": "./node_modules/.bin/webpack --progress && ./node_modules/.bin/gulp build",
@@ -64,6 +65,7 @@
   },
   "dependencies": {
     "bootstrap-sass": "^3.3.5",
+    "d3act": "^1.1.1",
     "es6-promise": "^3.0.2",
     "history": "~1.13.1",
     "react": "^0.14.3",

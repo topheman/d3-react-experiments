@@ -1,11 +1,26 @@
 import React from 'react';
 
-const D3D3Act = () => {
-  return (
-    <div>
-      <p style={{marginTop: '10px'}}>In this part, I'll be using d3act ...</p>
-    </div>
-  );
-};
+import { Link } from 'react-router';
 
-export default D3D3Act;
+import BarChartPanel from '../../components/d3act/BarChartPanel/BarChartPanel';
+
+export default class D3D3Act extends React.Component {
+
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <div>
+        <ol className="breadcrumb">
+          <li><Link to="/" activeClassName="active">Home</Link></li>
+          <li><Link to="/d3" activeClassName="active">d3</Link></li>
+          <li className="active">d3act</li>
+        </ol>
+        <p style={{marginTop: '10px'}}>Todo: some introduction on d3act ...</p>
+        <BarChartPanel/>
+      </div>
+    );
+  }
+}

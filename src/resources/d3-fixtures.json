@@ -1,0 +1,54 @@
+{
+  "mostPopularTechnologies": {
+    "2015": [
+      {"name": "JavaScript", "score": 0.544},
+      {"name": "SQL", "score": 0.48},
+      {"name": "Java", "score": 0.374},
+      {"name": "C#", "score": 0.316},
+      {"name": "PHP", "score": 0.297}
+    ],
+    "2014": [
+      {"name": "JavaScript", "score": 0.589},
+      {"name": "SQL", "score": 0.571},
+      {"name": "Java", "score": 0.376},
+      {"name": "C#", "score": 0.376},
+      {"name": "PHP", "score": 0.289}
+    ],
+    "2013": [
+      {"name": "JavaScript", "score": 0.566},
+      {"name": "SQL", "score": 0.596},
+      {"name": "Java", "score": 0.425},
+      {"name": "C#", "score": 0.447},
+      {"name": "PHP", "score": 0.348}
+    ]
+  },
+  "desktopOperatingSystem": {
+    "2015": [
+      {"name": "Windows 7", "score": 0.338},
+      {"name": "Mac OS X", "score": 0.215},
+      {"name": "Linux", "score": 0.205},
+      {"name": "Windows 8", "score": 0.195},
+      {"name": "Windows XP", "score": 0.01},
+      {"name": "Windows Vista", "score": 0.002},
+      {"name": "Other", "score": 0.035}
+    ],
+    "2014": [
+      {"name": "Windows 7", "score": 0.456},
+      {"name": "Mac OS X", "score": 0.203},
+      {"name": "Linux", "score": 0.209},
+      {"name": "Windows 8", "score": 0.064},
+      {"name": "Windows XP", "score": 0.059},
+      {"name": "Windows Vista", "score": 0},
+      {"name": "Other", "score": 0.005}
+    ],
+    "2013": [
+      {"name": "Windows 7", "score": 0.48},
+      {"name": "Mac OS X", "score": 0.187},
+      {"name": "Linux", "score": 0.199},
+      {"name": "Windows 8", "score": 0},
+      {"name": "Windows XP", "score": 0.108},
+      {"name": "Windows Vista", "score": 0.016},
+      {"name": "Other", "score": 0.01}
+    ]
+  }
+}

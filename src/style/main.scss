@@ -60,7 +60,6 @@ $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 @import "header.scss";
 @import "footer.scss";
 
-.nav-pills > li > a.active {
-  background-color: $brand-primary;
-  color: white;
+.summary a.active {
+  font-weight: bold;
 }

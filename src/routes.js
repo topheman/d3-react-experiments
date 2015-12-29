@@ -5,7 +5,8 @@ import {
   AppHome,
   D3,
   D3Home,
-  D3D3act
+  D3D3act,
+  D3Victory
 } from './containers/index';
 
 export default (
@@ -14,7 +15,9 @@ export default (
     <Route path="d3" component={D3}>
       <IndexRoute component={D3Home}/>
       <Route path="d3act" component={D3D3act}/>
-      <Redirect from="victory" to="/"/>
+      <Route path="victory" component={D3Victory}/>
     </Route>
+    <Redirect from="rxjs" to="/"/>
+    <Redirect from="d3-rxjs" to="/"/>
   </Route>
 );
