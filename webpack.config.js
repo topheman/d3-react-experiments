@@ -2,6 +2,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const myLocalIp = require('my-local-ip');
 const common = require('./common');
 const plugins = [];
 
@@ -11,7 +12,7 @@ const MODE_DEV_SERVER = process.argv[1].indexOf('webpack-dev-server') > -1 ? tru
 const LAZY_MODE = process.argv.indexOf('--lazy') > -1 ? true : false;
 const CLEAN_ONLY = process.argv.indexOf('--clean-only') > -1 ? true : false;// webpack --clean-only (useful to cleanup the build folder)
 
-console.log('Launched in ' + (MODE_DEV_SERVER ? 'dev-server' : 'build') + ' mode');
+const NO_LOCALHOST = process.env.NO_LOCALHOST ? JSON.parse(process.env.NO_LOCALHOST) : false;
 
 /** environment setup */
 
@@ -39,6 +40,12 @@ if(LAZY_MODE){
 
 if(SOURCEMAPS_ACTIVE){
   console.log('SOURCEMAPS activated');
+}
+if(NO_LOCALHOST) {
+  console.log('Site available at http://' + myLocalIp() + ':8080');
+}
+else {
+  console.log('Site available at http://localhost:8080');
 }
 
 const hash = (NODE_ENV === 'production' && DEVTOOLS ? '-devtools' : '') + (NODE_ENV === 'production' ? '-[hash]' : '');
@@ -139,7 +146,8 @@ var config = {
   devtool: SOURCEMAPS_ACTIVE ? "sourcemap" : false,
   devServer: {
     contentBase: './public',
-    inline: true
+    inline: true,
+    host: NO_LOCALHOST ? myLocalIp() : 'localhost'
   },
   module: {
     preLoaders: preloaders,
