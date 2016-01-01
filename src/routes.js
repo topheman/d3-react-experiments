@@ -6,8 +6,19 @@ import {
   D3,
   D3Home,
   D3D3act,
-  D3Victory
+  D3Victory,
+  RxJS,
+  RxJSHome
 } from './containers/index';
+
+import sensorsObserver from './services/sensorsObserver';
+
+const requireSensor = (nextState, replaceState, cb) => {
+  sensorsObserver().then(mode => {
+    console.log('mode', mode);
+    cb(null);
+  });
+};
 
 export default (
   <Route path="/" component={App}>
@@ -17,7 +28,9 @@ export default (
       <Route path="d3act" component={D3D3act}/>
       <Route path="victory" component={D3Victory}/>
     </Route>
-    <Redirect from="rxjs" to="/"/>
+    <Route path="rxjs" component={RxJS} onEnter={requireSensor}>
+      <IndexRoute component={RxJSHome}/>
+    </Route>
     <Redirect from="d3-rxjs" to="/"/>
   </Route>
 );
