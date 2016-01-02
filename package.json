@@ -72,6 +72,7 @@
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
     "react-router": "^1.0.2",
+    "rx": "^4.0.7",
     "sensors-checker": "^1.0.0"
   },
   "private": true
