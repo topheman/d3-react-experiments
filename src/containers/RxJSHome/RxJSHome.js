@@ -16,7 +16,7 @@ const RxJSHome = () => {
       </ol>
       <p style={{marginTop: '10px'}}>Something about RxJS ...</p>
       <p>This part (and others) will be working with both mouse and accelerometer, so to enjoy it, test it with your mobile/tablet AND your laptop/desktop.</p>
-      <p>Currently, {sensorMode.accelerometer ? 'an ' : 'no '}accelerometer has been detected on your device.</p>
+      <p>Currently, <strong>{sensorMode.accelerometer ? 'an ' : 'no '}accelerometer has been detected on your device</strong>.</p>
     </div>
   );
 };

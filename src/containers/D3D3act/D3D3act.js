@@ -22,6 +22,7 @@ export default class D3D3Act extends React.Component {
         <p style={{marginTop: '10px'}}>Todo: some introduction on d3act ...</p>
         <BarChartPanel/>
         <PieChartPanel/>
+        <p>Data comes from <a href="http://stackoverflow.com/research/developer-survey-2015" title="2015 Developer Survey">stackoverflow 2015 Developer Survey</a></p>
       </div>
     );
   }

@@ -19,13 +19,11 @@ const Home = () => {
         <li className="active">Home</li>
       </ol>
       <p>Welcome,</p>
-      <p>This project is an attempt to test some d3 implementations inside react, trying out 2 different approches:</p>
+      <p>This project is an attempt to test two great tools and mix them together with React:</p>
       <ul>
-        <li><Link to="/d3">d3act</Link></li>
-        <li><Link to="/d3">victory</Link></li>
+        <li><Link to="/d3">d3</Link>: a powerfull visualization library</li>
+        <li><Link to="/rxjs">RxJS</Link>: a set of reactive extensions library for JavaScript</li>
       </ul>
-      <p>Since data-vizualisation is funnier in real time (see my previous project <a href="https://github.com/topheman/topheman-datavisual" title="topheman/topheman-datavisual on github">topheman-datavisual</a>), and I wanted to try it for a long time, you'll find a section on <Link to="/rxjs">RxJS</Link> and a <Link to="/d3-rxjs">mix of both</Link>.</p>
-      <p>The data showing on this project comes from <a href="http://stackoverflow.com/research/developer-survey-2015" title="2015 Developer Survey">stackoverflow 2015 Developer Survey</a></p>
       <br/>
       {process.env.DEVTOOLS ? devtoolsMessage : prodMessage }
     </div>
