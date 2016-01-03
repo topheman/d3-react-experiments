@@ -1,5 +1,3 @@
-/* eslint react/no-did-mount-set-state: 0 */
-
 import { MODE_DEVICEORIENTATION } from '../../../services/sensorsObserver';
 
 import React from 'react';
@@ -8,7 +6,7 @@ export default class DisplayOneEvent extends React.Component {
 
   static propTypes = {
     sensorMode: React.PropTypes.string.isRequired,
-    observable: React.PropTypes.func.isRequired
+    observable: React.PropTypes.object.isRequired
   }
 
   constructor(props) {
