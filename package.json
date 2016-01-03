@@ -68,10 +68,10 @@
     "bootstrap-sass": "^3.3.5",
     "d3act": "^1.1.1",
     "es6-promise": "^3.0.2",
-    "history": "~1.13.1",
+    "history": "^1.17.0",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
-    "react-router": "^1.0.2",
+    "react-router": "^1.0.3",
     "rx": "^4.0.7",
     "sensors-checker": "^1.0.0"
   },
