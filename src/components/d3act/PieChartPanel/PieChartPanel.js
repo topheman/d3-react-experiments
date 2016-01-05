@@ -45,15 +45,6 @@ export default class d3actPieChartPanel extends React.Component {
       <div className="panel panel-default pie-chart-panel">
         <div className="panel-heading">PieChart - Desktop Operating System (%)</div>
         <div className="panel-body text-center">
-          <div className="btn-group" role="group">
-            {Object.keys(pieChartDesktopOperatingSystemByYear).sort((a, b) => b - a).map((year) => {
-              let className = 'btn btn-default';
-              className += this.state.active === year ? ' active' : '';
-              return (<button key={year} type="button" className={className} onClick={() => {
-                this.changeYear(year);
-              }}>{year}</button>);
-            })}
-          </div>
           <div style={{float: size > 300 ? 'left' : 'none'}}>
             <Chart
               type={"pie"}
@@ -71,6 +62,15 @@ export default class d3actPieChartPanel extends React.Component {
               height={this.state.size}
               data={this.state.barData}
             />
+          </div>
+          <div className="btn-group" role="group">
+            {Object.keys(pieChartDesktopOperatingSystemByYear).sort((a, b) => b - a).map((year) => {
+              let className = 'btn btn-default';
+              className += this.state.active === year ? ' active' : '';
+              return (<button key={year} type="button" className={className} onClick={() => {
+                this.changeYear(year);
+              }}>{year}</button>);
+            })}
           </div>
         </div>
       </div>

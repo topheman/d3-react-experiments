@@ -2,6 +2,8 @@ import React from 'react';
 
 import { Link } from 'react-router';
 
+import PieChartPanel from '../../components/victory/PieChartPanel/PieChartPanel';
+
 const D3Victory = () => {
   return (
     <div>
@@ -11,6 +13,7 @@ const D3Victory = () => {
         <li className="active">Victory</li>
       </ol>
       <p style={{marginTop: '10px'}}>In this part, I'll be using victory ...</p>
+      <PieChartPanel/>
     </div>
   );
 };

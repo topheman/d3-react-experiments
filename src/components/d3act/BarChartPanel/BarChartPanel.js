@@ -33,6 +33,13 @@ export default class d3actBarChartPanel extends React.Component {
       <div className="panel panel-default bar-chart-panel">
         <div className="panel-heading">BarChart - Most popular technologies (%)</div>
         <div className="panel-body text-center">
+          <Chart
+            type={"bar"}
+            width={this.state.size}
+            height={this.state.size}
+            margin={{ top: 40, right: 0, bottom: 40, left: 40 }}
+            data={this.state.data}
+          />
           <div className="btn-group" role="group">
             {Object.keys(barChartMostPopularTechnologiesByYear).sort((a, b) => b - a).map((year) => {
               let className = 'btn btn-default';
@@ -42,13 +49,6 @@ export default class d3actBarChartPanel extends React.Component {
               }}>{year}</button>);
             })}
           </div>
-          <Chart
-            type={"bar"}
-            width={this.state.size}
-            height={this.state.size}
-            margin={{ top: 40, right: 0, bottom: 40, left: 40 }}
-            data={this.state.data}
-          />
         </div>
       </div>
     );
