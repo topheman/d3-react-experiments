@@ -1,4 +1,4 @@
-import fixtures from './d3-fixtures.json';
+import fixtures from './fixtures/stackoverflow-survey.json';
 
 export const d3actPieExtractMostPopularTechnologiesByYear = (year) => {
   return fixtures.mostPopularTechnologies[year].reduce((accumulator, current) => {

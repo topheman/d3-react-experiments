@@ -14,7 +14,8 @@
     "build-prod-all": "npm run build-prod && DEVTOOLS=true NODE_ENV=production npm run build",
     "serve-build": "./node_modules/.bin/serve --port 9001 build",
     "webpack": "./node_modules/.bin/webpack-dev-server --progress --colors --hot --inline",
-    "webpack-dev": "DEVTOOLS=true npm run webpack"
+    "webpack-dev": "DEVTOOLS=true npm run webpack",
+    "generate-fixtures": "node ./bin/csv-parse-census.js --source ./resources/census_data_20160104_568ac7b494753.csv --output-dir ./src/resources/fixtures"
   },
   "pre-commit": [
     "test"
@@ -30,6 +31,7 @@
     "babel-eslint": "^4.1.6",
     "babel-loader": "^5.3.2",
     "css-loader": "^0.19.0",
+    "csv-parse": "^1.0.1",
     "del": "^2.0.2",
     "eslint": "^1.10.3",
     "eslint-config-airbnb": "^1.0.2",

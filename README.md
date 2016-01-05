@@ -54,3 +54,9 @@ I'm using eslint, based on [eslint-config-airbnb](https://github.com/airbnb/java
 * `npm run lint-watch`: same in watch mode
 
 You can disable the linter by `DISABLE_LINTER=true npm start` (though it will still be run a pre-commit hook)
+
+##Resources
+
+* [http://stackoverflow.com/research/developer-survey-2015](http://stackoverflow.com/research/developer-survey-2015)
+* [http://www.census.gov/](http://www.census.gov/population/international/data/idb/informationGateway.php): I wrote a little routine to process the csv
+
