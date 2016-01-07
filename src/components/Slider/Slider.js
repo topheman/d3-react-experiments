@@ -6,36 +6,94 @@ export default class Slider extends React.Component {
     min: React.PropTypes.number,
     max: React.PropTypes.number,
     step: React.PropTypes.number,
-    originalValue: React.PropTypes.number,
+    defaultValue: React.PropTypes.number,
     label: React.PropTypes.string,
-    update: React.PropTypes.func.isRequired
+    update: React.PropTypes.func.isRequired,
+    showPlayButton: React.PropTypes.bool,
+    playing: React.PropTypes.bool,
+    playingInterval: React.PropTypes.number
   }
 
   static defaultProps = {
     min: 0,
     max: 200,
     step: 5,
-    originalValue: 0,
-    label: 'Value: %value'
+    defaultValue: 0,
+    label: 'Value: %value',
+    showPlayButton: false,
+    playing: false,
+    playingInterval: 500
   }
 
   constructor(props) {
     super(props);
     this.state = {
-      value: props.originalValue
+      value: props.defaultValue,
+      playing: props.playing
     };
   }
 
-  handleChange(e) {
+  componentDidMount() {
+    this.run();
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.timer);
+  }
+
+  updateValue(value) {
     const { update } = this.props;
     this.setState({
-      value: e.target.value
+      value
     });
-    update(parseInt(e.target.value, 10));
+    update(value);
+  }
+
+  handleChange(e) {
+    if (this.state.playing) {
+      return;
+    }
+    const value = parseInt(e.target.value, 10);
+    this.updateValue(value);
+  }
+
+  run() {
+    if (this.state.playing) {
+      this.play();
+    }
+    else {
+      this.pause();
+    }
+  }
+
+  play() {
+    const {value} = this.state;
+    const {min, max, step, playingInterval} = this.props;
+    let next;
+    if ((value + step) <= max) {
+      next = value + step;
+    }
+    else {
+      next = min;
+    }
+    this.updateValue(next);
+    this.timer = setTimeout(this.play.bind(this), playingInterval);
+  }
+
+  pause() {
+    clearTimeout(this.timer);
+  }
+
+  handleClickPlay() {
+    this.setState({
+      playing: !this.state.playing
+    }, () => {
+      this.run();
+    });
   }
 
   render() {
-    const { min, max, step, label } = this.props;
+    const { min, max, step, label, showPlayButton } = this.props;
     return (
       <div>
         {label !== null ? <label>{label.replace('%value', this.state.value)}</label> : null}
@@ -53,6 +111,7 @@ export default class Slider extends React.Component {
             marginLeft: '10px'
           }}
         />
+        {showPlayButton ? <button className="btn btn-default" style={{display: 'inline-block', marginLeft: '10px'}} onClick={this.handleClickPlay.bind(this)}>{this.state.playing ? 'Pause' : 'Play'}</button> : null}
       </div>
     );
   }

@@ -6,9 +6,13 @@ export default class victoryPieChartPanel extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
+    this.defaultValues = {
       year: 2015,
-      innerRadius: 0
+      innerRadius: 0,
+      yearPlayingInterval: 1000
+    };
+    this.state = {
+      ...this.defaultValues
     };
   }
 
@@ -16,6 +20,13 @@ export default class victoryPieChartPanel extends React.Component {
     this.setState({
       ...this.state,
       year
+    });
+  }
+
+  updateYearPlayingInterval(yearPlayingInterval) {
+    this.setState({
+      ...this.state,
+      yearPlayingInterval
     });
   }
 
@@ -31,8 +42,9 @@ export default class victoryPieChartPanel extends React.Component {
       <div className="panel panel-default pie-chart-panel">
         <div className="panel-heading">PieChart - World population 2010-2035</div>
         <div className="panel-body text-center">
-          <Slider min={2010} max={2034} step={1} originalValue={this.state.year} label="Year: %value" update={this.updateYear.bind(this)}/>
-          <Slider min={0} max={60} step={1} originalValue={this.state.innerRadius} label="InnerRadius: %valuepx" update={this.updateInnerRadius.bind(this)}/>
+          <Slider min={2010} max={2034} step={1} defaultValue={this.defaultValues.year} label="Year: %value" update={this.updateYear.bind(this)} showPlayButton playing playingInterval={this.state.yearPlayingInterval}/>
+          <Slider min={20} max={2000} step={10} defaultValue={1000} label="Refresh: 1/%valuems" update={this.updateYearPlayingInterval.bind(this)}/>
+          <Slider min={0} max={60} step={1} defaultValue={this.defaultValues.innerRadius} label="InnerRadius: %valuepx" update={this.updateInnerRadius.bind(this)}/>
         </div>
       </div>
     );
