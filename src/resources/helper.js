@@ -17,6 +17,8 @@ export const censusRawData = () => {
   return censusPreparedData;
 };
 
+console.log('censusRawData', censusRawData());
+
 export const d3actPieExtractMostPopularTechnologiesByYear = (year) => {
   return stackoverflowFixtures.mostPopularTechnologies[year].reduce((accumulator, current) => {
     accumulator[current.name] = (current.score * 100).toPrecision(4);// 0.544 * 100 = 54.400000000000006 :(
