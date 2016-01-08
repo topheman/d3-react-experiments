@@ -47,9 +47,7 @@ export default class Header extends React.Component {
 
             <div className={collapsedMenuClassName} id="bs-example-navbar-collapse-1">
               <ul className="nav navbar-nav">
-                <li><Link to="/d3">d3</Link></li>
-                <li><Link to="/rxjs">RxJS</Link></li>
-                <li><Link to="/">d3/RxJS<span className="glyphicon glyphicon-flash" aria-hidden="true"></span></Link></li>
+                <li><Link to="/">Home</Link></li>
               </ul>
             </div>
           </div>
@@ -63,7 +61,7 @@ export default class Header extends React.Component {
             </a>
           </li>
           <li className="github">
-            <a href="https://github.com/topheman/d3-react-rxjs-experiments" title="Fork on github">
+            <a href="https://github.com/topheman/d3-react-experiments" title="Fork on github">
               <span className="icon"></span>
               <span className="desc">Github</span>
             </a>

@@ -1,7 +1,7 @@
 {
-  "name": "d3-react-rxjs-experiments",
+  "name": "d3-react-experiments",
   "version": "0.0.1",
-  "description": "Mix d3, react and RxJS",
+  "description": "Mix d3 & react",
   "main": "gulpfile.js",
   "scripts": {
     "test": "npm run lint",
@@ -22,7 +22,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/topheman/d3-react-rxjs-experiments.git"
+    "url": "https://github.com/topheman/d3-react-experiments.git"
   },
   "author": "Christophe Rosset",
   "license": "MIT",
@@ -73,9 +73,7 @@
     "history": "^1.17.0",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
-    "react-router": "^1.0.3",
-    "rx": "^4.0.7",
-    "sensors-checker": "^1.0.0"
+    "react-router": "^1.0.3"
   },
   "private": true
 }

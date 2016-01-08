@@ -1,8 +1,5 @@
-export { default as App } from './App/App.js';
-export { default as AppHome } from './Home/Home.js';
-export { default as D3 } from './D3/D3.js';
-export { default as D3Home } from './D3Home/D3Home.js';
-export { default as D3D3act } from './D3D3act/D3D3act.js';
-export { default as D3Victory } from './D3Victory/D3Victory.js';
-export { default as RxJS } from './RxJS/RxJS.js';
-export { default as RxJSHome } from './RxJSHome/RxJSHome.js';
+export { default as App } from './App/App';
+export { default as AppHome } from './Home/Home';
+export { default as D3actBarChart } from './d3act/BarChart';
+export { default as D3actMixed } from './d3act/Mixed';
+export { default as VictoryWorldPopulationSexRatio } from './victory/WorldPopulationSexRatio';

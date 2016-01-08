@@ -6,7 +6,7 @@ import Footer from '../../components/Footer/Footer.js';
 const App = ({ children }) => {
   return (
     <div>
-      <Header title="d3-react-RxJS-experiments"/>
+      <Header title="d3-react-experiments"/>
       <div className="container">
         {children}
       </div>

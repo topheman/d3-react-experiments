@@ -1,12 +1,9 @@
-d3-react-rxjs-experiments
-=========================
+d3-react-experiments
+====================
 
-[![Build Status](https://travis-ci.org/topheman/d3-react-rxjs-experiments.svg?branch=master)](https://travis-ci.org/topheman/d3-react-rxjs-experiments)
+[![Build Status](https://travis-ci.org/topheman/d3-react-experiments.svg?branch=master)](https://travis-ci.org/topheman/d3-react-experiments)
 
-This project is an attempt to test two libraries inside a react project and mix them together:
-
-* d3
-* RxJS
+The goal of this project is to test d3 integration into react.
 
 This is still a work in progress and I don't have any specific idea of how it will turn. This is mostly an experiment and a demonstration.
 
@@ -15,8 +12,8 @@ This is still a work in progress and I don't have any specific idea of how it wi
 ####Install
 
 ```shell
-git clone https://github.com/topheman/d3-react-rxjs-experiments.git
-cd d3-react-rxjs-experiments
+git clone https://github.com/topheman/d3-react-experiments.git
+cd d3-react-experiments
 npm install
 ```
 
@@ -43,8 +40,6 @@ At the root of the project :
 A `/build` folder will be created with your project built in it.
 
 You can run it with `npm run serve-build`
-
-*Note:* The commands making prod versions (minified bundled) may take longer to run, since all RxJS code is parsed and to be optimized (will do something about it).
 
 ####Linter
 

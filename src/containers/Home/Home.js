@@ -15,14 +15,13 @@ const devtoolsMessage = (<div>
 const Home = () => {
   return (
     <div>
-      <ol className="breadcrumb">
-        <li className="active">Home</li>
-      </ol>
       <p>Welcome,</p>
-      <p>This project is an attempt to test two great tools and mix them together with React:</p>
+      <p>You'll find in this project some examples of integration of d3 in react, most of them with victory, some with d3act, just browse ...</p>
+      <p className="text-center"><Link to="/victory-world-population-sex-ratio" className="btn btn-default btn-primary btn-lg">Start browsing</Link></p>
       <ul>
-        <li><Link to="/d3">d3</Link>: a powerfull visualization library</li>
-        <li><Link to="/rxjs">RxJS</Link>: a set of reactive extensions library for JavaScript</li>
+        <li><Link to="/victory-world-population-sex-ratio">Victory / World population sex ratio</Link></li>
+        <li><Link to="/d3act-barchart">d3act / Most popular technologies</Link></li>
+        <li><Link to="/d3act-mixed">d3act / Desktop Operating System</Link></li>
       </ul>
       <br/>
       {process.env.DEVTOOLS ? devtoolsMessage : prodMessage }
