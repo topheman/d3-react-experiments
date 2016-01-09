@@ -1,0 +1,26 @@
+.zero-clipboard {
+  position: relative;
+}
+.btn-clipboard {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.zero-clipboard a.btn-view-source {
+  border-left: 1px solid gray;
+  border-bottom: 1px solid gray;
+  border-bottom-left-radius: 5px;
+  padding: 5px;
+  text-decoration: none;
+}
+@media (min-width: 768px) {
+  .zero-clipboard a.btn-view-source {
+    font-size: 80%;
+  }
+}
+@media (max-width: 768px) {
+  .zero-clipboard a.btn-view-source {
+    padding: 3px;
+    font-size: 70%;
+  }
+}

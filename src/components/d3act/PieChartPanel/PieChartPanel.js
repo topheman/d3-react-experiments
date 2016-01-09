@@ -1,5 +1,6 @@
 import React from 'react';
 
+import ViewSourceOnGithub from '../../ViewSourceOnGithub/ViewSourceOnGithub';
 import Chart from 'd3act';
 
 import {
@@ -44,6 +45,7 @@ export default class d3actPieChartPanel extends React.Component {
     return (
       <div className="panel panel-default pie-chart-panel">
         <div className="panel-heading">PieChart - Desktop Operating System (%)</div>
+        <ViewSourceOnGithub path="/src/components/d3act/PieChartPanel/PieChartPanel.js"/>
         <div className="panel-body text-center">
           <div style={{float: size > 300 ? 'left' : 'none'}}>
             <Chart

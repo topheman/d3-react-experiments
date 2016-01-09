@@ -1,5 +1,6 @@
 import React from 'react';
 
+import ViewSourceOnGithub from '../../ViewSourceOnGithub/ViewSourceOnGithub';
 import Chart from 'd3act';
 
 import { d3actBarExtractMostPopularTechnologiesByYear } from '../../../resources/helper';
@@ -32,6 +33,7 @@ export default class d3actBarChartPanel extends React.Component {
     return (
       <div className="panel panel-default bar-chart-panel">
         <div className="panel-heading">BarChart - Most popular technologies (%)</div>
+        <ViewSourceOnGithub path="/src/components/d3act/BarChartPanel/BarChartPanel.js"/>
         <div className="panel-body text-center">
           <Chart
             type={"bar"}

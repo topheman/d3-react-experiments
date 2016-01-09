@@ -1,5 +1,6 @@
 import React from 'react';
 
+import ViewSourceOnGithub from '../../ViewSourceOnGithub/ViewSourceOnGithub';
 import Slider from '../../Slider/Slider';
 
 export default class WorldPopulationSexRatio extends React.Component {
@@ -41,6 +42,7 @@ export default class WorldPopulationSexRatio extends React.Component {
     return (
       <div className="panel panel-default pie-chart-panel">
         <div className="panel-heading">World population 2010-2034 - sex ratio</div>
+        <ViewSourceOnGithub path="/src/components/victory/WorldPopulationSexRatio/WorldPopulationSexRatio.js"/>
         <div className="panel-body text-center">
           <Slider min={2010} max={2034} step={1} defaultValue={this.defaultValues.year} label="Year: %value" update={this.updateYear.bind(this)} showPlayButton playing playingInterval={this.state.yearPlayingInterval}/>
           <Slider min={20} max={2000} step={10} defaultValue={1000} label="Refresh: 1/%valuems" update={this.updateYearPlayingInterval.bind(this)}/>

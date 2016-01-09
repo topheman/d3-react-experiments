@@ -65,7 +65,8 @@ plugins.push(new webpack.DefinePlugin({
   'process.env':{
     'NODE_ENV': JSON.stringify(NODE_ENV),
     'DEVTOOLS': DEVTOOLS, // I rely on the variable bellow to make a bundle with the redux devtools (or not)
-    'DISABLE_LINTER': DISABLE_LINTER // Simply to log in browser console if linting is on or off
+    'DISABLE_LINTER': DISABLE_LINTER, // Simply to log in browser console if linting is on or off
+    'VIEW_SOURCE_ON_GITHUB_BASE_URL': JSON.stringify('https://github.com/topheman/d3-react-experiments/blob/master') // use by ViewSourceOnGithub component
   }
 }));
 
