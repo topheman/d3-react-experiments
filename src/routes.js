@@ -5,7 +5,7 @@ import {
   AppHome,
   D3actBarChart,
   D3actMixed,
-  VictoryWorldPopulationSexRatio
+  VictoryWorldPopulation
 } from './containers/index';
 
 export default (
@@ -13,6 +13,6 @@ export default (
     <IndexRoute component={AppHome}/>
     <Route path="d3act-barchart" component={D3actBarChart}/>
     <Route path="d3act-mixed" component={D3actMixed}/>
-    <Route path="victory-world-population-sex-ratio" component={VictoryWorldPopulationSexRatio}/>
+    <Route path="victory-world-population" component={VictoryWorldPopulation}/>
   </Route>
 );

@@ -19,7 +19,7 @@ const Home = () => {
       <p>You'll find in this project some examples of integration of d3 in react, most of them with victory, some with d3act, just browse ...</p>
       <p className="text-center"><Link to="/victory-world-population-sex-ratio" className="btn btn-default btn-primary btn-lg">Start browsing</Link></p>
       <ul>
-        <li><Link to="/victory-world-population-sex-ratio">Victory / World population sex ratio</Link></li>
+        <li><Link to="/victory-world-population">Victory / World population</Link></li>
         <li><Link to="/d3act-barchart">d3act / Most popular technologies</Link></li>
         <li><Link to="/d3act-mixed">d3act / Desktop Operating System</Link></li>
       </ul>

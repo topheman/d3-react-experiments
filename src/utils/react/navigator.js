@@ -1,5 +1,5 @@
 const defaultLinks = [
-  '/victory-world-population-sex-ratio',
+  '/victory-world-population',
   '/d3act-barchart',
   '/d3act-mixed'
 ];
