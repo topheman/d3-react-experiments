@@ -27,7 +27,7 @@ npm install
 
 Useful to access the website via wifi from other devices such as smartphones.
 
-`NO_LOCALHOST npm start`
+`NO_LOCALHOST=true npm start`
 
 ####Build
 
