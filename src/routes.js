@@ -13,6 +13,6 @@ export default (
     <IndexRoute component={AppHome}/>
     <Route path="d3act-barchart" component={D3actBarChart}/>
     <Route path="d3act-mixed" component={D3actMixed}/>
-    <Route path="victory-world-population" component={VictoryWorldPopulation}/>
+    <Route path="victory-world-population-by-age-range" component={VictoryWorldPopulation}/>
   </Route>
 );

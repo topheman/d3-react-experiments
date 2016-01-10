@@ -29,7 +29,6 @@ export default class d3actPieChartPanel extends React.Component {
       barData: barChartDesktopOperatingSystemByYear['2015'],
       size: (window && window.innerWidth < 700) ? 220 : 400
     };
-    console.log(this.state);
   }
 
   changeYear(year) {

@@ -66,3 +66,9 @@ $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 .summary a.active {
   font-weight: bold;
 }
+
+.panel.panel-default.pie-chart-panel svg {
+  view-box: 0 0 400 400;
+  width: "250px";
+  height: "250px";
+}

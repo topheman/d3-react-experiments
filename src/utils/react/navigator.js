@@ -1,5 +1,5 @@
 const defaultLinks = [
-  '/victory-world-population',
+  '/victory-world-population-by-age-range',
   '/d3act-barchart',
   '/d3act-mixed'
 ];

@@ -17,7 +17,27 @@ export const censusRawData = () => {
   return censusPreparedData;
 };
 
-console.log('censusRawData', censusRawData());
+export const victoryPieWorldPopulationByAgeRange = () => {
+  const results = Object.keys(censusPreparedData).reduce((acc, year) => {
+    acc[year] = Object.keys(censusPreparedData[year]).reduce((accRange, range) => {
+      if (range !== 'Total') {
+        accRange.push({
+          x: `${range} (${censusPreparedData[year][range]['Percent Both Sexes']}%)`,
+          y: censusPreparedData[year][range]['Percent Both Sexes']
+        });
+        return accRange;
+      }
+      return accRange;
+    }, []);
+    // bug in victory-pie - if not populating as many values as the default props, the default labels appear
+    acc[year].push({x: '', y: 0});
+    acc[year].push({x: '', y: 0});
+    return acc;
+  }, {});
+  return (year) => {
+    return results[year];
+  };
+};
 
 export const d3actPieExtractMostPopularTechnologiesByYear = (year) => {
   return stackoverflowFixtures.mostPopularTechnologies[year].reduce((accumulator, current) => {
