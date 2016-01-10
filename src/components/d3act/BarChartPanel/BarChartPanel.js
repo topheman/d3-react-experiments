@@ -32,7 +32,7 @@ export default class d3actBarChartPanel extends React.Component {
   render() {
     return (
       <div className="panel panel-default bar-chart-panel">
-        <div className="panel-heading">BarChart - Most popular technologies (%)</div>
+        <div className="panel-heading">BarChart - Most popular technologies (%) - <strong>year {this.state.active}</strong></div>
         <ViewSourceOnGithub path="/src/components/d3act/BarChartPanel/BarChartPanel.js"/>
         <div className="panel-body text-center">
           <Chart

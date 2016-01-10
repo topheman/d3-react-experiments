@@ -43,7 +43,7 @@ export default class d3actPieChartPanel extends React.Component {
     const { size } = this.state;
     return (
       <div className="panel panel-default pie-chart-panel">
-        <div className="panel-heading">PieChart - Desktop Operating System (%)</div>
+        <div className="panel-heading">PieChart - Desktop Operating System (%) - <strong>year {this.state.active}</strong></div>
         <ViewSourceOnGithub path="/src/components/d3act/PieChartPanel/PieChartPanel.js"/>
         <div className="panel-body text-center">
           <div style={{float: size > 300 ? 'left' : 'none'}}>

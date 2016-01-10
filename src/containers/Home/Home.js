@@ -17,6 +17,7 @@ const Home = () => {
     <div>
       <p>Welcome,</p>
       <p>You'll find in this project some examples of integration of d3 in react, most of them with victory, some with d3act, just browse ...</p>
+      <p>This project is still in progress.</p>
       <p className="text-center"><Link to="/victory-world-population-by-age-range" className="btn btn-default btn-primary btn-lg">Start browsing</Link></p>
       <ul>
         <li><Link to="/victory-world-population-by-age-range">Victory / World population by age range</Link></li>
