@@ -62,6 +62,7 @@ export default class WorldPopulation extends React.Component {
               }
             }}
             width={this.state.size}
+            height={this.state.size}
             innerRadius={this.state.innerRadius}
             data={this.state.pieData}/>
           <p>World population distribution by age range 2010-2034 - <strong>year {this.state.year}</strong></p>
