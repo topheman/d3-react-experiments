@@ -3,13 +3,39 @@
  * 
  * Mix d3 & react
  * 
- * @version v0.0.1 - 09/01/2016
- * @revision #180b3ed - https://github.com/topheman/d3-react-experiments/tree/180b3ed10669cd91d2af8fa7f83632aa5c53698e
+ * @version v0.0.1 - 10/01/2016
+ * @revision #d965276 - https://github.com/topheman/d3-react-experiments/tree/d965276458d51957874bc350e6effff94ae45c97
  * @author Christophe Rosset
  * @copyright 2016(c) Christophe Rosset
  * @license MIT
  * 
  */
+.zero-clipboard {
+  position: relative;
+}
+.btn-clipboard {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.zero-clipboard a.btn-view-source {
+  border-left: 1px solid gray;
+  border-bottom: 1px solid gray;
+  border-bottom-left-radius: 5px;
+  padding: 5px;
+  text-decoration: none;
+}
+@media (min-width: 768px) {
+  .zero-clipboard a.btn-view-source {
+    font-size: 80%;
+  }
+}
+@media (max-width: 768px) {
+  .zero-clipboard a.btn-view-source {
+    padding: 3px;
+    font-size: 70%;
+  }
+}
 @charset "UTF-8";
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 html {
@@ -6125,4 +6151,10 @@ footer.footer {
   font-weight: bold;
 }
 
-/*# sourceMappingURL=main-devtools-4c859dd5d7c2129af364.css.map*/
+.panel.panel-default.pie-chart-panel svg {
+  view-box: 0 0 400 400;
+  width: "250px";
+  height: "250px";
+}
+
+/*# sourceMappingURL=main-devtools-a7404af6e870b8108a67.css.map*/
