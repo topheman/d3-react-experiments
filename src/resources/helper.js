@@ -17,21 +17,46 @@ export const censusRawData = () => {
   return censusPreparedData;
 };
 
-export const victoryPieWorldPopulationByAgeRange = () => {
+export const victoryWorldPopulationByAgeRange = (mode = 'pie') => {
   const results = Object.keys(censusPreparedData).reduce((acc, year) => {
-    acc[year] = Object.keys(censusPreparedData[year]).reduce((accRange, range) => {
+    acc[year] = Object.keys(censusPreparedData[year]).reduce((accRange, range, index) => {
       if (range !== 'Total') {
-        accRange.push({
-          x: `${range} (${censusPreparedData[year][range]['Percent Both Sexes']}%)`,
-          y: censusPreparedData[year][range]['Percent Both Sexes']
-        });
+        switch (mode) {
+          case 'pie':
+            accRange.push({
+              x: `${range} (${censusPreparedData[year][range]['Percent Both Sexes']}%)`,
+              y: censusPreparedData[year][range]['Percent Both Sexes']
+            });
+            break;
+          case 'bar':
+            accRange.push({
+              x: index,
+              y: censusPreparedData[year][range]['Both Sexes Population']
+            });
+            break;
+          default:
+            throw new Error('Bad argument passed. Only accepts percentage or number');
+        }
         return accRange;
       }
       return accRange;
     }, []);
-    // bug in victory-pie - if not populating as many values as the default props, the default labels appear
-    acc[year].push({x: '', y: 0});
-    acc[year].push({x: '', y: 0});
+    return acc;
+  }, {});
+  return (year) => {
+    return results[year];
+  };
+};
+
+export const victoryLabelWorldPopulationByAgeRange = () => {
+  const results = Object.keys(censusPreparedData).reduce((acc, year) => {
+    acc[year] = Object.keys(censusPreparedData[year]).reduce((accRange, range) => {
+      if (range !== 'Total') {
+        accRange.push(range + ' - ' + (censusPreparedData[year][range]['Both Sexes Population']).toString().replace(/\B(?=(\d{3})+\b)/g, ' '));
+        return accRange;
+      }
+      return accRange;
+    }, []);
     return acc;
   }, {});
   return (year) => {
