@@ -35,6 +35,15 @@ export default class d3actBarChartPanel extends React.Component {
         <div className="panel-heading">BarChart - Most popular technologies (%) - <strong>year {this.state.active}</strong></div>
         <ViewSourceOnGithub path="/src/components/d3act/BarChartPanel/BarChartPanel.js"/>
         <div className="panel-body text-center">
+          <div className="btn-group" role="group">
+            {Object.keys(barChartMostPopularTechnologiesByYear).sort((a, b) => b - a).map((year) => {
+              let className = 'btn btn-default';
+              className += this.state.active === year ? ' active' : '';
+              return (<button key={year} type="button" className={className} onClick={() => {
+                this.changeYear(year);
+              }}>{year}</button>);
+            })}
+          </div>
           <Chart
             type={"bar"}
             width={this.state.size}
