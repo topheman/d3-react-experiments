@@ -3,8 +3,8 @@
  * 
  * Mix d3 & react
  * 
- * @version v0.0.1 - 10/01/2016
- * @revision #d965276 - https://github.com/topheman/d3-react-experiments/tree/d965276458d51957874bc350e6effff94ae45c97
+ * @version v0.0.1 - 11/01/2016
+ * @revision #48884b3 - https://github.com/topheman/d3-react-experiments/tree/48884b3bcc075845415f453d0433ba05c4a65b65
  * @author Christophe Rosset
  * @copyright 2016(c) Christophe Rosset
  * @license MIT
@@ -24240,6 +24240,23 @@
 	      _react2['default'].createElement(
 	        'div',
 	        { className: 'panel-body text-center' },
+	        _react2['default'].createElement(
+	          'div',
+	          { className: 'btn-group', role: 'group' },
+	          Object.keys(barChartMostPopularTechnologiesByYear).sort(function (a, b) {
+	            return b - a;
+	          }).map(function (year) {
+	            var className = 'btn btn-default';
+	            className += _this.state.active === year ? ' active' : '';
+	            return _react2['default'].createElement(
+	              'button',
+	              { key: year, type: 'button', className: className, onClick: function () {
+	                  _this.changeYear(year);
+	                } },
+	              year
+	            );
+	          })
+	        ),
 	        _react2['default'].createElement(_d3act2['default'], {
 	          type: "bar",
 	          width: this.state.size,
@@ -36228,8 +36245,6 @@
 	  d3actPieChartPanel.prototype.render = function render() {
 	    var _this = this;
 	
-	    var size = this.state.size;
-	
 	    return _react2['default'].createElement(
 	      'div',
 	      { className: 'panel panel-default pie-chart-panel' },
@@ -36250,42 +36265,78 @@
 	        { className: 'panel-body text-center' },
 	        _react2['default'].createElement(
 	          'div',
-	          { style: { float: size > 300 ? 'left' : 'none' } },
-	          _react2['default'].createElement(_d3act2['default'], {
-	            type: "pie",
-	            width: this.state.size,
-	            height: this.state.size,
-	            data: this.state.pieData
-	          })
+	          { className: 'row' },
+	          _react2['default'].createElement(
+	            'div',
+	            { className: 'col-md-12' },
+	            _react2['default'].createElement(
+	              'div',
+	              { className: 'btn-group', role: 'group' },
+	              Object.keys(pieChartDesktopOperatingSystemByYear).sort(function (a, b) {
+	                return b - a;
+	              }).map(function (year) {
+	                var className = 'btn btn-default';
+	                className += _this.state.active === year ? ' active' : '';
+	                return _react2['default'].createElement(
+	                  'button',
+	                  { key: year, type: 'button', className: className, onClick: function () {
+	                      _this.changeYear(year);
+	                    } },
+	                  year
+	                );
+	              })
+	            )
+	          )
 	        ),
 	        _react2['default'].createElement(
 	          'div',
-	          { style: { float: size > 300 ? 'right' : 'none' } },
-	          _react2['default'].createElement(_d3act2['default'], {
-	            style: { float: 'left' },
-	            type: "bar",
-	            margin: { top: 40, right: 0, bottom: 40, left: 40 },
-	            width: this.state.size,
-	            height: this.state.size,
-	            data: this.state.barData
-	          })
+	          { className: 'row' },
+	          _react2['default'].createElement(
+	            'div',
+	            { className: 'col-md-6', style: { position: 'static' } },
+	            _react2['default'].createElement(_d3act2['default'], {
+	              type: "pie",
+	              width: this.state.size,
+	              height: this.state.size,
+	              data: this.state.pieData
+	            })
+	          ),
+	          _react2['default'].createElement(
+	            'div',
+	            { className: 'col-md-6', style: { position: 'static' } },
+	            _react2['default'].createElement(_d3act2['default'], {
+	              type: "bar",
+	              margin: { top: 40, right: 0, bottom: 40, left: 40 },
+	              width: this.state.size,
+	              height: this.state.size,
+	              data: this.state.barData
+	            })
+	          )
 	        ),
 	        _react2['default'].createElement(
 	          'div',
-	          { className: 'btn-group', role: 'group' },
-	          Object.keys(pieChartDesktopOperatingSystemByYear).sort(function (a, b) {
-	            return b - a;
-	          }).map(function (year) {
-	            var className = 'btn btn-default';
-	            className += _this.state.active === year ? ' active' : '';
-	            return _react2['default'].createElement(
-	              'button',
-	              { key: year, type: 'button', className: className, onClick: function () {
-	                  _this.changeYear(year);
-	                } },
-	              year
-	            );
-	          })
+	          { className: 'row' },
+	          _react2['default'].createElement(
+	            'div',
+	            { className: 'col-md-12' },
+	            _react2['default'].createElement(
+	              'div',
+	              { className: 'btn-group', role: 'group' },
+	              Object.keys(pieChartDesktopOperatingSystemByYear).sort(function (a, b) {
+	                return b - a;
+	              }).map(function (year) {
+	                var className = 'btn btn-default';
+	                className += _this.state.active === year ? ' active' : '';
+	                return _react2['default'].createElement(
+	                  'button',
+	                  { key: year, type: 'button', className: className, onClick: function () {
+	                      _this.changeYear(year);
+	                    } },
+	                  year
+	                );
+	              })
+	            )
+	          )
 	        )
 	      )
 	    );
@@ -58089,4 +58140,4 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=bundle-devtools-a7404af6e870b8108a67.js.map
+//# sourceMappingURL=bundle-devtools-6aae3f35711eaa787872.js.map
