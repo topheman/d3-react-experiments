@@ -15,9 +15,9 @@ const devtoolsMessage = (<div>
 const Home = () => {
   return (
     <div>
-      <p>Welcome,</p>
-      <p>You'll find in this project some examples of integration of d3 in react, most of them with victory, some with d3act, just browse ...</p>
-      <p>This project is still in progress.</p>
+      <p>D3 is a very powerfull visualisation library. But since it mutates the DOM, it doesn't really get along with React ...</p>
+      <p>In the last year, a lot of projects have risen with the goal of making those two work gently together ...</p>
+      <p>It doesn't seem like there is a clear winner yet. In this project, I'll try some of those libraries. <a href="https://github.com/topheman/d3-react-experiments#d3-react-experiments" title="d3-react-experiments on github">More in the README</a>.</p>
       <p className="text-center"><Link to="/victory-world-population-by-age-range" className="btn btn-default btn-primary btn-lg">Start browsing</Link></p>
       <ul>
         <li><Link to="/victory-world-population-by-age-range">Victory / World population by age range</Link></li>
