@@ -13,11 +13,20 @@ const censusPreparedData = censusFixtures.data.reduce((acc, curr) => {
   return acc;
 }, {});
 
+console.log(censusPreparedData);
 export const censusRawData = () => {
   return censusPreparedData;
 };
 
-export const victoryWorldPopulationByAgeRange = (mode = 'pie') => {
+export const victoryLabelSetupPopulationByAgeRange = () => {
+  return [
+    {fill: '#F66D3B', label: '0-14'},
+    {fill: '#D92E1D', label: '15-64'},
+    {fill: '#FFAF59', label: '65+'}
+  ];
+};
+
+export const victoryWorldPopulationByAgeRange = (mode, fillInfos) => {
   const results = Object.keys(censusPreparedData).reduce((acc, year) => {
     acc[year] = Object.keys(censusPreparedData[year]).reduce((accRange, range, index) => {
       if (range !== 'Total') {
@@ -25,13 +34,15 @@ export const victoryWorldPopulationByAgeRange = (mode = 'pie') => {
           case 'pie':
             accRange.push({
               x: `${range} (${censusPreparedData[year][range]['Percent Both Sexes']}%)`,
-              y: censusPreparedData[year][range]['Percent Both Sexes']
+              y: censusPreparedData[year][range]['Percent Both Sexes'],
+              fill: fillInfos[index - 1].fill
             });
             break;
           case 'bar':
             accRange.push({
               x: index,
-              y: censusPreparedData[year][range]['Both Sexes Population']
+              y: censusPreparedData[year][range]['Both Sexes Population'],
+              fill: fillInfos[index - 1].fill
             });
             break;
           default:

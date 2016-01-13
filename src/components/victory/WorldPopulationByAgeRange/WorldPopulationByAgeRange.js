@@ -5,9 +5,11 @@ import Slider from '../../Slider/Slider';
 import {VictoryPie} from 'victory-pie';
 import {VictoryBar} from 'victory-bar';
 
-import { victoryWorldPopulationByAgeRange, victoryLabelWorldPopulationByAgeRange } from '../../../resources/helper';
-const piePopulationByAgeRangeByYear = victoryWorldPopulationByAgeRange('pie');
-const barPopulationByAgeRangeByYear = victoryWorldPopulationByAgeRange('bar');
+import { victoryWorldPopulationByAgeRange, victoryLabelWorldPopulationByAgeRange, victoryLabelSetupPopulationByAgeRange } from '../../../resources/helper';
+
+const labelSetup = victoryLabelSetupPopulationByAgeRange();
+const piePopulationByAgeRangeByYear = victoryWorldPopulationByAgeRange('pie', labelSetup);
+const barPopulationByAgeRangeByYear = victoryWorldPopulationByAgeRange('bar', labelSetup);
 const barLabelPopulationByAgeRangeByYear = victoryLabelWorldPopulationByAgeRange();
 
 export default class WorldPopulation extends React.Component {
@@ -56,10 +58,17 @@ export default class WorldPopulation extends React.Component {
         <ViewSourceOnGithub path="/src/components/victory/WorldPopulationByAgeRange/WorldPopulationByAgeRange.js"/>
         <div className="panel-body text-center">
           <div className="row">
-            <div className="col-md-12">
+            <div className="col-md-8">
               <Slider min={2010} max={2034} step={1} defaultValue={this.defaultValues.year} label="Year: %value" update={this.updateYear.bind(this)} showPlayButton playing playingInterval={this.state.yearPlayingInterval}/>
               <Slider min={20} max={2000} step={10} defaultValue={1000} label="Refresh: 1/%valuems" update={this.updateYearPlayingInterval.bind(this)}/>
               <Slider min={0} max={80} step={1} defaultValue={this.defaultValues.innerRadius} label="InnerRadius: %valuepx" update={this.updateInnerRadius.bind(this)}/>
+            </div>
+            <div className="col-md-4" style={{paddingTop: '20px'}}>
+              {labelSetup.map((info, index) => (
+                <span key={index} style={{padding: '0px 5px'}}>
+                  <span className="glyphicon glyphicon-stop" style={{color: info.fill}}></span> {info.label}
+                </span>
+              ))}
             </div>
           </div>
           <div className="row">
@@ -72,11 +81,6 @@ export default class WorldPopulation extends React.Component {
                     fontWeight: 'bold'
                   }
                 }}
-                colorScale={[
-                  '#F66D3B',
-                  '#D92E1D',
-                  '#FFAF59'
-                ]}
                 width={this.state.size}
                 height={this.state.size}
                 innerRadius={this.state.innerRadius}
