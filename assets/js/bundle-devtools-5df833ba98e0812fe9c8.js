@@ -3,7 +3,7 @@
  * 
  * Mix d3 & react
  * 
- * @version v0.0.1 - 13/01/2016
+ * @version v0.0.1 - 14/01/2016
  * @revision #1c150c7 - https://github.com/topheman/d3-react-experiments/tree/1c150c7dec7c821361237469f8415dce66745c56
  * @author Christophe Rosset
  * @copyright 2016(c) Christophe Rosset
@@ -23812,7 +23812,7 @@
 	      title: "Twitter Tweet Button",
 	      style: { border: 0, overflow: 'hidden' },
 	      scrolling: "no",
-	      ref: "iframe", src: "https://platform.twitter.com/widgets/tweet_button.html?count=none&dnt=false&lang=en&original_referer=http%3A%2F%2Ftopheman.github.io%2Fd3-react-experiments&size=l&text=%23react%20%23d3%20datavisualization&type=share&url=https%3A%2F%2Ftopheman.github.io%2Fd3-react-experiments%2F&via=topheman" });
+	      ref: "iframe", src: "https://platform.twitter.com/widgets/tweet_button.html?count=none&dnt=false&lang=en&original_referer=http%3A%2F%2Ftopheman.github.io%2Fd3-react-experiments&size=l&text=Mix%20%23d3%20with%20%23react%20-%20an%20experiment%20on%20%23datavisualization&type=share&url=https%3A%2F%2Ftopheman.github.io%2Fd3-react-experiments%2F&via=topheman" });
 	  };
 	
 	  return TwitterButton;
@@ -65900,4 +65900,4 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=bundle-devtools-164e1fc2e70c2d03efbd.js.map
+//# sourceMappingURL=bundle-devtools-5df833ba98e0812fe9c8.js.map
