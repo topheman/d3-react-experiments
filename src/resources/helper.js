@@ -13,7 +13,6 @@ const censusPreparedData = censusFixtures.data.reduce((acc, curr) => {
   return acc;
 }, {});
 
-console.log(censusPreparedData);
 export const censusRawData = () => {
   return censusPreparedData;
 };
