@@ -4,7 +4,7 @@
  * Mix d3 & react
  * 
  * @version v0.0.1 - 13/01/2016
- * @revision #7d133c0 - https://github.com/topheman/d3-react-experiments/tree/7d133c0f0bd4d9ff9802f8035f90ad0eea5345cc
+ * @revision #1c150c7 - https://github.com/topheman/d3-react-experiments/tree/1c150c7dec7c821361237469f8415dce66745c56
  * @author Christophe Rosset
  * @copyright 2016(c) Christophe Rosset
  * @license MIT
@@ -23906,7 +23906,7 @@
 	    _react2['default'].createElement(
 	      'p',
 	      null,
-	      'D3 is a very Powerfull visualisation library. But since it mutates the DOM, it doesn\'t really get along with React ...'
+	      'D3 is a very powerfull visualisation library. But since it mutates the DOM, it doesn\'t really get along with React ...'
 	    ),
 	    _react2['default'].createElement(
 	      'p',
@@ -65900,4 +65900,4 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=bundle-devtools-87030e92932ed7ffb10d.js.map
+//# sourceMappingURL=bundle-devtools-164e1fc2e70c2d03efbd.js.map
