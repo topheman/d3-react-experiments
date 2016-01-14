@@ -37,6 +37,8 @@ cd d3-react-experiments
 npm install
 ```
 
+*Note:* **npm3 users**, there is a bug in the v3 of npm, it misses a package ([see here](https://travis-ci.org/topheman/d3-react-experiments/jobs/102454386#L1186)), you'll have to install it manually. Just run: `npm install invariant`
+
 ####Run
 
 #####From localhost
