@@ -15,7 +15,8 @@
     "serve-build": "./node_modules/.bin/serve --port 9001 build",
     "webpack": "./node_modules/.bin/webpack-dev-server --progress --colors --hot --inline",
     "webpack-dev": "DEVTOOLS=true npm run webpack",
-    "generate-fixtures": "node ./bin/csv-parse-census.js --source ./resources/census_data_20160104_568ac7b494753.csv --output-dir ./src/resources/fixtures"
+    "generate-fixtures": "node ./bin/csv-parse-census.js --source ./resources/census_data_20160104_568ac7b494753.csv --output-dir ./src/resources/fixtures",
+    "postinstall": "echo \"installing missing dependencies (patch for npm3 users)\" && npm install invariant loose-envify"
   },
   "pre-commit": [
     "test"
