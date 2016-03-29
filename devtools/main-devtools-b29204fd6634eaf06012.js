@@ -3,8 +3,8 @@
  * 
  * Mix d3 & react
  * 
- * @version v0.0.1 - 14/01/2016
- * @revision #0627f55 - https://github.com/topheman/d3-react-experiments/tree/0627f55bd6561c6a25b88b93dee529d4c67823f3
+ * @version v1.0.0 - 29/03/2016
+ * @revision #b4f87df - https://github.com/topheman/d3-react-experiments/tree/b4f87df9ae418affa834649cb8df9676ead7abb0
  * @author Christophe Rosset
  * @copyright 2016(c) Christophe Rosset
  * @license MIT
@@ -46,7 +46,7 @@
 /******/ 	__webpack_require__.c = installedModules;
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "assets/";
+/******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
@@ -60,4 +60,4 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=main-devtools-5df833ba98e0812fe9c8.js.map
+//# sourceMappingURL=main-devtools-b29204fd6634eaf06012.js.map
