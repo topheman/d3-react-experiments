@@ -20,7 +20,7 @@
     "webpack-build-prod": "./node_modules/.bin/webpack --progress -p",
     "generate-dist-readme": "node bin/generate-dist-readme.js",
     "generate-fixtures": "node ./bin/csv-parse-census.js --source ./resources/census_data_20160104_568ac7b494753.csv --output-dir ./src/resources/fixtures",
-    "postinstall": "echo \"installing missing dependencies (patch for npm3 users)\" && npm install invariant loose-envify"
+    "postinstall": "echo \"installing missing dependencies (patch for npm3 users)\" && npm install invariant loose-envify && echo \"installing missing dependencies (patch for npm2 users)\" && npm install lodash@3.x"
   },
   "pre-commit": [
     "test"
