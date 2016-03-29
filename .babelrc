@@ -1,4 +1,10 @@
 {
-  "stage": 1,
-  "loose": "all"
+  "presets": ["es2015", "react"],
+  "plugins": ["transform-class-properties", "transform-es2015-destructuring", "transform-object-rest-spread", "add-module-exports"],
+  "env": {
+    // only enable it when process.env.NODE_ENV is 'development' or undefined
+    "development": {
+      "presets": ["react-hmre"]
+    }
+  }
 }
