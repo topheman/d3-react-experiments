@@ -97,3 +97,11 @@ and (max-width : 370px) {
 .navbar-default .navbar-toggle span.icon-bar{
   background-color: #900000;
 }
+
+/** logo on the left */
+.navbar-brand.logo {
+  padding-left: 50px;
+  background-image: url(../assets/images/d3-logo.png);
+  background-repeat: no-repeat;
+  background-size: 50px;
+}
