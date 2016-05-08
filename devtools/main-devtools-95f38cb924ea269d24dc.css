@@ -3,8 +3,8 @@
  * 
  * Mix d3 & react
  * 
- * @version v1.0.0 - 29/03/2016
- * @revision #b4f87df - https://github.com/topheman/d3-react-experiments/tree/b4f87df9ae418affa834649cb8df9676ead7abb0
+ * @version v1.0.0 - 08/05/2016
+ * @revision #2bb0445 - https://github.com/topheman/d3-react-experiments/tree/2bb0445087dfd016d579439cf591f707500bdebe
  * @author Christophe Rosset
  * @copyright 2016(c) Christophe Rosset
  * @license MIT
@@ -6131,6 +6131,14 @@ ul.site-networks li.github a span.icon {
   background-color: #900000;
 }
 
+/** logo on the left */
+.navbar-brand.logo {
+  padding-left: 50px;
+  background-image: url(assets/de57cf572e49b579687279a45ceaaf9e.png);
+  background-repeat: no-repeat;
+  background-size: 50px;
+}
+
 footer.footer {
   opacity: 0.8;
   font-size: 85%;
@@ -6151,4 +6159,4 @@ footer.footer {
   font-weight: bold;
 }
 
-/*# sourceMappingURL=main-devtools-b29204fd6634eaf06012.css.map*/
+/*# sourceMappingURL=main-devtools-95f38cb924ea269d24dc.css.map*/
