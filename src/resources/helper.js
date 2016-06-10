@@ -33,8 +33,8 @@ export const victoryWorldPopulationByAgeRange = (mode, fillInfos) => {
           case 'pie':
             accRange.push({
               x: `${range} (${censusPreparedData[year][range]['Percent Both Sexes']}%)`,
-              y: censusPreparedData[year][range]['Percent Both Sexes'],
-              fill: fillInfos[index - 1].fill
+              y: censusPreparedData[year][range]['Percent Both Sexes']
+              // no fill infos, you pass that in colorScale prop
             });
             break;
           case 'bar':

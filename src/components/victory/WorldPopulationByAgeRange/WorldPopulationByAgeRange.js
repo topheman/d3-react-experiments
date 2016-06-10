@@ -9,6 +9,7 @@ import { victoryWorldPopulationByAgeRange, victoryLabelWorldPopulationByAgeRange
 
 const labelSetup = victoryLabelSetupPopulationByAgeRange();
 const piePopulationByAgeRangeByYear = victoryWorldPopulationByAgeRange('pie', labelSetup);
+const piePopulationByAgeRangeByYearColorScale = labelSetup.map(info => info.fill);
 const barPopulationByAgeRangeByYear = victoryWorldPopulationByAgeRange('bar', labelSetup);
 const barLabelPopulationByAgeRangeByYear = victoryLabelWorldPopulationByAgeRange();
 
@@ -73,31 +74,36 @@ export default class WorldPopulation extends React.Component {
           </div>
           <div className="row">
             <div className="col-md-6">
-              <VictoryPie
-                style={{
-                  labels: {
-                    fill: 'black',
-                    fontSize: 12,
-                    fontWeight: 'bold'
-                  }
-                }}
-                width={this.state.size}
-                height={this.state.size}
-                innerRadius={this.state.innerRadius}
-                data={this.state.pieData}/>
+              <div style={{width: '400px', marginLeft: 'auto', marginRight: 'auto'}}>
+                <VictoryPie
+                  style={{
+                    labels: {
+                      fill: 'black',
+                      fontSize: '12px',
+                      fontWeight: 'bold'
+                    }
+                  }}
+                  width={this.state.size}
+                  height={this.state.size}
+                  innerRadius={this.state.innerRadius}
+                  data={this.state.pieData}
+                  colorScale={piePopulationByAgeRangeByYearColorScale}/>
+              </div>
             </div>
             <div className="col-md-6">
-              <VictoryBar
-                style={{
-                  data: {width: this.state.size / 6, fill: '#900000'},
-                  labels: {fontSize: 14}
-                }}
-                padding={70}
-                domain={{y: [0, 6000000000]}}
-                width={this.state.size}
-                height={this.state.size}
-                labels={this.state.barLabel}
-                data={this.state.barData}/>
+              <div style={{width: '400px', marginLeft: 'auto', marginRight: 'auto'}}>
+                <VictoryBar
+                  style={{
+                    data: {width: this.state.size / 6, fill: '#900000'},
+                    labels: {fontSize: '14px'}
+                  }}
+                  padding={70}
+                  domain={{y: [0, 6000000000]}}
+                  width={this.state.size}
+                  height={this.state.size}
+                  labels={this.state.barLabel}
+                  data={this.state.barData}/>
+              </div>
             </div>
           </div>
           <p>World population distribution by age range 2010-2034 - <strong>year {this.state.year}</strong></p>
