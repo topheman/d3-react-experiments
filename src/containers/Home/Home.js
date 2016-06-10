@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 
 const prodMessage = (<div>
   <p>This is the <strong>production packaged</strong> version (html/css/js uglified). You can <a href="./devtools/" title="Test with devtools & sourcemaps" style={{fontWeight: 'bold'}}>test the site in debug mode here</a>, where you'll have access to sourcemaps.</p>
-  <p className="text-center"><a href="./devtools/" title="Test with devtools & sourcemaps" className="btn btn-default btn-primary" style={{whiteSpace: 'pre-wrap'}}>I'm a developer, I want to see what's under the hood!</a></p>
+  <p className="text-center"><a href="./devtools/" title="Test with devtools & sourcemaps">I'm a developer, I want to see what's under the hood!</a></p>
 </div>);
 
 const devtoolsMessage = (<div>
