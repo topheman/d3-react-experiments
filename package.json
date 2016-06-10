@@ -73,11 +73,10 @@
     "bootstrap-sass": "^3.3.5",
     "d3act": "^2.0.0",
     "es6-promise": "^3.0.2",
-    "history": "^1.17.0",
     "radium": "^0.16.2",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
-    "react-router": "^1.0.3",
+    "react-router": "^2.4.1",
     "victory-bar": "^2.5.1",
     "victory-pie": "^0.2.0"
   },

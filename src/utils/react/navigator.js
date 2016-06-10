@@ -40,7 +40,7 @@ const getDisplayName = (WrappedComponent) => {
 };
 
 const navigator = (links) => WrappedComponent => {
-  const Navigator = ({props}, {location}) => {
+  const Navigator = ({location, ...props}) => {
     const {prev, next} = getPrevNextLinks(location, links);
     if (prev || next) {
       return (
