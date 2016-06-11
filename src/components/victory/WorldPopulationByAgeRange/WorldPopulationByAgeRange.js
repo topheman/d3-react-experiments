@@ -74,7 +74,7 @@ export default class WorldPopulation extends React.Component {
           </div>
           <div className="row">
             <div className="col-md-6">
-              <div style={{width: '400px', marginLeft: 'auto', marginRight: 'auto'}}>
+              <div style={{width: this.state.size, marginLeft: 'auto', marginRight: 'auto'}}>
                 <VictoryPie
                   style={{
                     labels: {
@@ -91,7 +91,7 @@ export default class WorldPopulation extends React.Component {
               </div>
             </div>
             <div className="col-md-6">
-              <div style={{width: '400px', marginLeft: 'auto', marginRight: 'auto'}}>
+              <div style={{width: this.state.size, marginLeft: 'auto', marginRight: 'auto'}}>
                 <VictoryBar
                   style={{
                     data: {width: this.state.size / 6, fill: '#900000'},
