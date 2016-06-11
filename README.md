@@ -27,6 +27,10 @@ So far, I tried the following libraries:
 * [d3act](https://github.com/AnSavvides/d3act)
 * [victory](https://github.com/FormidableLabs/victory)
 
+###Prerequisite
+
+You must have npm3 (enforced by Victory). You may have some peerDependency errors at `npm install` that won't affect the project, the problem is tracked on [this issue](https://github.com/FormidableLabs/victory/issues/275).
+
 ###Setup
 
 This project now follows the same development workflow as the one explained in [topheman/webpack-babel-starter](https://github.com/topheman/webpack-babel-starter) (with some additions, specific to the project), and it runs with **Babel v6**.
@@ -38,8 +42,6 @@ git clone https://github.com/topheman/d3-react-experiments.git
 cd d3-react-experiments
 npm install
 ```
-
-*Note:* **npm3 users**, there is a bug in the v3 of npm, it misses some nested packages, so I added them to the `postinstall` hook - [see here](https://github.com/topheman/d3-react-experiments/commit/bd1982f3ceaa7b74abe78592010c315c40a7219d).
 
 ####Run
 
