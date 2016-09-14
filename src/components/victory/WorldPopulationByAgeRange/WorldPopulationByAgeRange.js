@@ -80,11 +80,12 @@ export default class WorldPopulation extends React.Component {
                     labels: {
                       fill: 'black',
                       fontSize: '12px',
-                      fontWeight: 'bold'
+                      fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif'
                     }
                   }}
                   width={this.state.size}
                   height={this.state.size}
+                  labelRadius={this.state.size / 5}
                   innerRadius={this.state.innerRadius}
                   data={this.state.pieData}
                   colorScale={piePopulationByAgeRangeByYearColorScale}/>
@@ -95,7 +96,11 @@ export default class WorldPopulation extends React.Component {
                 <VictoryBar
                   style={{
                     data: {width: this.state.size / 6, fill: '#900000'},
-                    labels: {fontSize: '14px'}
+                    labels: {
+                      fill: 'black',
+                      fontSize: '12px',
+                      fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif'
+                    }
                   }}
                   padding={70}
                   domain={{y: [0, 6000000000]}}

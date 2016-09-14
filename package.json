@@ -78,7 +78,7 @@
     "react-dom": "^15.1.0",
     "react-router": "^2.4.1",
     "victory-bar": "^4.0.1",
-    "victory-pie": "^4.0.0"
+    "victory-pie": "^6.0.0"
   },
   "private": true
 }
