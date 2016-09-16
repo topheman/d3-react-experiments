@@ -5,18 +5,20 @@ import Slider from '../../Slider/Slider';
 import {VictoryPie} from 'victory-pie';
 import {VictoryBar} from 'victory-bar';
 
-import { victoryWorldPopulationByAgeRange, victoryLabelWorldPopulationByAgeRange, victoryLabelSetupPopulationByAgeRange } from '../../../resources/helper';
-
-const labelSetup = victoryLabelSetupPopulationByAgeRange();
-const piePopulationByAgeRangeByYear = victoryWorldPopulationByAgeRange('pie', labelSetup);
-const piePopulationByAgeRangeByYearColorScale = labelSetup.map(info => info.fill);
-const barPopulationByAgeRangeByYear = victoryWorldPopulationByAgeRange('bar', labelSetup);
-const barLabelPopulationByAgeRangeByYear = victoryLabelWorldPopulationByAgeRange();
-
 export default class WorldPopulation extends React.Component {
 
-  constructor(props) {
-    super(props);
+  static propTypes = {
+    labelColorConfig: React.PropTypes.array.isRequired,
+    compilePieData: React.PropTypes.func.isRequired,
+    compileBarData: React.PropTypes.func.isRequired,
+    getBarLabelByYear: React.PropTypes.func.isRequired
+  }
+
+  constructor({ compilePieData, compileBarData, labelColorConfig }) {
+    super();
+    this.pieData = compilePieData(labelColorConfig);
+    this.barData = compileBarData(labelColorConfig);
+    this.pieColorScale = labelColorConfig.map(info => info.fill);
     this.defaultValues = {
       year: 2015,
       innerRadius: 0,
@@ -31,9 +33,9 @@ export default class WorldPopulation extends React.Component {
   updateYear(year) {
     this.setState({
       ...this.state,
-      pieData: piePopulationByAgeRangeByYear(year),
-      barData: barPopulationByAgeRangeByYear(year),
-      barLabel: barLabelPopulationByAgeRangeByYear(year),
+      pieData: this.pieData(year),
+      barData: this.barData(year),
+      barLabel: this.props.getBarLabelByYear(year),
       year
     });
   }
@@ -53,6 +55,7 @@ export default class WorldPopulation extends React.Component {
   }
 
   render() {
+    const { labelColorConfig } = this.props;
     return (
       <div className="panel panel-default pie-chart-panel">
         <div className="panel-heading">World population 2010-2034 by age range - <strong>year {this.state.year}</strong></div>
@@ -65,7 +68,7 @@ export default class WorldPopulation extends React.Component {
               <Slider min={0} max={80} step={1} defaultValue={this.defaultValues.innerRadius} label="InnerRadius: %valuepx" update={this.updateInnerRadius.bind(this)}/>
             </div>
             <div className="col-md-4" style={{paddingTop: '20px'}}>
-              {labelSetup.map((info, index) => (
+              {labelColorConfig.map((info, index) => (
                 <span key={index} style={{padding: '0px 5px'}}>
                   <span className="glyphicon glyphicon-stop" style={{color: info.fill}}></span> {info.label}
                 </span>
@@ -88,7 +91,7 @@ export default class WorldPopulation extends React.Component {
                   labelRadius={this.state.size / 5}
                   innerRadius={this.state.innerRadius}
                   data={this.state.pieData}
-                  colorScale={piePopulationByAgeRangeByYearColorScale}/>
+                  colorScale={this.pieColorScale}/>
               </div>
             </div>
             <div className="col-md-6">

@@ -25,7 +25,7 @@ export const victoryLabelSetupPopulationByAgeRange = () => {
   ];
 };
 
-export const victoryWorldPopulationByAgeRange = (mode, fillInfos) => {
+export const victoryWorldPopulationByAgeRange = (mode) => (fillInfos) => {
   const results = Object.keys(censusPreparedData).reduce((acc, year) => {
     acc[year] = Object.keys(censusPreparedData[year]).reduce((accRange, range, index) => {
       if (range !== 'Total') {
