@@ -60,7 +60,7 @@ $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 @import "header.scss";
 @import "footer.scss";
 
-@import "../components/d3act/PieChartPanel/PieChartPanel.scss";
+@import "../components/d3act/MixedChartPanel/MixedChartPanel.scss";
 @import "../components/ViewSourceOnGithub/viewSourceOnGithub.css";
 
 .summary a.active {

@@ -3,52 +3,43 @@ import React from 'react';
 import ViewSourceOnGithub from '../../ViewSourceOnGithub/ViewSourceOnGithub';
 import Chart from 'd3act';
 
-import {
-  d3actPieExtractDesktopOperatingSystemByYear,
-  d3actBarExtractDesktopOperatingSystemByYear
-} from '../../../resources/helper';
-
-const pieChartDesktopOperatingSystemByYear = {
-  2015: d3actPieExtractDesktopOperatingSystemByYear(2015),
-  2014: d3actPieExtractDesktopOperatingSystemByYear(2014),
-  2013: d3actPieExtractDesktopOperatingSystemByYear(2013)
-};
-const barChartDesktopOperatingSystemByYear = {
-  2015: d3actBarExtractDesktopOperatingSystemByYear(2015),
-  2014: d3actBarExtractDesktopOperatingSystemByYear(2014),
-  2013: d3actBarExtractDesktopOperatingSystemByYear(2013)
-};
-
 export default class d3actPieChartPanel extends React.Component {
 
-  constructor(props) {
-    super(props);
+  static propTypes = {
+    data: React.PropTypes.object.isRequired
+  }
+
+  constructor({data}) {
+    super();
+    const defaultActiveYear = Object.keys(data).sort((a, b) => a < b)[0];
     this.state = {
-      active: '2015',
-      pieData: pieChartDesktopOperatingSystemByYear['2015'],
-      barData: barChartDesktopOperatingSystemByYear['2015'],
+      active: defaultActiveYear,
+      pieData: data[defaultActiveYear].pie,
+      barData: data[defaultActiveYear].bar,
       size: (window && window.innerWidth < 700) ? 220 : 400
     };
   }
 
   changeYear(year) {
+    const { data } = this.props;
     this.setState({
       active: year,
-      pieData: pieChartDesktopOperatingSystemByYear[year],
-      barData: barChartDesktopOperatingSystemByYear[year]
+      pieData: data[year].pie,
+      barData: data[year].bar
     });
   }
 
   render() {
+    const { data } = this.props;
     return (
       <div className="panel panel-default pie-chart-panel">
         <div className="panel-heading">PieChart - Desktop Operating System (%) - <strong>year {this.state.active}</strong></div>
-        <ViewSourceOnGithub path="/src/components/d3act/PieChartPanel/PieChartPanel.js"/>
+        <ViewSourceOnGithub path="/src/components/d3act/MixedChartPanel/MixedChartPanel.js"/>
         <div className="panel-body text-center">
           <div className="row">
             <div className="col-md-12">
               <div className="btn-group" role="group">
-                {Object.keys(pieChartDesktopOperatingSystemByYear).sort((a, b) => b - a).map((year) => {
+                {Object.keys(data).sort((a, b) => b - a).map((year) => {
                   let className = 'btn btn-default';
                   className += this.state.active === year ? ' active' : '';
                   return (<button key={year} type="button" className={className} onClick={() => {
@@ -80,7 +71,7 @@ export default class d3actPieChartPanel extends React.Component {
           <div className="row">
             <div className="col-md-12">
               <div className="btn-group" role="group">
-                {Object.keys(pieChartDesktopOperatingSystemByYear).sort((a, b) => b - a).map((year) => {
+                {Object.keys(data).sort((a, b) => b - a).map((year) => {
                   let className = 'btn btn-default';
                   className += this.state.active === year ? ' active' : '';
                   return (<button key={year} type="button" className={className} onClick={() => {
