@@ -71,6 +71,7 @@
   },
   "dependencies": {
     "bootstrap-sass": "^3.3.5",
+    "d3-request": "^1.0.2",
     "d3act": "^2.0.0",
     "es6-promise": "^3.0.2",
     "radium": "^0.16.2",
