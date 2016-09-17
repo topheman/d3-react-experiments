@@ -3,8 +3,8 @@
  * 
  * Mix d3 & react
  * 
- * @version v1.1.0 - 15/09/2016
- * @revision #89863d1 - https://github.com/topheman/d3-react-experiments/tree/89863d1fb05447b713584375258ebd0f20deb52b
+ * @version v1.1.0 - 17/09/2016
+ * @revision #822a964 - https://github.com/topheman/d3-react-experiments/tree/822a964ada0425e1b49a053a8b07321d79e676e7
  * @author Christophe Rosset
  * @copyright 2016(c) Christophe Rosset
  * @license MIT
@@ -27385,12 +27385,12 @@
 	  }
 	});
 	
-	var _Mixed = __webpack_require__(252);
+	var _MixedChart = __webpack_require__(252);
 	
 	Object.defineProperty(exports, 'D3actMixed', {
 	  enumerable: true,
 	  get: function get() {
-	    return _interopRequireDefault(_Mixed).default;
+	    return _interopRequireDefault(_MixedChart).default;
 	  }
 	});
 	
@@ -27885,7 +27885,19 @@
 	
 	var _BarChartPanel2 = _interopRequireDefault(_BarChartPanel);
 	
+	var _helper = __webpack_require__(249);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	/**
+	 * This data could be fetch from a server or whatever
+	 * Since we have it in local, it's prepare only once.
+	 */
+	var data = {
+	  2015: (0, _helper.d3actBarExtractMostPopularTechnologiesByYear)(2015),
+	  2014: (0, _helper.d3actBarExtractMostPopularTechnologiesByYear)(2014),
+	  2013: (0, _helper.d3actBarExtractMostPopularTechnologiesByYear)(2013)
+	};
 	
 	var D3actBarChart = function D3actBarChart() {
 	  return _react2.default.createElement(
@@ -27896,7 +27908,7 @@
 	      null,
 	      'd3act'
 	    ),
-	    _react2.default.createElement(_BarChartPanel2.default, null),
+	    _react2.default.createElement(_BarChartPanel2.default, { data: data }),
 	    _react2.default.createElement(
 	      'p',
 	      null,
@@ -28080,8 +28092,6 @@
 	
 	var _d3act2 = _interopRequireDefault(_d3act);
 	
-	var _helper = __webpack_require__(249);
-	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -28090,23 +28100,22 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var barChartMostPopularTechnologiesByYear = {
-	  2015: (0, _helper.d3actBarExtractMostPopularTechnologiesByYear)(2015),
-	  2014: (0, _helper.d3actBarExtractMostPopularTechnologiesByYear)(2014),
-	  2013: (0, _helper.d3actBarExtractMostPopularTechnologiesByYear)(2013)
-	};
-	
 	var d3actBarChartPanel = function (_React$Component) {
 	  _inherits(d3actBarChartPanel, _React$Component);
 	
-	  function d3actBarChartPanel(props) {
+	  function d3actBarChartPanel(_ref) {
+	    var data = _ref.data;
+	
 	    _classCallCheck(this, d3actBarChartPanel);
 	
-	    var _this = _possibleConstructorReturn(this, (d3actBarChartPanel.__proto__ || Object.getPrototypeOf(d3actBarChartPanel)).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (d3actBarChartPanel.__proto__ || Object.getPrototypeOf(d3actBarChartPanel)).call(this));
 	
+	    var defaultActiveYear = Object.keys(data).sort(function (a, b) {
+	      return a < b;
+	    })[0];
 	    _this.state = {
-	      active: '2015',
-	      data: barChartMostPopularTechnologiesByYear['2015'],
+	      active: defaultActiveYear,
+	      data: data[defaultActiveYear],
 	      size: window && window.innerWidth < 700 ? 220 : 400
 	    };
 	    return _this;
@@ -28115,15 +28124,19 @@
 	  _createClass(d3actBarChartPanel, [{
 	    key: 'changeYear',
 	    value: function changeYear(year) {
+	      var data = this.props.data;
+	
 	      this.setState({
 	        active: year,
-	        data: barChartMostPopularTechnologiesByYear[year]
+	        data: data[year]
 	      });
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var _this2 = this;
+	
+	      var data = this.props.data;
 	
 	      return _react2.default.createElement(
 	        'div',
@@ -28146,7 +28159,7 @@
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'btn-group', role: 'group' },
-	            Object.keys(barChartMostPopularTechnologiesByYear).sort(function (a, b) {
+	            Object.keys(data).sort(function (a, b) {
 	              return b - a;
 	            }).map(function (year) {
 	              var className = 'btn btn-default';
@@ -28170,7 +28183,7 @@
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'btn-group', role: 'group' },
-	            Object.keys(barChartMostPopularTechnologiesByYear).sort(function (a, b) {
+	            Object.keys(data).sort(function (a, b) {
 	              return b - a;
 	            }).map(function (year) {
 	              var className = 'btn btn-default';
@@ -28192,6 +28205,9 @@
 	  return d3actBarChartPanel;
 	}(_react2.default.Component);
 	
+	d3actBarChartPanel.propTypes = {
+	  data: _react2.default.PropTypes.object.isRequired
+	};
 	exports.default = d3actBarChartPanel;
 	module.exports = exports['default'];
 
@@ -38467,36 +38483,38 @@
 	  return [{ fill: '#F66D3B', label: '0-14' }, { fill: '#D92E1D', label: '15-64' }, { fill: '#FFAF59', label: '65+' }];
 	};
 	
-	var victoryWorldPopulationByAgeRange = exports.victoryWorldPopulationByAgeRange = function victoryWorldPopulationByAgeRange(mode, fillInfos) {
-	  var results = Object.keys(censusPreparedData).reduce(function (acc, year) {
-	    acc[year] = Object.keys(censusPreparedData[year]).reduce(function (accRange, range, index) {
-	      if (range !== 'Total') {
-	        switch (mode) {
-	          case 'pie':
-	            accRange.push({
-	              x: range + ' (' + censusPreparedData[year][range]['Percent Both Sexes'] + '%)',
-	              y: censusPreparedData[year][range]['Percent Both Sexes']
-	              // no fill infos, you pass that in colorScale prop
-	            });
-	            break;
-	          case 'bar':
-	            accRange.push({
-	              x: index,
-	              y: censusPreparedData[year][range]['Both Sexes Population'],
-	              fill: fillInfos[index - 1].fill
-	            });
-	            break;
-	          default:
-	            throw new Error('Bad argument passed. Only accepts percentage or number');
+	var victoryWorldPopulationByAgeRange = exports.victoryWorldPopulationByAgeRange = function victoryWorldPopulationByAgeRange(mode) {
+	  return function (fillInfos) {
+	    var results = Object.keys(censusPreparedData).reduce(function (acc, year) {
+	      acc[year] = Object.keys(censusPreparedData[year]).reduce(function (accRange, range, index) {
+	        if (range !== 'Total') {
+	          switch (mode) {
+	            case 'pie':
+	              accRange.push({
+	                x: range + ' (' + censusPreparedData[year][range]['Percent Both Sexes'] + '%)',
+	                y: censusPreparedData[year][range]['Percent Both Sexes']
+	                // no fill infos, you pass that in colorScale prop
+	              });
+	              break;
+	            case 'bar':
+	              accRange.push({
+	                x: index,
+	                y: censusPreparedData[year][range]['Both Sexes Population'],
+	                fill: fillInfos[index - 1].fill
+	              });
+	              break;
+	            default:
+	              throw new Error('Bad argument passed. Only accepts percentage or number');
+	          }
+	          return accRange;
 	        }
 	        return accRange;
-	      }
-	      return accRange;
-	    }, []);
-	    return acc;
-	  }, {});
-	  return function (year) {
-	    return results[year];
+	      }, []);
+	      return acc;
+	    }, {});
+	    return function (year) {
+	      return results[year];
+	    };
 	  };
 	};
 	
@@ -40057,11 +40075,32 @@
 	
 	var _navigator2 = _interopRequireDefault(_navigator);
 	
-	var _PieChartPanel = __webpack_require__(253);
+	var _MixedChartPanel = __webpack_require__(253);
 	
-	var _PieChartPanel2 = _interopRequireDefault(_PieChartPanel);
+	var _MixedChartPanel2 = _interopRequireDefault(_MixedChartPanel);
+	
+	var _helper = __webpack_require__(249);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	/**
+	 * This data could be fetch from a server or whatever
+	 * Since we have it in local, it's prepare only once.
+	 */
+	var data = {
+	  2015: {
+	    pie: (0, _helper.d3actPieExtractDesktopOperatingSystemByYear)(2015),
+	    bar: (0, _helper.d3actBarExtractDesktopOperatingSystemByYear)(2015)
+	  },
+	  2014: {
+	    pie: (0, _helper.d3actPieExtractDesktopOperatingSystemByYear)(2014),
+	    bar: (0, _helper.d3actBarExtractDesktopOperatingSystemByYear)(2014)
+	  },
+	  2013: {
+	    pie: (0, _helper.d3actPieExtractDesktopOperatingSystemByYear)(2013),
+	    bar: (0, _helper.d3actBarExtractDesktopOperatingSystemByYear)(2013)
+	  }
+	};
 	
 	var D3actMixed = function D3actMixed() {
 	  return _react2.default.createElement(
@@ -40072,7 +40111,7 @@
 	      null,
 	      'd3act'
 	    ),
-	    _react2.default.createElement(_PieChartPanel2.default, null),
+	    _react2.default.createElement(_MixedChartPanel2.default, { data: data }),
 	    _react2.default.createElement(
 	      'p',
 	      null,
@@ -40113,8 +40152,6 @@
 	
 	var _d3act2 = _interopRequireDefault(_d3act);
 	
-	var _helper = __webpack_require__(249);
-	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -40123,29 +40160,23 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var pieChartDesktopOperatingSystemByYear = {
-	  2015: (0, _helper.d3actPieExtractDesktopOperatingSystemByYear)(2015),
-	  2014: (0, _helper.d3actPieExtractDesktopOperatingSystemByYear)(2014),
-	  2013: (0, _helper.d3actPieExtractDesktopOperatingSystemByYear)(2013)
-	};
-	var barChartDesktopOperatingSystemByYear = {
-	  2015: (0, _helper.d3actBarExtractDesktopOperatingSystemByYear)(2015),
-	  2014: (0, _helper.d3actBarExtractDesktopOperatingSystemByYear)(2014),
-	  2013: (0, _helper.d3actBarExtractDesktopOperatingSystemByYear)(2013)
-	};
-	
 	var d3actPieChartPanel = function (_React$Component) {
 	  _inherits(d3actPieChartPanel, _React$Component);
 	
-	  function d3actPieChartPanel(props) {
+	  function d3actPieChartPanel(_ref) {
+	    var data = _ref.data;
+	
 	    _classCallCheck(this, d3actPieChartPanel);
 	
-	    var _this = _possibleConstructorReturn(this, (d3actPieChartPanel.__proto__ || Object.getPrototypeOf(d3actPieChartPanel)).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (d3actPieChartPanel.__proto__ || Object.getPrototypeOf(d3actPieChartPanel)).call(this));
 	
+	    var defaultActiveYear = Object.keys(data).sort(function (a, b) {
+	      return a < b;
+	    })[0];
 	    _this.state = {
-	      active: '2015',
-	      pieData: pieChartDesktopOperatingSystemByYear['2015'],
-	      barData: barChartDesktopOperatingSystemByYear['2015'],
+	      active: defaultActiveYear,
+	      pieData: data[defaultActiveYear].pie,
+	      barData: data[defaultActiveYear].bar,
 	      size: window && window.innerWidth < 700 ? 220 : 400
 	    };
 	    return _this;
@@ -40154,16 +40185,20 @@
 	  _createClass(d3actPieChartPanel, [{
 	    key: 'changeYear',
 	    value: function changeYear(year) {
+	      var data = this.props.data;
+	
 	      this.setState({
 	        active: year,
-	        pieData: pieChartDesktopOperatingSystemByYear[year],
-	        barData: barChartDesktopOperatingSystemByYear[year]
+	        pieData: data[year].pie,
+	        barData: data[year].bar
 	      });
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var _this2 = this;
+	
+	      var data = this.props.data;
 	
 	      return _react2.default.createElement(
 	        'div',
@@ -40179,7 +40214,7 @@
 	            this.state.active
 	          )
 	        ),
-	        _react2.default.createElement(_ViewSourceOnGithub2.default, { path: '/src/components/d3act/PieChartPanel/PieChartPanel.js' }),
+	        _react2.default.createElement(_ViewSourceOnGithub2.default, { path: '/src/components/d3act/MixedChartPanel/MixedChartPanel.js' }),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'panel-body text-center' },
@@ -40192,7 +40227,7 @@
 	              _react2.default.createElement(
 	                'div',
 	                { className: 'btn-group', role: 'group' },
-	                Object.keys(pieChartDesktopOperatingSystemByYear).sort(function (a, b) {
+	                Object.keys(data).sort(function (a, b) {
 	                  return b - a;
 	                }).map(function (year) {
 	                  var className = 'btn btn-default';
@@ -40242,7 +40277,7 @@
 	              _react2.default.createElement(
 	                'div',
 	                { className: 'btn-group', role: 'group' },
-	                Object.keys(pieChartDesktopOperatingSystemByYear).sort(function (a, b) {
+	                Object.keys(data).sort(function (a, b) {
 	                  return b - a;
 	                }).map(function (year) {
 	                  var className = 'btn btn-default';
@@ -40266,6 +40301,9 @@
 	  return d3actPieChartPanel;
 	}(_react2.default.Component);
 	
+	d3actPieChartPanel.propTypes = {
+	  data: _react2.default.PropTypes.object.isRequired
+	};
 	exports.default = d3actPieChartPanel;
 	module.exports = exports['default'];
 
@@ -40291,7 +40329,23 @@
 	
 	var _WorldPopulationByAgeRange2 = _interopRequireDefault(_WorldPopulationByAgeRange);
 	
+	var _helper = __webpack_require__(249);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var labelColorConfig = (0, _helper.victoryLabelSetupPopulationByAgeRange)();
+	
+	// returns a functions like (year) => []
+	
+	
+	/**
+	 * Creating the data once.
+	 */
+	var getBarLabelByYear = (0, _helper.victoryLabelWorldPopulationByAgeRange)();
+	
+	// returns functions to call with labelColorConfig (which will add colors and labels)
+	var compilePieData = (0, _helper.victoryWorldPopulationByAgeRange)('pie');
+	var compileBarData = (0, _helper.victoryWorldPopulationByAgeRange)('bar');
 	
 	var VictoryWorldPopulationByAgeRange = function VictoryWorldPopulationByAgeRange() {
 	  return _react2.default.createElement(
@@ -40302,7 +40356,12 @@
 	      null,
 	      'Victory'
 	    ),
-	    _react2.default.createElement(_WorldPopulationByAgeRange2.default, null),
+	    _react2.default.createElement(_WorldPopulationByAgeRange2.default, {
+	      labelColorConfig: labelColorConfig,
+	      compilePieData: compilePieData,
+	      compileBarData: compileBarData,
+	      getBarLabelByYear: getBarLabelByYear
+	    }),
 	    _react2.default.createElement(
 	      'p',
 	      null,
@@ -40349,8 +40408,6 @@
 	
 	var _victoryBar = __webpack_require__(660);
 	
-	var _helper = __webpack_require__(249);
-	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -40359,22 +40416,23 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var labelSetup = (0, _helper.victoryLabelSetupPopulationByAgeRange)();
-	var piePopulationByAgeRangeByYear = (0, _helper.victoryWorldPopulationByAgeRange)('pie', labelSetup);
-	var piePopulationByAgeRangeByYearColorScale = labelSetup.map(function (info) {
-	  return info.fill;
-	});
-	var barPopulationByAgeRangeByYear = (0, _helper.victoryWorldPopulationByAgeRange)('bar', labelSetup);
-	var barLabelPopulationByAgeRangeByYear = (0, _helper.victoryLabelWorldPopulationByAgeRange)();
-	
 	var WorldPopulation = function (_React$Component) {
 	  _inherits(WorldPopulation, _React$Component);
 	
-	  function WorldPopulation(props) {
+	  function WorldPopulation(_ref) {
+	    var compilePieData = _ref.compilePieData;
+	    var compileBarData = _ref.compileBarData;
+	    var labelColorConfig = _ref.labelColorConfig;
+	
 	    _classCallCheck(this, WorldPopulation);
 	
-	    var _this = _possibleConstructorReturn(this, (WorldPopulation.__proto__ || Object.getPrototypeOf(WorldPopulation)).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (WorldPopulation.__proto__ || Object.getPrototypeOf(WorldPopulation)).call(this));
 	
+	    _this.pieData = compilePieData(labelColorConfig);
+	    _this.barData = compileBarData(labelColorConfig);
+	    _this.pieColorScale = labelColorConfig.map(function (info) {
+	      return info.fill;
+	    });
 	    _this.defaultValues = {
 	      year: 2015,
 	      innerRadius: 0,
@@ -40389,9 +40447,9 @@
 	    key: 'updateYear',
 	    value: function updateYear(year) {
 	      this.setState(_extends({}, this.state, {
-	        pieData: piePopulationByAgeRangeByYear(year),
-	        barData: barPopulationByAgeRangeByYear(year),
-	        barLabel: barLabelPopulationByAgeRangeByYear(year),
+	        pieData: this.pieData(year),
+	        barData: this.barData(year),
+	        barLabel: this.props.getBarLabelByYear(year),
 	        year: year
 	      }));
 	    }
@@ -40412,6 +40470,8 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var labelColorConfig = this.props.labelColorConfig;
+	
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'panel panel-default pie-chart-panel' },
@@ -40443,7 +40503,7 @@
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'col-md-4', style: { paddingTop: '20px' } },
-	              labelSetup.map(function (info, index) {
+	              labelColorConfig.map(function (info, index) {
 	                return _react2.default.createElement(
 	                  'span',
 	                  { key: index, style: { padding: '0px 5px' } },
@@ -40476,7 +40536,7 @@
 	                  labelRadius: this.state.size / 5,
 	                  innerRadius: this.state.innerRadius,
 	                  data: this.state.pieData,
-	                  colorScale: piePopulationByAgeRangeByYearColorScale })
+	                  colorScale: this.pieColorScale })
 	              )
 	            ),
 	            _react2.default.createElement(
@@ -40522,6 +40582,12 @@
 	  return WorldPopulation;
 	}(_react2.default.Component);
 	
+	WorldPopulation.propTypes = {
+	  labelColorConfig: _react2.default.PropTypes.array.isRequired,
+	  compilePieData: _react2.default.PropTypes.func.isRequired,
+	  compileBarData: _react2.default.PropTypes.func.isRequired,
+	  getBarLabelByYear: _react2.default.PropTypes.func.isRequired
+	};
 	exports.default = WorldPopulation;
 	module.exports = exports['default'];
 
@@ -94222,4 +94288,4 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=bundle-devtools-e83b767d4e2b60959582.js.map
+//# sourceMappingURL=bundle-devtools-094f77bedc9fc6fddf9a.js.map
