@@ -4,7 +4,7 @@
  * Mix d3 & react
  * 
  * @version v1.1.1 - 17/09/2016
- * @revision #7cdeaba - https://github.com/topheman/d3-react-experiments/tree/7cdeaba0c96addeaac72c31cb7e7fec9e6fa5f1a
+ * @revision #b748614 - https://github.com/topheman/d3-react-experiments/tree/b748614ad419d69cf7c668976a64eef5bd7c1468
  * @author Christophe Rosset
  * @copyright 2016(c) Christophe Rosset
  * @license MIT
@@ -27343,8 +27343,8 @@
 	  { path: '/', component: _index.App },
 	  _react2.default.createElement(_reactRouter.IndexRoute, { component: _index.AppHome }),
 	  _react2.default.createElement(_reactRouter.Route, { path: 'd3act-barchart', component: _index.D3actBarChart }),
-	  _react2.default.createElement(_reactRouter.Route, { path: 'd3act-mixed', component: _index.D3actMixed }),
-	  _react2.default.createElement(_reactRouter.Route, { path: 'victory-world-population-by-age-range', component: _index.VictoryWorldPopulation })
+	  _react2.default.createElement(_reactRouter.Route, { path: 'd3act-mixed', component: _index.D3actMixedChart }),
+	  _react2.default.createElement(_reactRouter.Route, { path: 'victory-world-population-by-age-range', component: _index.VictoryWorldPopulationByAgeRange })
 	);
 	module.exports = exports['default'];
 
@@ -27376,30 +27376,30 @@
 	  }
 	});
 	
-	var _BarChart = __webpack_require__(239);
+	var _D3actBarChart = __webpack_require__(239);
 	
 	Object.defineProperty(exports, 'D3actBarChart', {
 	  enumerable: true,
 	  get: function get() {
-	    return _interopRequireDefault(_BarChart).default;
+	    return _interopRequireDefault(_D3actBarChart).default;
 	  }
 	});
 	
-	var _MixedChart = __webpack_require__(252);
+	var _D3actMixedChart = __webpack_require__(252);
 	
-	Object.defineProperty(exports, 'D3actMixed', {
+	Object.defineProperty(exports, 'D3actMixedChart', {
 	  enumerable: true,
 	  get: function get() {
-	    return _interopRequireDefault(_MixedChart).default;
+	    return _interopRequireDefault(_D3actMixedChart).default;
 	  }
 	});
 	
-	var _WorldPopulationByAgeRange = __webpack_require__(254);
+	var _VictoryWorldPopulationByAgeRange = __webpack_require__(254);
 	
-	Object.defineProperty(exports, 'VictoryWorldPopulation', {
+	Object.defineProperty(exports, 'VictoryWorldPopulationByAgeRange', {
 	  enumerable: true,
 	  get: function get() {
-	    return _interopRequireDefault(_WorldPopulationByAgeRange).default;
+	    return _interopRequireDefault(_VictoryWorldPopulationByAgeRange).default;
 	  }
 	});
 
@@ -94288,4 +94288,4 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=bundle-devtools-094f77bedc9fc6fddf9a.js.map
+//# sourceMappingURL=bundle-devtools-81a7806199c570d5e84d.js.map
