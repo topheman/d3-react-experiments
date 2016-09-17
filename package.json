@@ -71,6 +71,7 @@
   },
   "dependencies": {
     "bootstrap-sass": "^3.3.5",
+    "color-hash": "^1.0.3",
     "d3-request": "^1.0.2",
     "d3act": "^2.0.0",
     "es6-promise": "^3.0.2",
@@ -78,6 +79,7 @@
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
     "react-router": "^2.4.1",
+    "react-select": "^1.0.0-rc.1",
     "victory-bar": "^4.0.1",
     "victory-pie": "^6.0.0"
   },

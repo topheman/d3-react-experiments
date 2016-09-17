@@ -1,0 +1,24 @@
+@import '~react-select/dist/react-select.css';
+
+.Select-menu-outer {
+  z-index: 3 !important;// so that the drop-down appears above the inputs of bootstrap
+}
+
+.is-focused:not(.is-open) > .Select-control {
+  border-color: $brand-primary !important;
+}
+
+table .Select-control {
+  border-collapse: separate !important;
+}
+
+.Select.color-label .Select-value-icon {
+  background-color: white;
+  border: 0px;
+  color: black;
+}
+
+.Select.color-label .Select-value {
+  background: none;
+  border: 0px;
+}
