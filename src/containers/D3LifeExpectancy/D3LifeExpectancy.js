@@ -1,8 +1,9 @@
 import React from 'react';
 
 import navigator from '../../utils/react/navigator';
-import CountriesAdvancedChart from '../../components/CountriesChartPanel/CountriesChartPanel';
+import CountriesChartPanel from '../../components/CountriesChartPanel/CountriesChartPanel';
 import { asyncLoadLifeExpectancy } from '../../resources/loaders';
+import LineChart from '../../components/d3/LineChart/LineChart';
 
 class D3LifeExpectancy extends React.Component {
 
@@ -53,13 +54,15 @@ class D3LifeExpectancy extends React.Component {
           <span className="glyphicon glyphicon-exclamation-sign"></span>
           {' '}An error occured while loading data - Click here to retry
         </div>}
-        {ready && !error && <CountriesAdvancedChart
+        {ready && !error && <CountriesChartPanel
           defaultTitle="Life Expectancy"
           data={data}
           sourcesOnGithub={{
             container: '/src/containers/D3LifeExpectancy/D3LifeExpectancy.js',
             component: '/src/components/CountriesChartPanel/CountriesChartPanel.js'
-          }}/>}
+          }}
+          props={{}}
+          component={LineChart}/>}
         <p>Data comes from <a href="https://ourworldindata.org/life-expectancy/" title="ourworldindata.org">ourworldindata.org</a></p>
       </div>
     );
