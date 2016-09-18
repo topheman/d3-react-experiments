@@ -1,24 +1,30 @@
 import React from 'react';
 
-import { Select } from '../../Select/Select';
-import ViewSourceOnGithub from '../../ViewSourceOnGithub/ViewSourceOnGithub';
+import { Select } from '../Select/Select';
+import ViewSourceOnGithub from '../ViewSourceOnGithub/ViewSourceOnGithub';
 
-export default class LifeExpectancy extends React.Component {
+export default class CountriesChartPanel extends React.Component {
 
   static propTypes = {
-    data: React.PropTypes.array.isRequired
+    data: React.PropTypes.array.isRequired,
+    sourcesOnGithub: React.PropTypes.oneOfType([
+      React.PropTypes.string,
+      React.PropTypes.object
+    ]),
+    defaultTitle: React.PropTypes.string.isRequired
   }
 
   constructor(props) {
     super(props);
     this.state = {
-      selectedCountries: []
+      selectedCountries: [],
+      title: props.defaultTitle
     };
   }
 
   render() {
 
-    const { data } = this.props;
+    const { data, sourcesOnGithub } = this.props;
     console.log(data);
 
     const countryList = data.reduce((acc, cur) => {
@@ -29,12 +35,12 @@ export default class LifeExpectancy extends React.Component {
     }, []).sort((a, b) => a > b ? 1 : -1 );
     console.log(countryList);
 
-    const { selectedCountries } = this.state;
+    const { selectedCountries, title } = this.state;
 
     return (
       <div className="panel panel-default bar-chart-panel">
-        <div className="panel-heading">Life expectancy, <strong>YYYY</strong> to <strong>YYYY</strong></div>
-        <ViewSourceOnGithub path="/src/components/reactD3/LifeExpectancy/LifeExpectancy.js"/>
+        <div className="panel-heading">{title}</div>
+        <ViewSourceOnGithub path={sourcesOnGithub}/>
         <div className="panel-body text-center">
           Data was loaded ({data.length}) lines.
           <Select

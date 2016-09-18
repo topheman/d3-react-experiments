@@ -21,7 +21,7 @@ const Home = () => {
       <p className="text-center"><Link to="/victory-world-population-by-age-range" className="btn btn-default btn-primary btn-lg">Start browsing</Link></p>
       <ul>
         <li><Link to="/victory-world-population-by-age-range">Victory / World population by age range</Link></li>
-        <li><Link to="/react-d3-life-expectancy">React D3 / Life expectancy</Link></li>
+        <li><Link to="/d3-life-expectancy">D3 (Vanilla) / Life expectancy</Link></li>
         <li><Link to="/d3act-barchart">d3act / Most popular technologies</Link></li>
         <li><Link to="/d3act-mixed">d3act / Desktop Operating System</Link></li>
       </ul>

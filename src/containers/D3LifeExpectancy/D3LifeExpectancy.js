@@ -1,10 +1,10 @@
 import React from 'react';
 
 import navigator from '../../utils/react/navigator';
-import LifeExpectancy from '../../components/reactD3/LifeExpectancy/LifeExpectancy';
+import CountriesAdvancedChart from '../../components/CountriesChartPanel/CountriesChartPanel';
 import { asyncLoadLifeExpectancy } from '../../resources/loaders';
 
-class ReactD3LifeExpectancy extends React.Component {
+class D3LifeExpectancy extends React.Component {
 
   constructor() {
     super();
@@ -47,13 +47,19 @@ class ReactD3LifeExpectancy extends React.Component {
     const { ready, error, data } = this.state;
     return (
       <div>
-        <h2>React D3</h2>
+        <h2>D3 (Vanilla)</h2>
         {!ready && !error && <p>Loading ...</p>}
         {!ready && error && <div className="alert alert-danger" onClick={this.loadData} style={{cursor: 'pointer'}}>
           <span className="glyphicon glyphicon-exclamation-sign"></span>
           {' '}An error occured while loading data - Click here to retry
         </div>}
-        {ready && !error && <LifeExpectancy data={data}/>}
+        {ready && !error && <CountriesAdvancedChart
+          defaultTitle="Life Expectancy"
+          data={data}
+          sourcesOnGithub={{
+            container: '/src/containers/D3LifeExpectancy/D3LifeExpectancy.js',
+            component: '/src/components/CountriesChartPanel/CountriesChartPanel.js'
+          }}/>}
         <p>Data comes from <a href="https://ourworldindata.org/life-expectancy/" title="ourworldindata.org">ourworldindata.org</a></p>
       </div>
     );
@@ -61,4 +67,4 @@ class ReactD3LifeExpectancy extends React.Component {
 
 }
 
-export default navigator()(ReactD3LifeExpectancy);
+export default navigator()(D3LifeExpectancy);
