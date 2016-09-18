@@ -4,6 +4,7 @@ import navigator from '../../utils/react/navigator';
 import CountriesChartPanel from '../../components/CountriesChartPanel/CountriesChartPanel';
 import { asyncLoadLifeExpectancy } from '../../resources/loaders';
 import LineChart from '../../components/d3/LineChart/LineChart';
+import { prepareDataLifeExpectancy } from '../../resources/helper';
 
 class D3LifeExpectancy extends React.Component {
 
@@ -57,6 +58,7 @@ class D3LifeExpectancy extends React.Component {
         {ready && !error && <CountriesChartPanel
           defaultTitle="Life Expectancy"
           data={data}
+          prepareData={prepareDataLifeExpectancy}
           sourcesOnGithub={{
             container: '/src/containers/D3LifeExpectancy/D3LifeExpectancy.js',
             component: '/src/components/CountriesChartPanel/CountriesChartPanel.js'
