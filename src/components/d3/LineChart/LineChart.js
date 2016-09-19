@@ -1,5 +1,14 @@
 import React from 'react';
 
+import ColorHash from 'color-hash';
+
+import { scaleLinear } from 'd3-scale';
+import { line } from 'd3-shape';
+import { select } from 'd3-selection';
+import { axisBottom, axisLeft } from 'd3-axis';
+
+const colorHash = new ColorHash();
+
 export default class LineChart extends React.Component {
 
   static propTypes = {
@@ -28,13 +37,69 @@ export default class LineChart extends React.Component {
     super();
   }
 
+  componentWillUpdate() {
+    // each update, flush the nodes of the chart - this isn't the best way - see the other example for better practice
+    while (this.rootNode.firstChild) {
+      this.rootNode.removeChild(this.rootNode.firstChild);
+    }
+  }
+
   render() {
-    const { margin, width, height, data, minX, maxX, minY, maxY } = this.props;
-    console.log('margin', margin, 'width', width, 'height', height, minX, maxX, minY, maxY, 'data', data);
-    // const computedWidth = width - margin.left - margin.right;
-    // const computedHeight = height - margin.top - margin.bottom;
+    const { margin, width: widthIncludingMargins, height: heightIncludingMargins, data, minX, maxX, minY, maxY } = this.props;
+    console.log('margin', margin, minX, maxX, minY, maxY, 'data', data);
+
+    // we are drawing the chart just like in regular d3 - querying the DOM, adding element
+    // we don't care about jsx, we redraw at each change
+    // that way, we could copy/paste any example from bl.ocks.org ...
+    // this isn't the best approach though
+    const width = widthIncludingMargins - margin.left - margin.right;
+    const height = heightIncludingMargins - margin.top - margin.bottom;
+
+    console.log('width', width, 'height', height);
+
+    // set the ranges
+    const x = scaleLinear().range([0, width]);
+    const y = scaleLinear().range([height, 0]);
+
+    // define line getter
+    const valueLine = line()
+      .x(d => x(d.x))
+      .y(d => y(d.y));
+
+    // append the svg object to the body of the page
+    // appends a 'group' element to 'svg'
+    // moves the 'group' element to the top left margin
+    const svg = select(this.rootNode)
+      .attr('width', width + margin.left + margin.right)
+      .attr('height', height + margin.top + margin.bottom)
+      .append('g')
+      .attr('transform',
+        'translate(' + margin.left + ',' + margin.top + ')');
+
+    // Scale the range of the data
+    x.domain([minX, maxX]);
+    y.domain([0, maxY]);
+
+    Object.keys(data).forEach(countryName => {
+      svg.append('path')
+        .data([data[countryName]])
+        .style('fill', 'none')
+        .style('stroke-width', '2px')
+        .style('stroke', colorHash.hex(countryName))
+        .attr('d', valueLine);
+    });
+
+    // Add the X Axis
+    svg.append('g')
+      .attr('transform', 'translate(0,' + height + ')')
+      .call(axisBottom(x));
+
+    // Add the Y Axis
+    svg.append('g')
+      .call(axisLeft(y));
+
     return (
-      <div ref={(node) => this.rootNode = node}></div>
+      <svg ref={(node) => this.rootNode = node}></svg>
     );
   }
 

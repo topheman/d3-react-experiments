@@ -73,6 +73,7 @@
     "bootstrap-sass": "^3.3.5",
     "color-hash": "^1.0.3",
     "d3-array": "^1.0.1",
+    "d3-axis": "^1.0.3",
     "d3-request": "^1.0.2",
     "d3-scale": "^1.0.3",
     "d3-selection": "^1.0.2",
