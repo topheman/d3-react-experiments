@@ -44,7 +44,7 @@ export default class LineChart extends React.Component {
     }
   }
 
-  render() {
+  drawLineChart() {
     const { margin, width: widthIncludingMargins, height: heightIncludingMargins, data, minX, maxX, minY, maxY } = this.props;
     console.log('margin', margin, minX, maxX, minY, maxY, 'data', data);
 
@@ -97,6 +97,16 @@ export default class LineChart extends React.Component {
     // Add the Y Axis
     svg.append('g')
       .call(axisLeft(y));
+  }
+
+  render() {
+    // only start drawing (accessing the DOM) after the first render, once we get hold on the ref of the node
+    if (this.rootNode) {
+      this.drawLineChart();
+    }
+    else {
+      setTimeout(() => this.drawLineChart(), 0);
+    }
 
     return (
       <svg ref={(node) => this.rootNode = node}></svg>

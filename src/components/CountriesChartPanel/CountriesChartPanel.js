@@ -14,20 +14,20 @@ export default class CountriesChartPanel extends React.Component {
     title: React.PropTypes.string.isRequired,
     props: React.PropTypes.object, // props that will be injected as props into the component passed here
     prepareData: React.PropTypes.func.isRequired, // callback that will process the data (data, countryList) => {"France": [{x: 50, y: 1950}]}
-    component: React.PropTypes.func.isRequired
+    component: React.PropTypes.func.isRequired,
+    defaultSelectedCountries: React.PropTypes.array
   }
 
-  constructor(props) {
-    super(props);
+  constructor({ defaultSelectedCountries = ['Algeria', 'Ethiopia', 'France', 'Germany', 'India'] }) {
+    super();
     this.state = {
-      selectedCountries: [],
-      title: props.title
+      selectedCountries: defaultSelectedCountries.map(country => ({label: country, value: country}))
     };
   }
 
   render() {
 
-    const { data, sourcesOnGithub, component: Chart, prepareData, props = {} } = this.props;
+    const { title, data, sourcesOnGithub, component: Chart, prepareData, props = {} } = this.props;
     console.log(data);
 
     const countryList = data.reduce((acc, cur) => {
@@ -38,10 +38,10 @@ export default class CountriesChartPanel extends React.Component {
     }, []).sort((a, b) => a > b ? 1 : -1 );
     console.log(countryList);
 
-    const { selectedCountries, title } = this.state;
+    const { selectedCountries } = this.state;
 
     // prepare data
-    const chartData = prepareData(data, selectedCountries.map(country => country.value));
+    const chartData = prepareData(data, selectedCountries.map(country => country.value || country));
 
     console.log('selectedCountries', selectedCountries, 'chartData', chartData);
 
