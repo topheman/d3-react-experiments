@@ -11,7 +11,7 @@ export default class CountriesChartPanel extends React.Component {
       React.PropTypes.string,
       React.PropTypes.object
     ]),
-    defaultTitle: React.PropTypes.string.isRequired,
+    title: React.PropTypes.string.isRequired,
     props: React.PropTypes.object, // props that will be injected as props into the component passed here
     prepareData: React.PropTypes.func.isRequired, // callback that will process the data (data, countryList) => {"France": [{x: 50, y: 1950}]}
     component: React.PropTypes.func.isRequired
@@ -21,7 +21,7 @@ export default class CountriesChartPanel extends React.Component {
     super(props);
     this.state = {
       selectedCountries: [],
-      title: props.defaultTitle
+      title: props.title
     };
   }
 
@@ -47,10 +47,9 @@ export default class CountriesChartPanel extends React.Component {
 
     return (
       <div className="panel panel-default bar-chart-panel">
-        <div className="panel-heading">{title}</div>
+        <div className="panel-heading">{title}{selectedCountries.length > 0 ? <span> from <strong>{chartData.minX}</strong> to <strong>{chartData.maxX}</strong></span> : null}</div>
         <ViewSourceOnGithub path={sourcesOnGithub}/>
         <div className="panel-body text-center">
-          Data was loaded ({data.length}) lines.
           <Select
             multi
             value={selectedCountries}
@@ -60,6 +59,9 @@ export default class CountriesChartPanel extends React.Component {
                 ...this.state,
                 selectedCountries: currentCountries
               });
+            }}
+            style={{
+              marginTop: '20px'
             }}/>
           <Chart
             {...props}

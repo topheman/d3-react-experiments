@@ -56,7 +56,7 @@ class D3LifeExpectancy extends React.Component {
           {' '}An error occured while loading data - Click here to retry
         </div>}
         {ready && !error && <CountriesChartPanel
-          defaultTitle="Life Expectancy"
+          title="Life Expectancy"
           data={data}
           prepareData={prepareDataLifeExpectancy}
           sourcesOnGithub={{
