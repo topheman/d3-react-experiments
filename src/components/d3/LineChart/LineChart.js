@@ -92,7 +92,7 @@ export default class LineChart extends React.Component {
     // Add the X Axis
     svg.append('g')
       .attr('transform', 'translate(0,' + height + ')')
-      .call(axisBottom(x));
+      .call(axisBottom(x).ticks(width > 500 ? Math.floor(width / 80) : 4)); // prevent from having too much ticks on small screens
 
     // Add the Y Axis
     svg.append('g')
