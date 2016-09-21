@@ -7,6 +7,7 @@ const defaultLinks = [
 
 import React from 'react';
 import { Link } from 'react-router';
+import { getDisplayName } from '../../utils/helpers';
 
 const getPrevNextLinks = (location, links = defaultLinks) => {
   const currentPath = location.pathname;
@@ -35,9 +36,6 @@ const getPrevNextLinks = (location, links = defaultLinks) => {
     prevNextLinks.next = links[currentPathIndex + 1];
   }
   return prevNextLinks;
-};
-const getDisplayName = (WrappedComponent) => {
-  return WrappedComponent.displayName || WrappedComponent.name || 'Component';
 };
 
 const navigator = (links) => WrappedComponent => {

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import navigator from '../../utils/react/navigator';
+import navigator from '../../components/Navigator/injectNavigator';
 import BarChartPanel from '../../components/d3act/BarChartPanel/BarChartPanel';
 
 import { d3actBarExtractMostPopularTechnologiesByYear } from '../../resources/helper';

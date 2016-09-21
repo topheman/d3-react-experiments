@@ -1,6 +1,6 @@
 import React from 'react';
 
-import navigator from '../../utils/react/navigator';
+import navigator from '../../components/Navigator/injectNavigator';
 import CountriesChartPanel from '../../components/CountriesChartPanel/CountriesChartPanel';
 import { asyncLoadLifeExpectancy } from '../../resources/loaders';
 import StaticMultiLineChart from '../../components/d3/StaticMultiLineChart/StaticMultiLineChart';

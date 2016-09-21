@@ -1,6 +1,6 @@
 import React from 'react';
 
-import navigator from '../../utils/react/navigator';
+import navigator from '../../components/Navigator/injectNavigator';
 import MixedChartPanel from '../../components/d3act/MixedChartPanel/MixedChartPanel';
 
 import {

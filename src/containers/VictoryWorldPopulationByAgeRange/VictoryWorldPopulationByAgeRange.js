@@ -1,6 +1,6 @@
 import React from 'react';
 
-import navigator from '../../utils/react/navigator';
+import navigator from '../../components/Navigator/injectNavigator';
 import WorldPopulationByAgeRange from '../../components/victory/WorldPopulationByAgeRange/WorldPopulationByAgeRange';
 
 /**
