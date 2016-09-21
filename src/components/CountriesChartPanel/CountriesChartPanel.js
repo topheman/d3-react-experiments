@@ -2,7 +2,6 @@ import React from 'react';
 
 import { Select } from '../Select/Select';
 import ViewSourceOnGithub from '../ViewSourceOnGithub/ViewSourceOnGithub';
-import { debounce } from '../../utils/helpers';
 
 export default class CountriesChartPanel extends React.Component {
 
@@ -16,41 +15,22 @@ export default class CountriesChartPanel extends React.Component {
     props: React.PropTypes.object, // props that will be injected as props into the component passed here
     prepareData: React.PropTypes.func.isRequired, // callback that will process the data (data, countryList) => {"France": [{x: 50, y: 1950}]}
     component: React.PropTypes.func.isRequired,
-    defaultSelectedCountries: React.PropTypes.array
+    defaultSelectedCountries: React.PropTypes.array,
+    // injected by injectWindowInfos
+    windowWidth: React.PropTypes.number,
+    windowHeight: React.PropTypes.number
   }
 
   constructor({ defaultSelectedCountries = ['Algeria', 'Ethiopia', 'France', 'Germany', 'India'] }) {
     super();
     this.state = {
-      selectedCountries: defaultSelectedCountries.map(country => ({label: country, value: country})),
-      windowSize: {
-        width: window.innerWidth,
-        height: window.innerHeight
-      }
+      selectedCountries: defaultSelectedCountries.map(country => ({label: country, value: country}))
     };
-    // create the debounced handle resize, to prevent flooding with resize event and pass down some computed width and height to the chart
-    this.debouncedHandleResize = debounce(function handleResize() {
-      return this.setState({
-        ...this.state,
-        windowSize: {
-          width: window.innerWidth,
-          height: window.innerHeight
-        }
-      });
-    }.bind(this), 500);
-  }
-
-  componentDidMount() {
-    window.addEventListener('resize', this.debouncedHandleResize);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.debouncedHandleResize);
   }
 
   render() {
 
-    const { title, data, sourcesOnGithub, component: Chart, prepareData, props = {} } = this.props;
+    const { title, data, sourcesOnGithub, component: Chart, prepareData, props = {}, windowWidth } = this.props;
     console.log(data);
 
     const countryList = data.reduce((acc, cur) => {
@@ -61,7 +41,7 @@ export default class CountriesChartPanel extends React.Component {
     }, []).sort((a, b) => a > b ? 1 : -1 );
     console.log(countryList);
 
-    const { selectedCountries, windowSize: { width } } = this.state;
+    const { selectedCountries } = this.state;
 
     // prepare data
     const chartData = prepareData(data, selectedCountries.map(country => country.value || country));
@@ -88,7 +68,7 @@ export default class CountriesChartPanel extends React.Component {
             }}/>
           <Chart
             {...props}
-            width={width > 700 ? 630 : width - 70}
+            width={windowWidth > 700 ? 630 : windowWidth - 70}
             {...chartData}/>
         </div>
       </div>

@@ -5,6 +5,10 @@ import CountriesChartPanel from '../../components/CountriesChartPanel/CountriesC
 import { asyncLoadLifeExpectancy } from '../../resources/loaders';
 import StaticMultiLineChart from '../../components/d3/StaticMultiLineChart/StaticMultiLineChart';
 import { prepareDataLifeExpectancy } from '../../resources/helper';
+import { injectWindowInfos } from '../../components/WindowInfos';
+
+// decorating this component so that it will receive windowWidth, windowHeight in its props (passed down from the WindowInfos.Provider)
+const WindowAwareCountriesChartPanel = injectWindowInfos()(CountriesChartPanel);
 
 class D3LifeExpectancy extends React.Component {
 
@@ -55,7 +59,7 @@ class D3LifeExpectancy extends React.Component {
           <span className="glyphicon glyphicon-exclamation-sign"></span>
           {' '}An error occured while loading data - Click here to retry
         </div>}
-        {ready && !error && <CountriesChartPanel
+        {ready && !error && <WindowAwareCountriesChartPanel
           title="Life Expectancy"
           data={data}
           prepareData={prepareDataLifeExpectancy}
