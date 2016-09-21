@@ -67,3 +67,11 @@ $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 .summary a.active {
   font-weight: bold;
 }
+
+@media only screen
+and (max-width : 370px)
+{
+  h2 {
+    font-size: 20px;
+  }
+}

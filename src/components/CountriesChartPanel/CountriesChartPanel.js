@@ -53,6 +53,7 @@ export default class CountriesChartPanel extends React.Component {
         <div className="panel-heading">{title}{selectedCountries.length > 0 ? <span> from <strong>{chartData.minX}</strong> to <strong>{chartData.maxX}</strong></span> : null}</div>
         <ViewSourceOnGithub path={sourcesOnGithub}/>
         <div className="panel-body text-center">
+          <p>Add / Remove any country from the list.</p>
           <Select
             multi
             value={selectedCountries}
@@ -62,14 +63,17 @@ export default class CountriesChartPanel extends React.Component {
                 ...this.state,
                 selectedCountries: currentCountries
               });
-            }}
-            style={{
-              marginTop: '20px'
             }}/>
           <Chart
             {...props}
             width={windowWidth > 700 ? 630 : windowWidth - 70}
             {...chartData}/>
+          <div className="text-left">
+            <p>
+              This chart is a React Component with home-made d3. As you'll see in the <a href="https://github.com/topheman/d3-react-experiments/blob/master/src/components/d3/StaticMultiLineChart/StaticMultiLineChart.js" title="View source on github">source code</a>, it's nearly a simple copy/paste from <a href="https://bl.ocks.org/d3noob/4db972df5d7efc7d611255d1cc6f3c4f" title="See example from bl.ocks.org">bl.ocks.org</a> of regular d3 code, which works out of the box in React ...
+            </p>
+            <p>It is also fully responsive.</p>
+          </div>
         </div>
       </div>
 

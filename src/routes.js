@@ -15,6 +15,6 @@ export default (
     <Route path="d3act-barchart" component={D3actBarChart}/>
     <Route path="d3act-mixed" component={D3actMixedChart}/>
     <Route path="victory-world-population-by-age-range" component={VictoryWorldPopulationByAgeRange}/>
-    <Route path="d3-life-expectancy" component={D3LifeExpectancy}/>
+    <Route path="d3/static-multi-line-chart" component={D3LifeExpectancy}/>
   </Route>
 );

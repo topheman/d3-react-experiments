@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 import navigator from '../../components/Navigator/injectNavigator';
 import CountriesChartPanel from '../../components/CountriesChartPanel/CountriesChartPanel';
@@ -53,7 +54,7 @@ class D3LifeExpectancy extends React.Component {
     const { ready, error, data } = this.state;
     return (
       <div>
-        <h2>D3 (Vanilla)</h2>
+        <h2><Link to="/d3">D3</Link> / StaticMultiLineChart</h2>
         {!ready && !error && <p>Loading ...</p>}
         {!ready && error && <div className="alert alert-danger" onClick={this.loadData} style={{cursor: 'pointer'}}>
           <span className="glyphicon glyphicon-exclamation-sign"></span>
@@ -63,10 +64,7 @@ class D3LifeExpectancy extends React.Component {
           title="Life Expectancy"
           data={data}
           prepareData={prepareDataLifeExpectancy}
-          sourcesOnGithub={{
-            container: '/src/containers/D3LifeExpectancy/D3LifeExpectancy.js',
-            component: '/src/components/CountriesChartPanel/CountriesChartPanel.js'
-          }}
+          sourcesOnGithub="/src/components/d3/StaticMultiLineChart/StaticMultiLineChart.js"
           props={{}}
           component={StaticMultiLineChart}/>}
         <p>Data comes from <a href="https://ourworldindata.org/life-expectancy/" title="ourworldindata.org">ourworldindata.org</a></p>
