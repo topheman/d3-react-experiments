@@ -9,7 +9,7 @@ import { axisBottom, axisLeft } from 'd3-axis';
 
 const colorHash = new ColorHash();
 
-export default class LineChart extends React.Component {
+export default class StaticMultiLineChart extends React.Component {
 
   static propTypes = {
     margin: React.PropTypes.object,
