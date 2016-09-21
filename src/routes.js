@@ -6,7 +6,7 @@ import {
   D3actBarChart,
   D3actMixedChart,
   VictoryWorldPopulationByAgeRange,
-  D3LifeExpectancy
+  D3StaticMultiLineChart
 } from './containers/index';
 
 export default (
@@ -15,6 +15,6 @@ export default (
     <Route path="d3act-barchart" component={D3actBarChart}/>
     <Route path="d3act-mixed" component={D3actMixedChart}/>
     <Route path="victory-world-population-by-age-range" component={VictoryWorldPopulationByAgeRange}/>
-    <Route path="d3/static-multi-line-chart" component={D3LifeExpectancy}/>
+    <Route path="d3/static-multi-line-chart" component={D3StaticMultiLineChart}/>
   </Route>
 );

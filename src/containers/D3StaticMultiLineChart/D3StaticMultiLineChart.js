@@ -1,0 +1,31 @@
+import React from 'react';
+
+import navigator from '../../components/Navigator/injectNavigator';
+import LifeExpectancy from '../../components/LifeExpectancy/LifeExpectancy';
+
+import StaticMultiLineChart from '../../components/d3/StaticMultiLineChart/StaticMultiLineChart';
+import { prepareDataLifeExpectancy } from '../../resources/helper';
+
+const panelSubText = (
+  <div>
+    <p>
+      This chart is a React Component with home-made d3. As you'll see in the <a href="https://github.com/topheman/d3-react-experiments/blob/master/src/components/d3/StaticMultiLineChart/StaticMultiLineChart.js" title="View source on github">source code</a>, it's nearly a simple copy/paste from <a href="https://bl.ocks.org/d3noob/4db972df5d7efc7d611255d1cc6f3c4f" title="See example from bl.ocks.org">bl.ocks.org</a> of regular d3 code, which works out of the box in React ...
+    </p>
+    <p>It is also fully responsive.</p>
+  </div>
+);
+
+const D3StaticMultiLineChart = (props) => {
+  return (
+    <LifeExpectancy
+      {...props}
+      title="StaticMultiLineChart"
+      prepareData={prepareDataLifeExpectancy}
+      sourcesOnGithub="/src/components/d3/StaticMultiLineChart/StaticMultiLineChart.js"
+      component={StaticMultiLineChart}
+      panelSubText={panelSubText}
+    />
+  );
+};
+
+export default navigator()(D3StaticMultiLineChart);

@@ -1,17 +1,37 @@
+/**
+ * This component is meant to be wrapped by a HOC
+ * that way, I can produce many pages with all this managing system of data loading
+ * the Select algo being also encapsulated in this LifeExpectancy HOC
+ */
+
 import React from 'react';
 import { Link } from 'react-router';
 
-import navigator from '../../components/Navigator/injectNavigator';
 import CountriesChartPanel from '../../components/CountriesChartPanel/CountriesChartPanel';
 import { asyncLoadLifeExpectancy } from '../../resources/loaders';
-import StaticMultiLineChart from '../../components/d3/StaticMultiLineChart/StaticMultiLineChart';
-import { prepareDataLifeExpectancy } from '../../resources/helper';
 import { injectWindowInfos } from '../../components/WindowInfos';
 
 // decorating this component so that it will receive windowWidth, windowHeight in its props (passed down from the WindowInfos.Provider)
 const WindowAwareCountriesChartPanel = injectWindowInfos()(CountriesChartPanel);
 
-class D3LifeExpectancy extends React.Component {
+class LifeExpectancy extends React.Component {
+
+  static propTypes = {
+    title: React.PropTypes.oneOfType([
+      React.PropTypes.node,
+      React.PropTypes.string
+    ]).isRequired,
+    prepareData: React.PropTypes.func.isRequired,
+    sourcesOnGithub: React.PropTypes.oneOfType([
+      React.PropTypes.object,
+      React.PropTypes.string
+    ]).isRequired,
+    component: React.PropTypes.func.isRequired,
+    panelSubText: React.PropTypes.oneOfType([
+      React.PropTypes.node,
+      React.PropTypes.string
+    ])
+  }
 
   constructor() {
     super();
@@ -52,9 +72,10 @@ class D3LifeExpectancy extends React.Component {
 
   render() {
     const { ready, error, data } = this.state;
+    const { title, prepareData, sourcesOnGithub, component, panelSubText } = this.props;
     return (
       <div>
-        <h2><Link to="/d3">D3</Link> / StaticMultiLineChart</h2>
+        <h2><Link to="/d3">D3</Link> / {title}</h2>
         {!ready && !error && <p>Loading ...</p>}
         {!ready && error && <div className="alert alert-danger" onClick={this.loadData} style={{cursor: 'pointer'}}>
           <span className="glyphicon glyphicon-exclamation-sign"></span>
@@ -63,10 +84,11 @@ class D3LifeExpectancy extends React.Component {
         {ready && !error && <WindowAwareCountriesChartPanel
           title="Life Expectancy"
           data={data}
-          prepareData={prepareDataLifeExpectancy}
-          sourcesOnGithub="/src/components/d3/StaticMultiLineChart/StaticMultiLineChart.js"
+          prepareData={prepareData}
+          sourcesOnGithub={sourcesOnGithub}
           props={{}}
-          component={StaticMultiLineChart}/>}
+          component={component}
+          panelSubText={panelSubText}/>}
         <p>Data comes from <a href="https://ourworldindata.org/life-expectancy/" title="ourworldindata.org">ourworldindata.org</a></p>
       </div>
     );
@@ -74,4 +96,4 @@ class D3LifeExpectancy extends React.Component {
 
 }
 
-export default navigator()(D3LifeExpectancy);
+export default LifeExpectancy;
