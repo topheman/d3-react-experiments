@@ -3,7 +3,7 @@ import React from 'react';
 import navigator from '../../utils/react/navigator';
 import CountriesChartPanel from '../../components/CountriesChartPanel/CountriesChartPanel';
 import { asyncLoadLifeExpectancy } from '../../resources/loaders';
-import LineChart from '../../components/d3/LineChart/LineChart';
+import StaticMultiLineChart from '../../components/d3/StaticMultiLineChart/StaticMultiLineChart';
 import { prepareDataLifeExpectancy } from '../../resources/helper';
 
 class D3LifeExpectancy extends React.Component {
@@ -64,7 +64,7 @@ class D3LifeExpectancy extends React.Component {
             component: '/src/components/CountriesChartPanel/CountriesChartPanel.js'
           }}
           props={{}}
-          component={LineChart}/>}
+          component={StaticMultiLineChart}/>}
         <p>Data comes from <a href="https://ourworldindata.org/life-expectancy/" title="ourworldindata.org">ourworldindata.org</a></p>
       </div>
     );
