@@ -1,6 +1,7 @@
 const defaultLinks = [
   '/victory-world-population-by-age-range',
   '/d3/static-multi-line-chart',
+  '/d3/transition-multi-line-chart',
   '/d3act-barchart',
   '/d3act-mixed'
 ];

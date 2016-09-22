@@ -1,5 +1,7 @@
 import React from 'react';
 
+export const urlFromViewSourceOnGithub = (path) => `${process.env.VIEW_SOURCE_ON_GITHUB_BASE_URL}${path}`;
+
 const ViewSourceOnGithub = ({path}) => {
   if (typeof path === 'string') {
     return (
@@ -12,7 +14,7 @@ const ViewSourceOnGithub = ({path}) => {
 
   const links = [];
   Object.keys(path).forEach((title) => links.push({
-    href: `${process.env.VIEW_SOURCE_ON_GITHUB_BASE_URL}${path[title]}`,
+    href: urlFromViewSourceOnGithub(path[title]),
     title: title
   }));
   return (
