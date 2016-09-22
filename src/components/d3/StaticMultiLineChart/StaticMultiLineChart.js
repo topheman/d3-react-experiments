@@ -105,6 +105,8 @@ export default class StaticMultiLineChart extends React.Component {
       this.drawLineChart();
     }
     else {
+      // setTimeout necessary for the very first draw, to ensure drawing using a DOMNode and prevent the following error:
+      // "Uncaught TypeError: Cannot read property 'ownerDocument' of null"
       setTimeout(() => this.drawLineChart(), 0);
     }
 

@@ -5,7 +5,7 @@ import ColorHash from 'color-hash';
 import { scaleLinear } from 'd3-scale';
 import { line } from 'd3-shape';
 import { select } from 'd3-selection';
-import { axisBottom, axisLeft } from 'd3-axis';
+import { axisLeft, axisBottom } from 'd3-axis';
 
 const colorHash = new ColorHash();
 
@@ -37,11 +37,72 @@ export default class TransitionMultiLineChart extends React.Component {
     super();
   }
 
-  componentWillUpdate() {
-    // each update, flush the nodes of the chart - this isn't the best way - see the other example for better practice
-    while (this.rootNode.firstChild) {
-      this.rootNode.removeChild(this.rootNode.firstChild);
-    }
+  /**
+   * This method encapsulated this.line so that this.line may be re-assigned but could still be passed
+   * as a reference to a callback, without loosing the reference
+   * @param rest
+   */
+  lineReference(...rest) {
+    this.line(...rest);
+  }
+
+  extractSize() {
+    const { margin, width: widthIncludingMargins, height: heightIncludingMargins } = this.props;
+    const width = widthIncludingMargins - margin.left - margin.right;
+    const height = heightIncludingMargins - margin.top - margin.bottom;
+    return {
+      width,
+      height,
+      margin
+    };
+  }
+
+  init() {
+    console.log('init');
+    this.lineGroup = this.rootNode.append('g');
+    this.axisLeftGroup = this.lineGroup.append('g');
+    this.axisBottomGroup = this.lineGroup.append('g');
+  }
+
+  updateSize() {
+    console.log('updateSize');
+    const { width, height, margin } = this.extractSize();
+    const { minX, maxX, maxY } = this.props;
+
+    // resize/re-align root nodes
+    this.rootNode
+      .attr('width', width + margin.left + margin.right)
+      .attr('height', height + margin.top + margin.bottom);
+    this.lineGroup
+      .attr('transform',
+        'translate(' + margin.left + ',' + margin.top + ')');
+
+    // set domain for axis
+    const xScale = scaleLinear().range([0, width]);
+    const yScale = scaleLinear().range([height, 0]);
+
+    // Scale the range of the data
+    xScale.domain([minX, maxX]);
+    yScale.domain([0, maxY]);
+
+    // Update the X Axis
+    this.axisBottomGroup
+      .attr('transform', 'translate(0,' + height + ')')
+      .call(axisBottom(xScale).ticks(width > 500 ? Math.floor(width / 80) : 4)); // prevent from having too much ticks on small screens
+
+    // Update the Y Axis
+    this.axisLeftGroup
+      .call(axisLeft(yScale));
+
+    // this.line is not called directy since it's used as a callback and is re-assigned. It is wrapped inside this.lineReference
+    this.line = line() // .interpolate("monotone")
+      .x(d => this.xScale(d.x))
+      .y(d => this.yScale(d.y));
+  }
+
+  update() {
+    console.log('update');
+    this.updateSize();
   }
 
   drawLineChart() {
@@ -100,16 +161,19 @@ export default class TransitionMultiLineChart extends React.Component {
   }
 
   render() {
-    // only start drawing (accessing the DOM) after the first render, once we get hold on the ref of the node
     if (this.rootNode) {
-      this.drawLineChart();
+      // once init, we will ONLY update the node
+      this.update();
     }
     else {
-      setTimeout(() => this.drawLineChart(), 0);
+      setTimeout(() => {
+        this.init();
+        this.update();
+      }, 0);
     }
 
     return (
-      <svg ref={(node) => this.rootNode = node}></svg>
+      <svg ref={(node) => this.rootNode = select(node)}></svg>
     );
   }
 
