@@ -38,16 +38,6 @@ export default class TransitionMultiLineChart extends React.Component {
     super();
   }
 
-  /**
-   * This method encapsulated this.line so that this.line may be re-assigned but could still be passed
-   * as a reference to a callback, without loosing the reference
-   * @param rest
-   */
-  lineReference(...rest) {
-    console.log(this);
-    this.line(...rest);
-  }
-
   extractSize() {
     const { margin, width: widthIncludingMargins, height: heightIncludingMargins } = this.props;
     const width = widthIncludingMargins - margin.left - margin.right;
@@ -117,84 +107,28 @@ export default class TransitionMultiLineChart extends React.Component {
     Object.keys(data).forEach(countryName => {
       processedData.push(data[countryName].map((infos) => ({ color: colorHash.hex(countryName), ...infos})));
     });
-    console.log('processedData', processedData);
 
     // generate line paths
     const lines = this.lineGroup.selectAll('.line').data(processedData);
 
-    // transition from previous paths to new paths
+    // [Update] transition from previous paths to new paths
     this.lineGroup.selectAll('.line')
       .transition()
-      .style('stroke', 'blue')
+      .style('stroke', d => d[0] ? d[0].color : null)
       .attr('d', drawLine);
 
-    // enter any new data
+    // [Enter] any new data
     lines.enter()
       .append('path')
       .attr('class', 'line')
       .style('stroke-width', '2px')
       .style('fill', 'none')
-      .style('stroke', 'red')
+      .style('stroke', d => d[0] ? d[0].color : null)
       .attr('d', drawLine);
 
-    // exit
+    // [Exit]
     lines.exit()
       .remove();
-  }
-
-  drawLineChart() {
-    const { margin, width: widthIncludingMargins, height: heightIncludingMargins, data, minX, maxX, minY, maxY } = this.props;
-    console.log('margin', margin, minX, maxX, minY, maxY, 'data', data);
-
-    // we are drawing the chart just like in regular d3 - querying the DOM, adding element
-    // we don't care about jsx, we redraw at each change
-    // that way, we could copy/paste any example from bl.ocks.org ...
-    // this isn't the best approach though
-    const width = widthIncludingMargins - margin.left - margin.right;
-    const height = heightIncludingMargins - margin.top - margin.bottom;
-
-    console.log('width', width, 'height', height);
-
-    // set the ranges
-    const x = scaleLinear().range([0, width]);
-    const y = scaleLinear().range([height, 0]);
-
-    // define line getter
-    const valueLine = line()
-      .x(d => x(d.x))
-      .y(d => y(d.y));
-
-    // append the svg object to the body of the page
-    // appends a 'group' element to 'svg'
-    // moves the 'group' element to the top left margin
-    const svg = this.rootNode
-      .attr('width', width + margin.left + margin.right)
-      .attr('height', height + margin.top + margin.bottom)
-      .append('g')
-      .attr('transform',
-        'translate(' + margin.left + ',' + margin.top + ')');
-
-    // Scale the range of the data
-    x.domain([minX, maxX]);
-    y.domain([0, maxY]);
-
-    Object.keys(data).forEach(countryName => {
-      svg.append('path')
-        .data([data[countryName]])
-        .style('fill', 'none')
-        .style('stroke-width', '2px')
-        .style('stroke', colorHash.hex(countryName))
-        .attr('d', valueLine);
-    });
-
-    // Add the X Axis
-    svg.append('g')
-      .attr('transform', 'translate(0,' + height + ')')
-      .call(axisBottom(x).ticks(width > 500 ? Math.floor(width / 80) : 4)); // prevent from having too much ticks on small screens
-
-    // Add the Y Axis
-    svg.append('g')
-      .call(axisLeft(y));
   }
 
   render() {
