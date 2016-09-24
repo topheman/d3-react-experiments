@@ -38,6 +38,14 @@ export default class ResizeProvider extends React.Component {
 
   componentDidMount() {
     window.addEventListener('resize', this.debouncedHandleResize);
+    // update the state once mounted to pass window size to children on the very first render
+    setTimeout(() => {
+      this.setState({
+        ...this.state,
+        windowWidth: window.innerWidth,
+        windowHeight: window.innerHeight
+      });
+    }, 0);
   }
 
   componentWillUnmount() {
