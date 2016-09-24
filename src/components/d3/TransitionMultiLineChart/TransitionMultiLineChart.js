@@ -38,6 +38,37 @@ export default class TransitionMultiLineChart extends React.Component {
     super();
   }
 
+  /**
+   * From React doc https://facebook.github.io/react/docs/component-specs.html#mounting-componentdidmount :
+   *
+   * "Invoked once, only on the client (not on the server), immediately after the initial rendering occurs.
+   * At this point in the lifecycle, you can access any refs to your children (e.g., to access the underlying DOM representation).
+   * The componentDidMount() method of child components is invoked before that of parent components."
+   *
+   * this.init is called here because:
+   * - we need the ref to the svg node
+   * - it won't we called again
+   */
+  componentDidMount() {
+    this.init();
+    this.update();
+  }
+
+  /**
+   * From React doc https://facebook.github.io/react/docs/component-specs.html#updating-componentdidupdate :
+   *
+   * "Invoked immediately after the component's updates are flushed to the DOM.
+   * This method is not called for the initial render.
+   * Use this as an opportunity to operate on the DOM when the component has been updated."
+   *
+   * this.update is called here because:
+   * - it's not called for initial render - componentDidMount ensures to have our svg element init
+   * - it's called after each update of the component - we get the new props
+   */
+  componentDidUpdate() {
+    this.update();
+  }
+
   extractSize() {
     const { margin, width: widthIncludingMargins, height: heightIncludingMargins } = this.props;
     const width = widthIncludingMargins - margin.left - margin.right;
@@ -95,10 +126,9 @@ export default class TransitionMultiLineChart extends React.Component {
       .y(d => yScale(d.y));
   }
 
-  update() {
-    console.log('update');
+  updateData() {
+    console.log('updateData');
     const { data } = this.props;
-    this.updateSize();
 
     const drawLine = this.line;
 
@@ -131,18 +161,13 @@ export default class TransitionMultiLineChart extends React.Component {
       .remove();
   }
 
-  render() {
-    if (this.rootNode) {
-      // once init, we will ONLY update the node
-      this.update();
-    }
-    else {
-      setTimeout(() => {
-        this.init();
-        this.update();
-      }, 0);
-    }
+  update() {
+    console.log('update');
+    this.updateSize();
+    this.updateData();
+  }
 
+  render() {
     return (
       <svg ref={(node) => this.rootNode = select(node)}></svg>
     );
