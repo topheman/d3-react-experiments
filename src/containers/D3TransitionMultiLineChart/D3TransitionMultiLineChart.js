@@ -12,9 +12,16 @@ const sourcesOnGithub = '/src/components/d3/TransitionMultiLineChart/TransitionM
 const panelSubText = (
   <div>
     <p>
-      This chart handles transitions (in vanilla d3), it needs some <a href={urlFromViewSourceOnGithub(sourcesOnGithub)}>adjustments</a> with the lifecycle of React, to prevent the re-render.
+      This chart is a React Component with home-made d3. Some <a href={urlFromViewSourceOnGithub(sourcesOnGithub)} title="View source on github">adjustments</a> were made with the lifecycle of React:
     </p>
-    <p>It is also fully responsive.</p>
+    <ul>
+      <li>to reuse DOM nodes created by d3</li>
+      <li>to apply d3 transitions on those nodes</li>
+      <li>to ensure draw at first render / redraw when props change</li>
+      <li>to prevent unnecessary DOM nodes attributes modifications</li>
+    </ul>
+    <p>Check the <a href={urlFromViewSourceOnGithub(sourcesOnGithub)} title="View source on github">comments in source code</a> for more infos.</p>
+    <p>It is also fully <strong>responsive</strong>.</p>
   </div>
 );
 

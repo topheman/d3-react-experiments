@@ -3,6 +3,16 @@ d3-react-experiments
 
 [![Build Status](https://travis-ci.org/topheman/d3-react-experiments.svg?branch=master)](https://travis-ci.org/topheman/d3-react-experiments)
 
+**Changes in v2**
+
+As I explain bellow, there are multiple approaches to handle d3 with React. In the v1, I started by integrating 3rd party libraries like [d3act](https://github.com/AnSavvides/d3act) and [victory](https://github.com/FormidableLabs/victory).
+
+In the v2, I created some React components examples directly based on **plain d3 v4 code**. The goal being to expose some examples for both d3 and React users.
+
+[This is still a work in progress](https://topheman.github.io/d3-react-experiments/#/), more examples / blog posts will come ...
+
+###React & D3
+
 [D3 (data driven documents)](http://d3js.org/) is a JavaScript library that helps you build visualisations. It is very powerfull (most of the JavaScript datavisualization libraries are based on it). It handles the data you pass it and mutates the DOM.
 
 With [React](https://facebook.github.io/react/index.html), on the other hand, you never access directly the DOM and let it manage the changes as well as the events.
@@ -13,19 +23,10 @@ In the last year a lot of projects have risen with the goal to make those two wo
 
 There are two main approaches, both of them using d3 for the processing:
 
-* blackbox d3 and let it do the render without messing up with React livecyle
+* blackbox d3 and let it do the render without messing up with React lifecyle
 * reimplement the job done by d3 on the DOM by letting React do the render (wrapping svg inside jsx)
 
 Both approaches have their pros and cons (I won't talk about that here - people with more experience in that field than me have written posts on that).
-
-The goal of this project is to try those techniques and some libraries.
-
-[This is a work in progress ...](https://topheman.github.io/d3-react-experiments/#/)
-
-So far, I tried the following libraries:
-
-* [d3act](https://github.com/AnSavvides/d3act)
-* [victory](https://github.com/FormidableLabs/victory)
 
 ###Prerequisite
 
@@ -80,5 +81,6 @@ You can disable the linter by `LINTER=false npm start` (though it will still be 
 
 * [http://stackoverflow.com/research/developer-survey-2015](http://stackoverflow.com/research/developer-survey-2015)
 * [http://www.census.gov/](http://www.census.gov/population/international/data/idb/informationGateway.php): I wrote a little routine to process the csv
+* [ourworldindata.org](https://ourworldindata.org)
 * [topheman/webpack-babel-starter](https://github.com/topheman/webpack-babel-starter)
 
