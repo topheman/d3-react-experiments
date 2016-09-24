@@ -37,6 +37,12 @@ export default class StaticMultiLineChart extends React.Component {
     super();
   }
 
+  /**
+   * This example is a reuse of some plain code from an example on https://bl.ocks.org/d3noob/4db972df5d7efc7d611255d1cc6f3c4f
+   * Since the render method contains .append() invocations, I remove any child of the root node at each render
+   *
+   * See the other examples for smarter approaches
+   */
   componentWillUpdate() {
     // each update, flush the nodes of the chart - this isn't the best way - see the other example for better practice
     while (this.rootNode.firstChild) {

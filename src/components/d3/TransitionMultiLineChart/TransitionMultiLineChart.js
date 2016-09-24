@@ -6,6 +6,7 @@ import { scaleLinear } from 'd3-scale';
 import { line } from 'd3-shape';
 import { select } from 'd3-selection';
 import { axisLeft, axisBottom } from 'd3-axis';
+import 'd3-transition';
 
 const colorHash = new ColorHash();
 
@@ -43,6 +44,7 @@ export default class TransitionMultiLineChart extends React.Component {
    * @param rest
    */
   lineReference(...rest) {
+    console.log(this);
     this.line(...rest);
   }
 
@@ -57,6 +59,9 @@ export default class TransitionMultiLineChart extends React.Component {
     };
   }
 
+  /**
+   * Create svg nodes in order to reuse them
+   */
   init() {
     console.log('init');
     this.lineGroup = this.rootNode.append('g');
@@ -86,23 +91,55 @@ export default class TransitionMultiLineChart extends React.Component {
     yScale.domain([0, maxY]);
 
     // Update the X Axis
-    this.axisBottomGroup
+    this.axisBottomGroup.transition()
       .attr('transform', 'translate(0,' + height + ')')
       .call(axisBottom(xScale).ticks(width > 500 ? Math.floor(width / 80) : 4)); // prevent from having too much ticks on small screens
 
     // Update the Y Axis
-    this.axisLeftGroup
+    this.axisLeftGroup.transition()
       .call(axisLeft(yScale));
 
     // this.line is not called directy since it's used as a callback and is re-assigned. It is wrapped inside this.lineReference
     this.line = line() // .interpolate("monotone")
-      .x(d => this.xScale(d.x))
-      .y(d => this.yScale(d.y));
+      .x(d => xScale(d.x))
+      .y(d => yScale(d.y));
   }
 
   update() {
     console.log('update');
+    const { data } = this.props;
     this.updateSize();
+
+    const drawLine = this.line;
+
+    // prepare data to [ [{x, y, color}, {x, y, color}], [{x, y, color}, {x, y, color}] ... ]
+    const processedData = [];
+    Object.keys(data).forEach(countryName => {
+      processedData.push(data[countryName].map((infos) => ({ color: colorHash.hex(countryName), ...infos})));
+    });
+    console.log('processedData', processedData);
+
+    // generate line paths
+    const lines = this.lineGroup.selectAll('.line').data(processedData);
+
+    // transition from previous paths to new paths
+    this.lineGroup.selectAll('.line')
+      .transition()
+      .style('stroke', 'blue')
+      .attr('d', drawLine);
+
+    // enter any new data
+    lines.enter()
+      .append('path')
+      .attr('class', 'line')
+      .style('stroke-width', '2px')
+      .style('fill', 'none')
+      .style('stroke', 'red')
+      .attr('d', drawLine);
+
+    // exit
+    lines.exit()
+      .remove();
   }
 
   drawLineChart() {
@@ -130,7 +167,7 @@ export default class TransitionMultiLineChart extends React.Component {
     // append the svg object to the body of the page
     // appends a 'group' element to 'svg'
     // moves the 'group' element to the top left margin
-    const svg = select(this.rootNode)
+    const svg = this.rootNode
       .attr('width', width + margin.left + margin.right)
       .attr('height', height + margin.top + margin.bottom)
       .append('g')
