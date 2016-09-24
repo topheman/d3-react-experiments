@@ -37,6 +37,10 @@ export default class TransitionMultiLineChart extends React.Component {
   constructor() {
     super();
     this.shouldUpdateSize = true;
+    // minimal state to manage React lifecycle
+    this.state = {
+      initialized: false
+    };
   }
 
   /**
@@ -51,7 +55,14 @@ export default class TransitionMultiLineChart extends React.Component {
    * - it won't we called again
    */
   componentDidMount() {
+    console.log('componentDidMount');
     this.init();
+    // the code bellow is to trigger componentDidUpdate (which is not called at first render)
+    setTimeout(() => {
+      this.setState({
+        initialized: true
+      });
+    });
   }
 
   /**
@@ -66,6 +77,7 @@ export default class TransitionMultiLineChart extends React.Component {
    * Doing the same thing about this.updateData would involve deep checking the whole data passed.
    */
   componentWillReceiveProps({ margin, width, height, minX, maxX, maxY }) {
+    console.log('componentWillReceiveProps');
     if (margin !== this.props.margin || width !== this.props.width || height !== this.props.height ||
       minX !== this.props.minX || maxX !== this.props.maxX || maxY !== this.props.maxY) {
       console.log('change size');
@@ -85,6 +97,7 @@ export default class TransitionMultiLineChart extends React.Component {
    * - it's called after each update of the component - we get the new props
    */
   componentDidUpdate() {
+    console.log('componentDidUpdate');
     this.update();
   }
 
@@ -191,6 +204,7 @@ export default class TransitionMultiLineChart extends React.Component {
   }
 
   render() {
+    console.log('render');
     return (
       <svg ref={(node) => this.rootNode = select(node)}></svg>
     );
