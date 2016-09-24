@@ -35,7 +35,6 @@ export default class CountriesChartPanel extends React.Component {
   render() {
 
     const { title, data, sourcesOnGithub, component: Chart, prepareData, props = {}, windowWidth, panelSubText } = this.props;
-    console.log(data);
 
     const countryList = data.reduce((acc, cur) => {
       if (acc.indexOf(cur.Country) < 0) {
@@ -43,14 +42,11 @@ export default class CountriesChartPanel extends React.Component {
       }
       return acc;
     }, []).sort((a, b) => a > b ? 1 : -1 );
-    console.log(countryList);
 
     const { selectedCountries } = this.state;
 
     // prepare data
     const chartData = prepareData(data, selectedCountries.map(country => country.value || country));
-
-    console.log('selectedCountries', selectedCountries, 'chartData', chartData);
 
     return (
       <div className="panel panel-default bar-chart-panel" ref={node => this.rootNode = node}>

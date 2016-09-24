@@ -36,6 +36,7 @@ export default class TransitionMultiLineChart extends React.Component {
 
   constructor() {
     super();
+    this.shouldUpdateSize = true;
   }
 
   /**
@@ -51,7 +52,25 @@ export default class TransitionMultiLineChart extends React.Component {
    */
   componentDidMount() {
     this.init();
-    this.update();
+  }
+
+  /**
+   * From React doc : https://facebook.github.io/react/docs/component-specs.html#updating-componentwillreceiveprops
+   *
+   * "Invoked when a component is receiving new props. This method is not called for the initial render.
+   * Use this as an opportunity to react to a prop transition before render() is called
+   * by updating the state using this.setState().
+   * The old props can be accessed via this.props. Calling this.setState() within this function will not trigger an additional render.
+   *
+   * I use this hook to check whether or not this.updateSize should be called on the next update
+   * Doing the same thing about this.updateData would involve deep checking the whole data passed.
+   */
+  componentWillReceiveProps({ margin, width, height, minX, maxX, maxY }) {
+    if (margin !== this.props.margin || width !== this.props.width || height !== this.props.height ||
+      minX !== this.props.minX || maxX !== this.props.maxX || maxY !== this.props.maxY) {
+      console.log('change size');
+      this.shouldUpdateSize = true;
+    }
   }
 
   /**
@@ -163,7 +182,11 @@ export default class TransitionMultiLineChart extends React.Component {
 
   update() {
     console.log('update');
-    this.updateSize();
+    // only call this.updateSize() if some props involving size have changed (check is done on componentWillReceiveProps)
+    if (this.shouldUpdateSize === true) {
+      this.updateSize();
+      this.shouldUpdateSize = false;
+    }
     this.updateData();
   }
 
