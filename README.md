@@ -3,6 +3,8 @@ d3-react-experiments
 
 [![Build Status](https://travis-ci.org/topheman/d3-react-experiments.svg?branch=master)](https://travis-ci.org/topheman/d3-react-experiments)
 
+<img src="https://cdn.rawgit.com/topheman/d3-react-experiments/master/src/assets/images/react-logo.svg" width="200"><img src="https://cdn.rawgit.com/topheman/d3-react-experiments/master/src/assets/images/d3-logo.png" width="200">
+
 **Changes in v2**
 
 As I explain bellow, there are multiple approaches to handle d3 with React. In the v1, I started by integrating 3rd party libraries like [d3act](https://github.com/AnSavvides/d3act) and [victory](https://github.com/FormidableLabs/victory).
