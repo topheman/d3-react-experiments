@@ -21,6 +21,7 @@ const Home = () => {
       <p>It doesn't seem like there is a clear winner yet. I tried some of those libraries and also created home-made components. <a href="https://github.com/topheman/d3-react-experiments#d3-react-experiments" title="d3-react-experiments on github">More in the README</a>.</p>
       <p className="text-center"><Link to={defaultLinks[0]} className="btn btn-default btn-primary btn-lg">Start browsing</Link></p>
       <p>Each example carries a link to the sources on github (you can also switch the website to the development version, open your devtools and browse the "Sources" panel).</p>
+      <p><a href="http://dev.topheman.com/d3-react-chart-components/" title="Plain d3 code and React working together">Read the blog post about d3 and React working together</a></p>
       <p className="lead"><strong>NEW in v2</strong> Examples with home-made components based on <strong>d3 v4</strong>:</p>
       <ul>
         <li><Link to="/d3/transition-multi-line-chart">D3 / TransitionMultiLineChart</Link>: POC of integration of plain d3 code, hooking transitions with React lifecycle</li>

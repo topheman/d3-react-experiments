@@ -13,6 +13,8 @@ In the v2, I created some React components examples directly based on **plain d3
 
 [This is still a work in progress](https://topheman.github.io/d3-react-experiments/#/), more examples / blog posts will come ...
 
+[Read the blog post on the v2 explaining plain d3 code working with React](http://dev.topheman.com/d3-react-chart-components/)
+
 ###React & D3
 
 [D3 (data driven documents)](http://d3js.org/) is a JavaScript library that helps you build visualisations. It is very powerfull (most of the JavaScript datavisualization libraries are based on it). It handles the data you pass it and mutates the DOM.
