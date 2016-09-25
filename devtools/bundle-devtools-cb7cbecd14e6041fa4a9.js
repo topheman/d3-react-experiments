@@ -4,7 +4,7 @@
  * Mix d3 & react
  * 
  * @version v2.0.0 - 25/09/2016
- * @revision #e000f3b - https://github.com/topheman/d3-react-experiments/tree/e000f3b7373a2fcc1f6a79683dba4a7c97733cf2
+ * @revision #33350f4 - https://github.com/topheman/d3-react-experiments/tree/33350f40c00b0181fed1f8939056617838bd99af
  * @author Christophe Rosset
  * @copyright 2016(c) Christophe Rosset
  * @license MIT
@@ -28063,6 +28063,15 @@
 	      'p',
 	      null,
 	      'Each example carries a link to the sources on github (you can also switch the website to the development version, open your devtools and browse the "Sources" panel).'
+	    ),
+	    _react2.default.createElement(
+	      'p',
+	      null,
+	      _react2.default.createElement(
+	        'a',
+	        { href: 'http://dev.topheman.com/d3-react-chart-components/', title: 'Plain d3 code and React working together' },
+	        'Read the blog post about d3 and React working together'
+	      )
 	    ),
 	    _react2.default.createElement(
 	      'p',
@@ -107934,4 +107943,4 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=bundle-devtools-ec4c99d9b8b85d84a9d7.js.map
+//# sourceMappingURL=bundle-devtools-cb7cbecd14e6041fa4a9.js.map
