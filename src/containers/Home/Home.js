@@ -24,8 +24,9 @@ const Home = () => {
       <p><a href="http://dev.topheman.com/d3-react-chart-components/" title="Plain d3 code and React working together">Read the blog post about d3 and React working together</a></p>
       <p className="lead"><strong>NEW in v2</strong> Examples with home-made components based on <strong>d3 v4</strong>:</p>
       <ul>
-        <li><Link to="/d3/transition-multi-line-chart">D3 / TransitionMultiLineChart</Link>: POC of integration of plain d3 code, hooking transitions with React lifecycle</li>
-        <li><Link to="/d3/static-multi-line-chart">D3 / StaticMultiLineChart</Link>: POC of integration of plain d3 code that plays well with React</li>
+        <li><Link to="/d3/transition-multi-line-chart">d3 / TransitionMultiLineChart</Link>: POC of integration of plain d3 code, hooking transitions with React lifecycle</li>
+        <li><Link to="/d3/static-multi-line-chart">d3 / StaticMultiLineChart</Link>: POC of integration of plain d3 code that plays well with React</li>
+        <li><Link to="/d3/react-faux-dom/static-multi-line-chart">d3 / react-faux-dom / StaticMultiLineChart</Link>: POC of integration of plain d3 code with <strong>react-faux-dom</strong></li>
       </ul>
       <p>Examples with third party libraries:</p>
       <ul>

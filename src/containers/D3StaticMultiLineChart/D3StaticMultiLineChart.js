@@ -1,6 +1,7 @@
 import React from 'react';
 
 import navigator from '../../components/Navigator/injectNavigator';
+import { Link } from 'react-router';
 import LifeExpectancy from '../../components/LifeExpectancy/LifeExpectancy';
 
 import StaticMultiLineChart from '../../components/d3/StaticMultiLineChart/StaticMultiLineChart';
@@ -22,7 +23,7 @@ const D3StaticMultiLineChart = (props) => {
   return (
     <LifeExpectancy
       {...props}
-      title="StaticMultiLineChart"
+      title={<span><Link to="/d3">d3</Link> / StaticMultiLineChart</span>}
       prepareData={prepareDataLifeExpectancy}
       sourcesOnGithub={sourcesOnGithub}
       component={StaticMultiLineChart}

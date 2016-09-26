@@ -5,7 +5,6 @@
  */
 
 import React from 'react';
-import { Link } from 'react-router';
 
 import CountriesChartPanel from '../../components/CountriesChartPanel/CountriesChartPanel';
 import { asyncLoadLifeExpectancy } from '../../resources/loaders';
@@ -75,7 +74,7 @@ class LifeExpectancy extends React.Component {
     const { title, prepareData, sourcesOnGithub, component, panelSubText } = this.props;
     return (
       <div>
-        <h2><Link to="/d3">D3</Link> / {title}</h2>
+        <h2>{title}</h2>
         {!ready && !error && <p>Loading ...</p>}
         {!ready && error && <div className="alert alert-danger" onClick={this.loadData} style={{cursor: 'pointer'}}>
           <span className="glyphicon glyphicon-exclamation-sign"></span>

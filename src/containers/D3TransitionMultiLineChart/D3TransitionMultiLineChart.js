@@ -1,6 +1,7 @@
 import React from 'react';
 
 import navigator from '../../components/Navigator/injectNavigator';
+import { Link } from 'react-router';
 import LifeExpectancy from '../../components/LifeExpectancy/LifeExpectancy';
 
 import TransitionMultiLineChart from '../../components/d3/TransitionMultiLineChart/TransitionMultiLineChart';
@@ -29,7 +30,7 @@ const D3TransitionMultiLineChart = (props) => {
   return (
     <LifeExpectancy
       {...props}
-      title="TransitionMultiLineChart"
+      title={<span><Link to="/d3">d3</Link> / TransitionMultiLineChart</span>}
       prepareData={prepareDataLifeExpectancy}
       sourcesOnGithub={sourcesOnGithub}
       component={TransitionMultiLineChart}

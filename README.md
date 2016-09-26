@@ -15,6 +15,8 @@ In the v2, I created some React components examples directly based on **plain d3
 
 [Read the blog post on the v2 explaining plain d3 code working with React](http://dev.topheman.com/d3-react-chart-components/)
 
+**Update:** Just added an example using [react-faux-dom](https://github.com/Olical/react-faux-dom), a library that provides a DOM like structure that renders into React. That way, the DOM isn't directly manipulated via d3, the render is left to React. I still have to do the animated version.
+
 ###React & D3
 
 [D3 (data driven documents)](http://d3js.org/) is a JavaScript library that helps you build visualisations. It is very powerfull (most of the JavaScript datavisualization libraries are based on it). It handles the data you pass it and mutates the DOM.
