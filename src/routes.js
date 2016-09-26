@@ -7,7 +7,8 @@ import {
   D3actMixedChart,
   VictoryWorldPopulationByAgeRange,
   D3StaticMultiLineChart,
-  D3TransitionMultiLineChart
+  D3TransitionMultiLineChart,
+  ReactFauxDomStaticMultiLineChart
 } from './containers/index';
 
 export default (
@@ -19,5 +20,6 @@ export default (
     <Route path="d3" component={D3TransitionMultiLineChart}/>
     <Route path="d3/static-multi-line-chart" component={D3StaticMultiLineChart}/>
     <Route path="d3/transition-multi-line-chart" component={D3TransitionMultiLineChart}/>
+    <Route path="react-faux-dom/static-multi-line-chart" component={ReactFauxDomStaticMultiLineChart}/>
   </Route>
 );
