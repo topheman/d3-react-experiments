@@ -87,8 +87,7 @@
     "react-faux-dom": "^3.0.0",
     "react-router": "^2.4.1",
     "react-select": "^1.0.0-rc.1",
-    "victory-bar": "^4.0.1",
-    "victory-pie": "^6.0.0"
+    "victory": "^0.12.1"
   },
   "private": true
 }

@@ -2,8 +2,7 @@ import React from 'react';
 
 import ViewSourceOnGithub from '../../ViewSourceOnGithub/ViewSourceOnGithub';
 import Slider from '../../Slider/Slider';
-import {VictoryPie} from 'victory-pie';
-import {VictoryBar} from 'victory-bar';
+import { VictoryBar, VictoryPie } from 'victory';
 
 export default class WorldPopulation extends React.Component {
 
