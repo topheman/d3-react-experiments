@@ -1,6 +1,6 @@
 ##d3-react-experiments - distribution version (gh-pages branch)
 
-This is the distribution version of [topheman/d3-react-experiments](https://github.com/topheman/d3-react-experiments) - v2.1.0 - [#8f7905f](https://github.com/topheman/d3-react-experiments/tree/8f7905fe489252cd4147926d9296f8faf7b7856a).
+This is the distribution version of [topheman/d3-react-experiments](https://github.com/topheman/d3-react-experiments) - v2.1.0 - [#132c2c7](https://github.com/topheman/d3-react-experiments/tree/132c2c782765f18e54b9c518d4075a5009ca16e1).
 
 **Warning**: This is the **generated** code, versionned on the `gh-pages` branch, testable online [here](https://topheman.github.io/d3-react-experiments/). If you wish to see the original source code, switch to the [master branch](https://github.com/topheman/d3-react-experiments).
 
