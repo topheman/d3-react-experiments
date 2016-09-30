@@ -6,6 +6,7 @@ import {
   D3actBarChart,
   D3actMixedChart,
   VictoryWorldPopulationByAgeRange,
+  VictoryTransitionMultiLineChart,
   D3StaticMultiLineChart,
   D3TransitionMultiLineChart,
   ReactFauxDomStaticMultiLineChart
@@ -18,6 +19,7 @@ export default (
     <Route path="d3act/mixed-chart" component={D3actMixedChart}/>
     <Redirect from="d3act" to="d3act/bar-chart"/>
     <Route path="victory/world-population-by-age-range" component={VictoryWorldPopulationByAgeRange}/>
+    <Route path="victory/transition-multi-line-chart" component={VictoryTransitionMultiLineChart}/>
     <Redirect from="victory" to="victory/world-population-by-age-range"/>
     <Route path="d3/static-multi-line-chart" component={D3StaticMultiLineChart}/>
     <Route path="d3/transition-multi-line-chart" component={D3TransitionMultiLineChart}/>

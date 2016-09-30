@@ -3,6 +3,7 @@ export const defaultLinks = [
   '/d3/static-multi-line-chart',
   '/d3/react-faux-dom/static-multi-line-chart',
   '/victory/world-population-by-age-range',
+  '/victory/transition-multi-line-chart',
   '/d3act/bar-chart',
   '/d3act/mixed-chart'
 ];
