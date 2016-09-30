@@ -7,7 +7,8 @@ before_install:
   - npm update -g
   - npm --version
 before_script:
-  - npm ls --depth=0
+  - npm ls --depth=0 2> /dev/null; if [ $? -eq 0 ]; then echo "No peerDependency errors"; else echo "peerDependency errors detected - see message bellow"; fi;
+  - echo "There might be some peerDependency errors about Victory, it doesn't affect the project though. An issue is opened at https://github.com/FormidableLabs/victory/issues/275"
   - npm run build
   - npm run build-prod-all
 script:
