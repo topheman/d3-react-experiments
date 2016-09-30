@@ -2,9 +2,9 @@ export const defaultLinks = [
   '/d3/transition-multi-line-chart',
   '/d3/static-multi-line-chart',
   '/d3/react-faux-dom/static-multi-line-chart',
-  '/victory-world-population-by-age-range',
-  '/d3act-barchart',
-  '/d3act-mixed'
+  '/victory/world-population-by-age-range',
+  '/d3act/bar-chart',
+  '/d3act/mixed-chart'
 ];
 
 import React from 'react';

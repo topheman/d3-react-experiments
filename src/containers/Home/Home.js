@@ -30,9 +30,9 @@ const Home = () => {
       </ul>
       <p>Examples with third party libraries:</p>
       <ul>
-        <li><Link to="/victory-world-population-by-age-range">Victory / World population by age range</Link></li>
-        <li><Link to="/d3act-barchart">d3act / Most popular technologies</Link></li>
-        <li><Link to="/d3act-mixed">d3act / Desktop Operating System</Link></li>
+        <li><Link to="/victory/world-population-by-age-range">Victory / World population by age range</Link>: Bar/Pie Chart</li>
+        <li><Link to="/d3act/bar-chart">d3act / Most popular technologies</Link>: Bar Chart</li>
+        <li><Link to="/d3act/mixed-chart">d3act / Desktop Operating System</Link>: Bar/Pie Chart</li>
       </ul>
       <br/>
       {process.env.DEVTOOLS ? devtoolsMessage : prodMessage }

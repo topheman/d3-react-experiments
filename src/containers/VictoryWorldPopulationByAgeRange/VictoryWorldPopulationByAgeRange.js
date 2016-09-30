@@ -1,6 +1,7 @@
 import React from 'react';
 
 import navigator from '../../components/Navigator/injectNavigator';
+import { Link } from 'react-router';
 import WorldPopulationByAgeRange from '../../components/victory/WorldPopulationByAgeRange/WorldPopulationByAgeRange';
 
 /**
@@ -23,7 +24,7 @@ const compileBarData = victoryWorldPopulationByAgeRange('bar');
 
 const VictoryWorldPopulationByAgeRange = () => (
   <div>
-    <h2>Victory</h2>
+    <h2><Link to="/victory">Victory</Link> / Mixed</h2>
     <WorldPopulationByAgeRange
       labelColorConfig={labelColorConfig}
       compilePieData={compilePieData}
