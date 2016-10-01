@@ -22,6 +22,7 @@ const panelSubText = (
       <li>to prevent unnecessary DOM nodes attributes modifications</li>
     </ul>
     <p>Check the <a href={urlFromViewSourceOnGithub(sourcesOnGithub)} title="View source on github">comments in source code</a> for more infos.</p>
+    <p>I made a version of this chart using <Link to="/victory/transition-multi-line-chart">the Victory library</Link>, check it out!</p>
     <p>It is also fully <strong>responsive</strong>.</p>
   </div>
 );

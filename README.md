@@ -15,7 +15,10 @@ In the v2, I created some React components examples directly based on **plain d3
 
 [Read the blog post on the v2 explaining plain d3 code working with React](http://dev.topheman.com/d3-react-chart-components/)
 
-**Update:** Just added an example using [react-faux-dom](https://github.com/Olical/react-faux-dom), a library that provides a DOM like structure that renders into React. That way, the DOM isn't directly manipulated via d3, the render is left to React. I still have to do the animated version.
+**Updates:** 
+
+* [New example](https://topheman.github.io/d3-react-experiments/#/d3/react-faux-dom/static-multi-line-chart) using [react-faux-dom](https://github.com/Olical/react-faux-dom), *a library that provides a DOM like structure that renders into React*. That way, the DOM isn't directly manipulated via d3, the render is left to React. I still have to do the animated version.
+* [New example](https://topheman.github.io/d3-react-experiments/#/victory/transition-multi-line-chart) where I ported some of my existing d3 code based chart components to **full JSX**, using [Victory](https://formidable.com/open-source/victory/), *a collection of composable React components for building interactive data visualizations*.
 
 ###React & D3
 

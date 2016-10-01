@@ -12,9 +12,8 @@ const sourcesOnGithub = '/src/components/victory/TransitionMultiLineChart/Transi
 
 const panelSubText = (
   <div>
-    <p>
-      This chart was made with victory. <a href={urlFromViewSourceOnGithub(sourcesOnGithub)} title="View source on github">View sources</a>.
-    </p>
+    <p>This chart is a React Component based on <code>VictoryChart</code>, <code>VictoryAxis</code> and <code>VictoryLine</code>, from <a href="https://formidable.com/open-source/victory/" title="Victory home page">Victory</a>, a collection of composable React components for building interactive data visualizations.</p>
+    <p>Check <a href={urlFromViewSourceOnGithub(sourcesOnGithub)} title="View source on github">the sources of this chart</a> against the ones <Link to="/d3">I made in pure d3</Link>.</p>
   </div>
 );
 
