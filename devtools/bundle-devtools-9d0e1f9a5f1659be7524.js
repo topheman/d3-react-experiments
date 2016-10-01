@@ -3,8 +3,8 @@
  * 
  * Mix d3 & react
  * 
- * @version v2.1.1 - 30/09/2016
- * @revision #9c5db2f - https://github.com/topheman/d3-react-experiments/tree/9c5db2fb095da5fe93054377ec274e53c1872e20
+ * @version v2.2.0 - 01/10/2016
+ * @revision #c0fcc4c - https://github.com/topheman/d3-react-experiments/tree/c0fcc4c47b1909c7a1f90a88a9b425c4d386d54b
  * @author Christophe Rosset
  * @copyright 2016(c) Christophe Rosset
  * @license MIT
@@ -74,7 +74,7 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	global.Promise = global.Promise || __webpack_require__(976).Promise;
+	global.Promise = global.Promise || __webpack_require__(978).Promise;
 	
 	var rootElement = _react2.default.createElement(
 	  _reactRouter.Router,
@@ -27348,6 +27348,7 @@
 	  _react2.default.createElement(_reactRouter.Route, { path: 'd3act/mixed-chart', component: _index.D3actMixedChart }),
 	  _react2.default.createElement(_reactRouter.Redirect, { from: 'd3act', to: 'd3act/bar-chart' }),
 	  _react2.default.createElement(_reactRouter.Route, { path: 'victory/world-population-by-age-range', component: _index.VictoryWorldPopulationByAgeRange }),
+	  _react2.default.createElement(_reactRouter.Route, { path: 'victory/transition-multi-line-chart', component: _index.VictoryTransitionMultiLineChart }),
 	  _react2.default.createElement(_reactRouter.Redirect, { from: 'victory', to: 'victory/world-population-by-age-range' }),
 	  _react2.default.createElement(_reactRouter.Route, { path: 'd3/static-multi-line-chart', component: _index.D3StaticMultiLineChart }),
 	  _react2.default.createElement(_reactRouter.Route, { path: 'd3/transition-multi-line-chart', component: _index.D3TransitionMultiLineChart }),
@@ -27412,7 +27413,16 @@
 	  }
 	});
 	
-	var _D3StaticMultiLineChart = __webpack_require__(927);
+	var _VictoryTransitionMultiLineChart = __webpack_require__(927);
+	
+	Object.defineProperty(exports, 'VictoryTransitionMultiLineChart', {
+	  enumerable: true,
+	  get: function get() {
+	    return _interopRequireDefault(_VictoryTransitionMultiLineChart).default;
+	  }
+	});
+	
+	var _D3StaticMultiLineChart = __webpack_require__(951);
 	
 	Object.defineProperty(exports, 'D3StaticMultiLineChart', {
 	  enumerable: true,
@@ -27421,7 +27431,7 @@
 	  }
 	});
 	
-	var _D3TransitionMultiLineChart = __webpack_require__(953);
+	var _D3TransitionMultiLineChart = __webpack_require__(955);
 	
 	Object.defineProperty(exports, 'D3TransitionMultiLineChart', {
 	  enumerable: true,
@@ -27430,7 +27440,7 @@
 	  }
 	});
 	
-	var _ReactFauxDomStaticMultiLineChart = __webpack_require__(958);
+	var _ReactFauxDomStaticMultiLineChart = __webpack_require__(960);
 	
 	Object.defineProperty(exports, 'ReactFauxDomStaticMultiLineChart', {
 	  enumerable: true,
@@ -28077,15 +28087,19 @@
 	    _react2.default.createElement(
 	      'p',
 	      null,
-	      'Each example carries a link to the sources on github (you can also switch the website to the development version, open your devtools and browse the "Sources" panel).'
+	      _react2.default.createElement(
+	        'a',
+	        { href: 'http://dev.topheman.com/d3-react-chart-components/', title: 'Plain d3 code and React working together' },
+	        'Read the blog post about d3 and React working together'
+	      )
 	    ),
 	    _react2.default.createElement(
 	      'p',
 	      null,
 	      _react2.default.createElement(
-	        'a',
-	        { href: 'http://dev.topheman.com/d3-react-chart-components/', title: 'Plain d3 code and React working together' },
-	        'Read the blog post about d3 and React working together'
+	        'strong',
+	        null,
+	        'Some examples show the same chart, but were created different ways (checkout the sources).'
 	      )
 	    ),
 	    _react2.default.createElement(
@@ -28103,6 +28117,11 @@
 	        'd3 v4'
 	      ),
 	      ':'
+	    ),
+	    _react2.default.createElement(
+	      'p',
+	      null,
+	      'Examples directly based on d3:'
 	    ),
 	    _react2.default.createElement(
 	      'ul',
@@ -28166,6 +28185,16 @@
 	        null,
 	        _react2.default.createElement(
 	          _reactRouter.Link,
+	          { to: '/victory/transition-multi-line-chart' },
+	          'Victory / TransitionMultiLineChart'
+	        ),
+	        ': Same chart as above in d3, ported to Victory'
+	      ),
+	      _react2.default.createElement(
+	        'li',
+	        null,
+	        _react2.default.createElement(
+	          _reactRouter.Link,
 	          { to: '/d3act/bar-chart' },
 	          'd3act / Most popular technologies'
 	        ),
@@ -28213,7 +28242,7 @@
 	
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 	
-	var defaultLinks = exports.defaultLinks = ['/d3/transition-multi-line-chart', '/d3/static-multi-line-chart', '/d3/react-faux-dom/static-multi-line-chart', '/victory/world-population-by-age-range', '/d3act/bar-chart', '/d3act/mixed-chart'];
+	var defaultLinks = exports.defaultLinks = ['/d3/transition-multi-line-chart', '/d3/static-multi-line-chart', '/d3/react-faux-dom/static-multi-line-chart', '/victory/world-population-by-age-range', '/victory/transition-multi-line-chart', '/d3act/bar-chart', '/d3act/mixed-chart'];
 	
 	var getPrevNextLinks = function getPrevNextLinks(location) {
 	  var links = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : defaultLinks;
@@ -87943,9 +87972,9 @@
 	
 	var _LifeExpectancy2 = _interopRequireDefault(_LifeExpectancy);
 	
-	var _StaticMultiLineChart = __webpack_require__(950);
+	var _TransitionMultiLineChart = __webpack_require__(950);
 	
-	var _StaticMultiLineChart2 = _interopRequireDefault(_StaticMultiLineChart);
+	var _TransitionMultiLineChart2 = _interopRequireDefault(_TransitionMultiLineChart);
 	
 	var _helper = __webpack_require__(253);
 	
@@ -87953,7 +87982,7 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var sourcesOnGithub = '/src/components/d3/StaticMultiLineChart/StaticMultiLineChart.js';
+	var sourcesOnGithub = '/src/components/victory/TransitionMultiLineChart/TransitionMultiLineChart.js';
 	
 	var panelSubText = _react2.default.createElement(
 	  'div',
@@ -87961,59 +87990,71 @@
 	  _react2.default.createElement(
 	    'p',
 	    null,
-	    'This chart is a React Component with home-made d3. As you\'ll see in the ',
+	    'This chart is a React Component based on ',
 	    _react2.default.createElement(
-	      'a',
-	      { href: (0, _ViewSourceOnGithub.urlFromViewSourceOnGithub)(sourcesOnGithub), title: 'View source on github' },
-	      'source code'
-	    ),
-	    ', it\'s nearly a simple copy/paste from ',
-	    _react2.default.createElement(
-	      'a',
-	      { href: 'https://bl.ocks.org/d3noob/4db972df5d7efc7d611255d1cc6f3c4f', title: 'See example from bl.ocks.org' },
-	      'bl.ocks.org'
-	    ),
-	    ' of regular d3 code, which works ',
-	    _react2.default.createElement(
-	      'strong',
+	      'code',
 	      null,
-	      'out of the box'
+	      'VictoryChart'
 	    ),
-	    ' in React ...'
+	    ', ',
+	    _react2.default.createElement(
+	      'code',
+	      null,
+	      'VictoryAxis'
+	    ),
+	    ' and ',
+	    _react2.default.createElement(
+	      'code',
+	      null,
+	      'VictoryLine'
+	    ),
+	    ', from ',
+	    _react2.default.createElement(
+	      'a',
+	      { href: 'https://formidable.com/open-source/victory/', title: 'Victory home page' },
+	      'Victory'
+	    ),
+	    ', a collection of composable React components for building interactive data visualizations.'
 	  ),
 	  _react2.default.createElement(
 	    'p',
 	    null,
-	    'It is also fully ',
+	    'Check ',
 	    _react2.default.createElement(
-	      'strong',
-	      null,
-	      'responsive'
+	      'a',
+	      { href: (0, _ViewSourceOnGithub.urlFromViewSourceOnGithub)(sourcesOnGithub), title: 'View source on github' },
+	      'the sources of this chart'
+	    ),
+	    ' against the ones ',
+	    _react2.default.createElement(
+	      _reactRouter.Link,
+	      { to: '/d3' },
+	      'I made in pure d3'
 	    ),
 	    '.'
 	  )
 	);
 	
-	var D3StaticMultiLineChart = function D3StaticMultiLineChart(props) {
+	var VictoryTransitionMultiLineChart = function VictoryTransitionMultiLineChart(props) {
 	  return _react2.default.createElement(_LifeExpectancy2.default, _extends({}, props, {
 	    title: _react2.default.createElement(
 	      'span',
 	      null,
 	      _react2.default.createElement(
 	        _reactRouter.Link,
-	        { to: '/d3' },
-	        'd3'
+	        { to: '/victory' },
+	        'Victory'
 	      ),
-	      ' / StaticMultiLineChart'
+	      ' / TransitionMultiLineChart'
 	    ),
 	    prepareData: _helper.prepareDataLifeExpectancy,
 	    sourcesOnGithub: sourcesOnGithub,
-	    component: _StaticMultiLineChart2.default,
+	    component: _TransitionMultiLineChart2.default,
 	    panelSubText: panelSubText
 	  }));
 	};
 	
-	exports.default = (0, _injectNavigator2.default)()(D3StaticMultiLineChart);
+	exports.default = (0, _injectNavigator2.default)()(VictoryTransitionMultiLineChart);
 	module.exports = exports['default'];
 
 /***/ },
@@ -91408,6 +91449,231 @@
 	  value: true
 	});
 	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _colorHash = __webpack_require__(943);
+	
+	var _colorHash2 = _interopRequireDefault(_colorHash);
+	
+	var _victory = __webpack_require__(261);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var colorHash = new _colorHash2.default();
+	
+	var TransitionMultiLineChart = function TransitionMultiLineChart(props) {
+	  var width = props.width;
+	  var height = props.height;
+	  var padding = props.margin;
+	  var maxY = props.maxY;
+	  var minX = props.minX;
+	  var maxX = props.maxX;
+	  var data = props.data;
+	
+	  var lineIds = Object.keys(data);
+	  var animationDuration = 200;
+	  var xAxisTickCount = width > 500 ? parseInt(width / 80, 10) : 4;
+	  var yAxisTickCount = parseInt(maxY / 10, 10);
+	  console.log('xAxisTickCount', xAxisTickCount, 'yAxisTickCount', yAxisTickCount);
+	  var xDomain = [minX, maxX];
+	  var yDomain = [0, maxY];
+	  var linesDomain = { x: xDomain, y: yDomain };
+	  var tickStyle = {
+	    ticks: {
+	      size: 6,
+	      stroke: 'black'
+	    },
+	    tickLabels: {
+	      fontSize: '10px',
+	      fontFamily: 'inherit'
+	    }
+	  };
+	  return _react2.default.createElement(
+	    'div',
+	    { style: {
+	        width: width,
+	        margin: '0 auto'
+	      } },
+	    _react2.default.createElement(
+	      _victory.VictoryChart,
+	      {
+	        width: width,
+	        height: height,
+	        padding: padding,
+	        animate: { duration: animationDuration }
+	      },
+	      _react2.default.createElement(_victory.VictoryAxis, {
+	        dependentAxis: true,
+	        domain: [0, maxY],
+	        tickCount: yAxisTickCount,
+	        style: tickStyle
+	      }),
+	      _react2.default.createElement(_victory.VictoryAxis, {
+	        domain: xDomain,
+	        tickCount: xAxisTickCount,
+	        style: tickStyle
+	      }),
+	      lineIds.map(function (lineId) {
+	        var lineColor = colorHash.hex(lineId);
+	        var lineData = data[lineId];
+	        return _react2.default.createElement(_victory.VictoryLine, {
+	          key: lineId,
+	          data: lineData,
+	          domain: linesDomain,
+	          style: {
+	            data: {
+	              stroke: lineColor
+	            }
+	          },
+	          x: function x(d) {
+	            return d.x;
+	          },
+	          y: function y(d) {
+	            return d.y;
+	          }
+	        });
+	      })
+	    )
+	  );
+	};
+	
+	TransitionMultiLineChart.propTypes = {
+	  margin: _react2.default.PropTypes.object,
+	  width: _react2.default.PropTypes.number,
+	  height: _react2.default.PropTypes.number,
+	  data: _react2.default.PropTypes.object.isRequired,
+	  minX: _react2.default.PropTypes.number,
+	  maxX: _react2.default.PropTypes.number,
+	  minY: _react2.default.PropTypes.number,
+	  maxY: _react2.default.PropTypes.number
+	};
+	
+	TransitionMultiLineChart.defaultProps = {
+	  margin: {
+	    top: 20,
+	    right: 20,
+	    bottom: 30,
+	    left: 50
+	  },
+	  width: 700,
+	  height: 400
+	};
+	
+	exports.default = TransitionMultiLineChart;
+	module.exports = exports['default'];
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(53)))
+
+/***/ },
+/* 951 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _injectNavigator = __webpack_require__(243);
+	
+	var _injectNavigator2 = _interopRequireDefault(_injectNavigator);
+	
+	var _reactRouter = __webpack_require__(169);
+	
+	var _LifeExpectancy = __webpack_require__(928);
+	
+	var _LifeExpectancy2 = _interopRequireDefault(_LifeExpectancy);
+	
+	var _StaticMultiLineChart = __webpack_require__(952);
+	
+	var _StaticMultiLineChart2 = _interopRequireDefault(_StaticMultiLineChart);
+	
+	var _helper = __webpack_require__(253);
+	
+	var _ViewSourceOnGithub = __webpack_require__(246);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var sourcesOnGithub = '/src/components/d3/StaticMultiLineChart/StaticMultiLineChart.js';
+	
+	var panelSubText = _react2.default.createElement(
+	  'div',
+	  null,
+	  _react2.default.createElement(
+	    'p',
+	    null,
+	    'This chart is a React Component with home-made d3. As you\'ll see in the ',
+	    _react2.default.createElement(
+	      'a',
+	      { href: (0, _ViewSourceOnGithub.urlFromViewSourceOnGithub)(sourcesOnGithub), title: 'View source on github' },
+	      'source code'
+	    ),
+	    ', it\'s nearly a simple copy/paste from ',
+	    _react2.default.createElement(
+	      'a',
+	      { href: 'https://bl.ocks.org/d3noob/4db972df5d7efc7d611255d1cc6f3c4f', title: 'See example from bl.ocks.org' },
+	      'bl.ocks.org'
+	    ),
+	    ' of regular d3 code, which works ',
+	    _react2.default.createElement(
+	      'strong',
+	      null,
+	      'out of the box'
+	    ),
+	    ' in React ...'
+	  ),
+	  _react2.default.createElement(
+	    'p',
+	    null,
+	    'It is also fully ',
+	    _react2.default.createElement(
+	      'strong',
+	      null,
+	      'responsive'
+	    ),
+	    '.'
+	  )
+	);
+	
+	var D3StaticMultiLineChart = function D3StaticMultiLineChart(props) {
+	  return _react2.default.createElement(_LifeExpectancy2.default, _extends({}, props, {
+	    title: _react2.default.createElement(
+	      'span',
+	      null,
+	      _react2.default.createElement(
+	        _reactRouter.Link,
+	        { to: '/d3' },
+	        'd3'
+	      ),
+	      ' / StaticMultiLineChart'
+	    ),
+	    prepareData: _helper.prepareDataLifeExpectancy,
+	    sourcesOnGithub: sourcesOnGithub,
+	    component: _StaticMultiLineChart2.default,
+	    panelSubText: panelSubText
+	  }));
+	};
+	
+	exports.default = (0, _injectNavigator2.default)()(D3StaticMultiLineChart);
+	module.exports = exports['default'];
+
+/***/ },
+/* 952 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(console) {'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
 	var _react = __webpack_require__(1);
@@ -91422,9 +91688,9 @@
 	
 	var _d3Shape = __webpack_require__(520);
 	
-	var _d3Selection = __webpack_require__(951);
+	var _d3Selection = __webpack_require__(953);
 	
-	var _d3Axis = __webpack_require__(952);
+	var _d3Axis = __webpack_require__(954);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -91565,7 +91831,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(53)))
 
 /***/ },
-/* 951 */
+/* 953 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// https://d3js.org/d3-selection/ Version 1.0.2. Copyright 2016 Mike Bostock.
@@ -92543,7 +92809,7 @@
 	}));
 
 /***/ },
-/* 952 */
+/* 954 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// https://d3js.org/d3-axis/ Version 1.0.3. Copyright 2016 Mike Bostock.
@@ -92739,7 +93005,7 @@
 	}));
 
 /***/ },
-/* 953 */
+/* 955 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -92764,7 +93030,7 @@
 	
 	var _LifeExpectancy2 = _interopRequireDefault(_LifeExpectancy);
 	
-	var _TransitionMultiLineChart = __webpack_require__(954);
+	var _TransitionMultiLineChart = __webpack_require__(956);
 	
 	var _TransitionMultiLineChart2 = _interopRequireDefault(_TransitionMultiLineChart);
 	
@@ -92828,6 +93094,17 @@
 	  _react2.default.createElement(
 	    'p',
 	    null,
+	    'I made a version of this chart using ',
+	    _react2.default.createElement(
+	      _reactRouter.Link,
+	      { to: '/victory/transition-multi-line-chart' },
+	      'the Victory library'
+	    ),
+	    ', check it out!'
+	  ),
+	  _react2.default.createElement(
+	    'p',
+	    null,
 	    'It is also fully ',
 	    _react2.default.createElement(
 	      'strong',
@@ -92861,7 +93138,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 954 */
+/* 956 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(console) {'use strict';
@@ -92886,11 +93163,11 @@
 	
 	var _d3Shape = __webpack_require__(520);
 	
-	var _d3Selection = __webpack_require__(951);
+	var _d3Selection = __webpack_require__(953);
 	
-	var _d3Axis = __webpack_require__(952);
+	var _d3Axis = __webpack_require__(954);
 	
-	__webpack_require__(955);
+	__webpack_require__(957);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -93148,12 +93425,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(53)))
 
 /***/ },
-/* 955 */
+/* 957 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// https://d3js.org/d3-transition/ Version 1.0.2. Copyright 2016 Mike Bostock.
 	(function (global, factory) {
-	   true ? factory(exports, __webpack_require__(951), __webpack_require__(947), __webpack_require__(956), __webpack_require__(674), __webpack_require__(675), __webpack_require__(957)) :
+	   true ? factory(exports, __webpack_require__(953), __webpack_require__(947), __webpack_require__(958), __webpack_require__(674), __webpack_require__(675), __webpack_require__(959)) :
 	  typeof define === 'function' && define.amd ? define(['exports', 'd3-selection', 'd3-dispatch', 'd3-timer', 'd3-interpolate', 'd3-color', 'd3-ease'], factory) :
 	  (factory((global.d3 = global.d3 || {}),global.d3,global.d3,global.d3,global.d3,global.d3,global.d3));
 	}(this, (function (exports,d3Selection,d3Dispatch,d3Timer,d3Interpolate,d3Color,d3Ease) { 'use strict';
@@ -93942,7 +94219,7 @@
 	})));
 
 /***/ },
-/* 956 */
+/* 958 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// https://d3js.org/d3-timer/ Version 1.0.3. Copyright 2016 Mike Bostock.
@@ -94095,7 +94372,7 @@
 	})));
 
 /***/ },
-/* 957 */
+/* 959 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// https://d3js.org/d3-ease/ Version 1.0.1. Copyright 2016 Mike Bostock.
@@ -94356,7 +94633,7 @@
 	}));
 
 /***/ },
-/* 958 */
+/* 960 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -94381,7 +94658,7 @@
 	
 	var _LifeExpectancy2 = _interopRequireDefault(_LifeExpectancy);
 	
-	var _StaticMultiLineChart = __webpack_require__(959);
+	var _StaticMultiLineChart = __webpack_require__(961);
 	
 	var _StaticMultiLineChart2 = _interopRequireDefault(_StaticMultiLineChart);
 	
@@ -94481,7 +94758,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 959 */
+/* 961 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(console) {'use strict';
@@ -94504,11 +94781,11 @@
 	
 	var _d3Shape = __webpack_require__(520);
 	
-	var _d3Selection = __webpack_require__(951);
+	var _d3Selection = __webpack_require__(953);
 	
-	var _d3Axis = __webpack_require__(952);
+	var _d3Axis = __webpack_require__(954);
 	
-	var _reactFauxDom = __webpack_require__(960);
+	var _reactFauxDom = __webpack_require__(962);
 	
 	var _reactFauxDom2 = _interopRequireDefault(_reactFauxDom);
 	
@@ -94626,13 +94903,13 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(53)))
 
 /***/ },
-/* 960 */
+/* 962 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Element = __webpack_require__(961)
-	var Window = __webpack_require__(973)
-	var core = __webpack_require__(974)
-	var anim = __webpack_require__(975)
+	var Element = __webpack_require__(963)
+	var Window = __webpack_require__(975)
+	var core = __webpack_require__(976)
+	var anim = __webpack_require__(977)
 	
 	var ReactFauxDOM = {
 	  Element: Element,
@@ -94660,18 +94937,18 @@
 
 
 /***/ },
-/* 961 */
+/* 963 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1)
-	var styleAttr = __webpack_require__(962)
-	var querySelectorAll = __webpack_require__(963)
-	var camelCase = __webpack_require__(967)
-	var isString = __webpack_require__(968)
-	var isUndefined = __webpack_require__(969)
-	var assign = __webpack_require__(970)
-	var mapValues = __webpack_require__(971)
-	var styleCamelCase = __webpack_require__(972)
+	var styleAttr = __webpack_require__(964)
+	var querySelectorAll = __webpack_require__(965)
+	var camelCase = __webpack_require__(969)
+	var isString = __webpack_require__(970)
+	var isUndefined = __webpack_require__(971)
+	var assign = __webpack_require__(972)
+	var mapValues = __webpack_require__(973)
+	var styleCamelCase = __webpack_require__(974)
 	
 	function Element (nodeName, parentNode) {
 	  this.nodeName = nodeName
@@ -95023,7 +95300,7 @@
 
 
 /***/ },
-/* 962 */
+/* 964 */
 /***/ function(module, exports) {
 
 	
@@ -95135,13 +95412,13 @@
 	module.exports.normalize = normalize;
 
 /***/ },
-/* 963 */
+/* 965 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(964);
+	module.exports = __webpack_require__(966);
 
 /***/ },
-/* 964 */
+/* 966 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -95150,8 +95427,8 @@
 	 * @author yiminghe@gmail.com
 	 */
 	
-	var util = __webpack_require__(965);
-	var parser = __webpack_require__(966);
+	var util = __webpack_require__(967);
+	var parser = __webpack_require__(968);
 	
 	var EXPANDO_SELECTOR_KEY = '_ks_data_selector_id_',
 	  caches = {},
@@ -95844,7 +96121,7 @@
 	 */
 
 /***/ },
-/* 965 */
+/* 967 */
 /***/ function(module, exports) {
 
 	/**
@@ -96195,7 +96472,7 @@
 	};
 
 /***/ },
-/* 966 */
+/* 968 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -97404,7 +97681,7 @@
 	}
 
 /***/ },
-/* 967 */
+/* 969 */
 /***/ function(module, exports) {
 
 	var hyphenExpression = /\-+([a-z])/gi
@@ -97427,7 +97704,7 @@
 
 
 /***/ },
-/* 968 */
+/* 970 */
 /***/ function(module, exports) {
 
 	function isString (value) {
@@ -97438,7 +97715,7 @@
 
 
 /***/ },
-/* 969 */
+/* 971 */
 /***/ function(module, exports) {
 
 	function isUndefined (value) {
@@ -97449,7 +97726,7 @@
 
 
 /***/ },
-/* 970 */
+/* 972 */
 /***/ function(module, exports) {
 
 	function assign (dest) {
@@ -97471,7 +97748,7 @@
 
 
 /***/ },
-/* 971 */
+/* 973 */
 /***/ function(module, exports) {
 
 	function mapValues (source, fn) {
@@ -97490,10 +97767,10 @@
 
 
 /***/ },
-/* 972 */
+/* 974 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var camelCase = __webpack_require__(967)
+	var camelCase = __webpack_require__(969)
 	
 	function styleCamelCase (name) {
 	  var camel = camelCase(name)
@@ -97516,7 +97793,7 @@
 
 
 /***/ },
-/* 973 */
+/* 975 */
 /***/ function(module, exports) {
 
 	var Window = {
@@ -97531,11 +97808,11 @@
 
 
 /***/ },
-/* 974 */
+/* 976 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Element = __webpack_require__(961)
-	var mapValues = __webpack_require__(971)
+	var Element = __webpack_require__(963)
+	var mapValues = __webpack_require__(973)
 	
 	var mixin = {
 	  componentWillMount: function () {
@@ -97559,7 +97836,7 @@
 
 
 /***/ },
-/* 975 */
+/* 977 */
 /***/ function(module, exports) {
 
 	var anim = {
@@ -97591,7 +97868,7 @@
 
 
 /***/ },
-/* 976 */
+/* 978 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var require;/* WEBPACK VAR INJECTION */(function(process, global) {/*!
@@ -97726,7 +98003,7 @@
 	function attemptVertx() {
 	  try {
 	    var r = require;
-	    var vertx = __webpack_require__(977);
+	    var vertx = __webpack_require__(979);
 	    vertxNext = vertx.runOnLoop || vertx.runOnContext;
 	    return useVertxTimer();
 	  } catch (e) {
@@ -98751,11 +99028,11 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(55), (function() { return this; }())))
 
 /***/ },
-/* 977 */
+/* 979 */
 /***/ function(module, exports) {
 
 	/* (ignored) */
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=bundle-devtools-4bcfaf8250ebb285827f.js.map
+//# sourceMappingURL=bundle-devtools-9d0e1f9a5f1659be7524.js.map
