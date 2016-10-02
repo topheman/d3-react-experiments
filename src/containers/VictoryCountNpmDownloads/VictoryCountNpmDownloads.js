@@ -3,8 +3,13 @@ import React from 'react';
 import navigator from '../../components/Navigator/injectNavigator';
 import ViewSourceOnGithub from '../../components/ViewSourceOnGithub/ViewSourceOnGithub';
 import { Link } from 'react-router';
+import { injectWindowInfos } from '../../components/WindowInfos';
 
 import { bulkLoadNpmLastDownloadsInMonth } from '../../resources/loaders';
+import CountNpmDownloadsChart from '../../components/victory/CountNpmDownloadsChart/CountNpmDownloadsChart';
+
+const ratio = 0.7;
+const breakpoint = 650;
 
 const npmPackagesConfigs = {
   'd3': {
@@ -53,6 +58,12 @@ const processData = (npmPackagesConfig, data) => {
 };
 
 class VictoryCountNpmDownloads extends React.Component {
+
+  static propTypes = {
+    // injected by injectWindowInfos
+    windowWidth: React.PropTypes.number,
+    windowHeight: React.PropTypes.number
+  }
 
   constructor() {
     super();
@@ -107,8 +118,17 @@ class VictoryCountNpmDownloads extends React.Component {
   }
 
   render() {
+    const { windowWidth } = this.props;
     const { ready, error, data, npmPackagesConfigsSelector } = this.state;
-    console.log('data', data, 'processedData', data ? processData(npmPackagesConfigs[npmPackagesConfigsSelector], data) : null);
+    const processedData = data ? processData(npmPackagesConfigs[npmPackagesConfigsSelector], data) : null;
+    console.log('>processedData', processedData);
+    let period = null;
+    if (processedData) {
+      period = {
+        from: (new Date(processedData[0].mainPackage.data.start)).toDateString(),
+        to: (new Date(processedData[0].mainPackage.data.end)).toDateString()
+      };
+    }
     const links = (
       <ul className="list-unstyled list-inline" style={{textAlign: 'center', marginTop: '10px'}}>
         {Object.keys(npmPackagesConfigs).map((configKey, index) => (
@@ -128,12 +148,25 @@ class VictoryCountNpmDownloads extends React.Component {
           {' '}An error occured while loading data - Click here to retry
         </div>}
         <div className="panel panel-default">
-          <div className="panel-heading">Npm downloads</div>
+          <div className="panel-heading">Npm downloads{period ? <span> - from <strong>{period.from}</strong> to <strong>{period.to}</strong></span> : null}</div>
           <ViewSourceOnGithub path="/src/components/victory/MixedAxisMultiLine/MixedAxisMultiLine.js"/>
           {links}
           {!ready && !error && <p className="text-center">Loading ...</p>}
           {ready && !error && <div className="panel-body text-center">
-            <strong>Here goes the chart ...</strong>
+            {processedData && processedData.map((dataForIndividualChart, key) => {
+              return (
+                <CountNpmDownloadsChart
+                  key={key}
+                  style={{
+                    display: 'inline-block'
+                  }}
+                  width={windowWidth > breakpoint ? breakpoint : windowWidth - 70}
+                  height={windowWidth > breakpoint ? breakpoint * ratio : (windowWidth - 70) * ratio}
+                  main={dataForIndividualChart.mainPackage}
+                  dependencies={dataForIndividualChart.dependentPackages}
+                />
+              );
+            })}
           </div>}
           {links}
         </div>
@@ -144,4 +177,4 @@ class VictoryCountNpmDownloads extends React.Component {
 
 }
 
-export default navigator()(VictoryCountNpmDownloads);
+export default navigator()(injectWindowInfos()(VictoryCountNpmDownloads));
