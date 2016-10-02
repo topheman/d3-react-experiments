@@ -33,6 +33,7 @@ const Home = () => {
       <ul>
         <li><Link to="/victory/world-population-by-age-range">Victory / World population by age range</Link>: Bar/Pie Chart</li>
         <li><Link to="/victory/transition-multi-line-chart">Victory / TransitionMultiLineChart</Link>: Same chart as above in d3, ported to Victory</li>
+        <li><Link to="/victory/count-npm-downloads">Victory / MixedAxisMultiLine</Link>: visualisation of some data from the npm registry</li>
         <li><Link to="/d3act/bar-chart">d3act / Most popular technologies</Link>: Bar Chart</li>
         <li><Link to="/d3act/mixed-chart">d3act / Desktop Operating System</Link>: Bar/Pie Chart</li>
       </ul>

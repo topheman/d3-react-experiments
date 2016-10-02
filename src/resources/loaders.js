@@ -1,4 +1,4 @@
-import { csv } from 'd3-request';
+import { csv, json } from 'd3-request';
 
 const resources = {};
 
@@ -22,4 +22,44 @@ export const asyncLoadLifeExpectancy = () => {
       return res(data);
     });
   });
+};
+
+/**
+ * Retrieve the download infos of the last month for one package
+ * Call to the npm registry API
+ * @param packageName
+ * @returns {Promise}
+ */
+const asyncLoadNpmLastDownloadsInMonth = (packageName) => {
+  const baseUrl = 'https://api.npmjs.org/downloads/range/last-month/';
+  const url = `${baseUrl}${['*', ''].indexOf(packageName) > -1 ? '' : packageName}`;
+  if (resources[url]) {
+    return Promise.resolve(resources[url]);
+  }
+  return new Promise((res, rej) => {
+    json(url, (error, data) => {
+      if (error) {
+        return rej(error);
+      }
+      resources[url] = data;
+      return res(data);
+    });
+  });
+};
+
+/**
+ * Retrieve the download infos of the last month for multiple packages in parallel
+ * Call to the npm registry API
+ * @param packageNames
+ * @returns {*|Promise<U>|Thenable<U>|Promise.<*>}
+ */
+export const bulkLoadNpmLastDownloadsInMonth = (packageNames = []) => {
+  const promises = packageNames
+    .filter((packageName, index, arr) => arr.indexOf(packageName) === index)
+    .map(asyncLoadNpmLastDownloadsInMonth);
+  return Promise.all(promises)
+    .then(results => results.reduce((acc, cur, index) => {
+      acc[packageNames[index]] = cur;
+      return acc;
+    }, {}));
 };
