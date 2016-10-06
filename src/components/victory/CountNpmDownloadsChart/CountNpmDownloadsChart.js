@@ -80,6 +80,14 @@ const CountNpmDownloadsChart = (props) => {
   const mainColor = colorHash.hex(processedData.main.line.label.name);
   console.log('mainColor', mainColor);
 
+  const tickModulo = width > chartBreakpoint ? 5 : 10;
+  const hAxisTicks = processedData.main.line.data.map((d, index, arr) => {
+    const value = new Date(d.x);
+    // trick: attach label to the actual value of the tick - thanks to JavaScript ;)
+    value.label = (index === 0 || (arr.length === (index + 1)) || index % tickModulo === 0) ? `${value.getMonth() + 1}/${value.getDate()}` : '';
+    return value;
+  });
+
   const viewBox = {
     minX: 0,
     minY: 0,
@@ -143,6 +151,24 @@ const CountNpmDownloadsChart = (props) => {
                       fill: mainColor
                     }
                   }}
+                />
+                <VictoryAxis
+                  scale="time"
+                  style={{
+                    ticks: {
+                      ...tickStyle.ticks,
+                      size: (tick) => tick.label ? 10 : 5,
+                    },
+                    tickLabels: {
+                      ...tickStyle.tickLabels
+                    }
+                  }}
+                  tickValues={hAxisTicks}
+                  tickFormat={
+                    (x) => {
+                      return x.label;
+                    }
+                  }
                 />
               </g>
             </svg>
