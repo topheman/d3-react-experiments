@@ -88,6 +88,9 @@ const CountNpmDownloadsChart = (props) => {
     return value;
   });
 
+  const minX = processedData.main.minX;
+  const maxX = processedData.main.maxX;
+
   const viewBox = {
     minX: 0,
     minY: 0,
@@ -131,7 +134,7 @@ const CountNpmDownloadsChart = (props) => {
               <g transform="translate(0,0)">
                 <VictoryAxis
                   orientation="left"
-                  domain={[0, processedData.dependencies.maxY]}
+                  domain={[0, processedData.dependencies.maxY / dependenciesScale]}
                   style={tickStyle}
                 />
                 <VictoryAxis
@@ -173,7 +176,7 @@ const CountNpmDownloadsChart = (props) => {
                 <VictoryLine
                   data={processedData.main.line.data}
                   domain={{
-                    x: [processedData.main.minX, processedData.main.maxX],
+                    x: [minX, maxX],
                     y: [0, processedData.main.maxY]
                   }}
                   style={{
@@ -185,6 +188,21 @@ const CountNpmDownloadsChart = (props) => {
                     }
                   }}
                 />
+                {processedData.dependencies.lines.map((line, index) => (
+                  <VictoryLine
+                    key={index}
+                    data={line.data}
+                    domain={{
+                      x: [minX, maxX],
+                      y: [0, processedData.dependencies.maxY / dependenciesScale]
+                    }}
+                    style={{
+                      data: {
+                        stroke: colorHash.hex(line.label.name)
+                      }
+                    }}
+                  />
+                ))}
               </g>
             </svg>
           </div>
