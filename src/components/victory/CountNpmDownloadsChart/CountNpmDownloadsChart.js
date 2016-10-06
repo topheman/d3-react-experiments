@@ -2,7 +2,7 @@ import React from 'react';
 
 import ColorHash from 'color-hash';
 
-import { VictoryAxis } from 'victory';
+import { VictoryAxis, VictoryLine } from 'victory';
 
 const colorHash = new ColorHash();
 
@@ -169,6 +169,21 @@ const CountNpmDownloadsChart = (props) => {
                       return x.label;
                     }
                   }
+                />
+                <VictoryLine
+                  data={processedData.main.line.data}
+                  domain={{
+                    x: [processedData.main.minX, processedData.main.maxX],
+                    y: [0, processedData.main.maxY]
+                  }}
+                  style={{
+                    data: {
+                      strokeLinecap: 'round',
+                      stroke: mainColor,
+                      strokeDasharray: '1, 7',
+                      strokeWidth: '3px'
+                    }
+                  }}
                 />
               </g>
             </svg>
