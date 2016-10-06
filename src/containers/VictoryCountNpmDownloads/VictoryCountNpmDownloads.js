@@ -8,8 +8,7 @@ import { injectWindowInfos } from '../../components/WindowInfos';
 import { bulkLoadNpmLastDownloadsInMonth } from '../../resources/loaders';
 import CountNpmDownloadsChart from '../../components/victory/CountNpmDownloadsChart/CountNpmDownloadsChart';
 
-const ratio = 0.7;
-const breakpoint = 650;
+const windowBreakpoint = 750;
 
 const npmPackagesConfigs = {
   'd3': {
@@ -160,8 +159,7 @@ class VictoryCountNpmDownloads extends React.Component {
                   style={{
                     display: 'inline-block'
                   }}
-                  width={windowWidth > breakpoint ? breakpoint : windowWidth - 70}
-                  height={windowWidth > breakpoint ? breakpoint * ratio : (windowWidth - 70) * ratio}
+                  width={windowWidth > windowBreakpoint ? (windowBreakpoint - 90) : windowWidth - 90}
                   main={dataForIndividualChart.mainPackage}
                   dependencies={dataForIndividualChart.dependentPackages}
                 />
