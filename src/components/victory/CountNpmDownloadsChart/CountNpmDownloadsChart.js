@@ -145,6 +145,47 @@ class CountNpmDownloadsChart extends React.Component {
       }}>
         <div className="panel panel-default">
           <div className="panel-body">
+            <p style={{color: mainColor}}>
+              <span style={{
+                textTransform: this.state.activeLines.indexOf(processedData.main.line.label.name) > -1 ? 'uppercase' : 'none',
+                textDecoration: this.state.activeLines.indexOf(processedData.main.line.label.name) > -1 ? 'underline' : 'none'
+              }} onMouseOver={() => {
+                this.setState({
+                  ...this.state,
+                  activeLines: [processedData.main.line.label.name]
+                });
+              }} onMouseOut={() => {
+                this.setState({
+                  ...this.state,
+                  activeLines: []
+                });
+              }}>
+                <span className="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span> {processedData.main.line.label.name}
+              </span>
+            </p>
+            <ul className="list-unstyled list-inline">
+              {processedData.dependencies.lines.map((line, index) => (
+                <li key={index} style={{
+                  color: colorHash.hex(line.label.name),
+                  textTransform: this.state.activeLines.indexOf(line.label.name) > -1 ? 'uppercase' : 'none',
+                  textDecoration: this.state.activeLines.indexOf(line.label.name) > -1 ? 'underline' : 'none'
+                }}
+                onMouseOver={() => {
+                  this.setState({
+                    ...this.state,
+                    activeLines: [line.label.name]
+                  });
+                }}
+                onMouseOut={() => {
+                  this.setState({
+                    ...this.state,
+                    activeLines: []
+                  });
+                }}>
+                  <span className="glyphicon glyphicon-minus" aria-hidden="true"></span> {line.label.name}
+                </li>
+              ))}
+            </ul>
             <div style={{
               height: '100%',
               minHeight: '100px',
@@ -267,39 +308,6 @@ class CountNpmDownloadsChart extends React.Component {
                 </g>
               </svg>
             </div>
-            <p style={{color: mainColor}}>
-              <span onMouseOver={() => {
-                this.setState({
-                  ...this.state,
-                  activeLines: [processedData.main.line.label.name]
-                });
-              }} onMouseOut={() => {
-                this.setState({
-                  ...this.state,
-                  activeLines: []
-                });
-              }}>
-                <span className="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span> {processedData.main.line.label.name}
-              </span>
-            </p>
-            <ul className="list-unstyled list-inline">
-              {processedData.dependencies.lines.map((line, index) => (
-                <li key={index} style={{color: colorHash.hex(line.label.name)}} onMouseOver={() => {
-                  this.setState({
-                    ...this.state,
-                    activeLines: [line.label.name]
-                  });
-                }}
-                onMouseOut={() => {
-                  this.setState({
-                    ...this.state,
-                    activeLines: []
-                  });
-                }}>
-                  <span className="glyphicon glyphicon-minus" aria-hidden="true"></span> {line.label.name}
-                </li>
-              ))}
-            </ul>
           </div>
         </div>
       </div>
