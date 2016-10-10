@@ -4,6 +4,7 @@ import navigator from '../../components/Navigator/injectNavigator';
 import ViewSourceOnGithub from '../../components/ViewSourceOnGithub/ViewSourceOnGithub';
 import { Link } from 'react-router';
 import { injectWindowInfos } from '../../components/WindowInfos';
+import { Select } from '../../components/Select/Select';
 
 import { bulkLoadNpmLastDownloadsInMonth } from '../../resources/loaders';
 import CountNpmDownloadsChart from '../../components/victory/CountNpmDownloadsChart/CountNpmDownloadsChart';
@@ -11,7 +12,7 @@ import CountNpmDownloadsChart from '../../components/victory/CountNpmDownloadsCh
 const windowBreakpoint = 750;
 
 const npmPackagesConfigs = {
-  'd3': {
+  'd3 / react': {
     '*': ['d3'],
     'd3': ['victory', 'react-d3']
   },
@@ -69,7 +70,7 @@ class VictoryCountNpmDownloads extends React.Component {
     this.state = {
       ready: false,
       error: false,
-      npmPackagesConfigsSelector: 'd3'
+      npmPackagesConfigsSelector: Object.keys(npmPackagesConfigs)[0]
     };
   }
 
@@ -128,16 +129,20 @@ class VictoryCountNpmDownloads extends React.Component {
         to: (new Date(processedData[0].mainPackage.data.end)).toDateString()
       };
     }
-    const links = (
-      <ul className="list-unstyled list-inline" style={{textAlign: 'center', marginTop: '10px'}}>
-        {Object.keys(npmPackagesConfigs).map((configKey, index) => (
-          <li key={index}>
-            <button onClick={() => this.onChangeNpmPackagesConfigsSelector(configKey)} className={`btn btn-default${npmPackagesConfigsSelector === configKey ? ' active' : ''}`}>
-              {configKey}
-            </button>
-          </li>
-        ))}
-      </ul>
+    const choices = (
+      <div className="panel-body text-center">
+        <Select
+          colorLabel={false}
+          clearable={false}
+          autoBlur
+          value={npmPackagesConfigsSelector}
+          options={Object.keys(npmPackagesConfigs).map((configKey) => ({
+            value: configKey,
+            label: configKey
+          }))}
+          onChange={({ value }) => this.onChangeNpmPackagesConfigsSelector(value)}
+        />
+      </div>
     );
     return (
       <div>
@@ -148,8 +153,8 @@ class VictoryCountNpmDownloads extends React.Component {
         </div>}
         <div className="panel panel-default">
           <div className="panel-heading">Npm downloads{period ? <span> - from <strong>{period.from}</strong> to <strong>{period.to}</strong></span> : null}</div>
-          <ViewSourceOnGithub path="/src/components/victory/MixedAxisMultiLine/MixedAxisMultiLine.js"/>
-          {links}
+          <ViewSourceOnGithub path="/src/components/victory/CountNpmDownloadsChart/CountNpmDownloadsChart.js"/>
+          {choices}
           {!ready && !error && <p className="text-center">Loading ...</p>}
           {ready && !error && <div className="panel-body text-center">
             {processedData && processedData.map((dataForIndividualChart, key) => {
@@ -166,7 +171,7 @@ class VictoryCountNpmDownloads extends React.Component {
               );
             })}
           </div>}
-          {links}
+          {choices}
         </div>
         <p>Data comes from <a href="https://docs.npmjs.com/misc/registry" title="npm-registry">npm-registry</a> - <a href="https://chbrown.github.io/docs/npm" title="registry docs">see chbrown docs</a></p>
       </div>
