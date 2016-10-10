@@ -8,6 +8,8 @@ const colorHash = new ColorHash();
 
 const chartBreakpoint = 500; // to change fonts and ticks number at some point
 
+const inactiveOpacity = 0.3;
+
 const extractViewBox = (viewBox) => `${viewBox.minX} ${viewBox.minY} ${viewBox.width} ${viewBox.height}`;
 
 const processMain = (main) => {
@@ -205,7 +207,20 @@ class CountNpmDownloadsChart extends React.Component {
                   <VictoryAxis
                     orientation="left"
                     domain={[0, processedData.dependencies.maxY / dependenciesScale]}
-                    style={tickStyle}
+                    style={{
+                      axis: {
+                        stroke: mainColor,
+                        strokeOpacity: this.state.activeLines.length === 0 || this.state.activeLines.length > 0 && processedData.dependencies.lines.map(d => d.label.name).includes(...this.state.activeLines) ? 1 : inactiveOpacity
+                      },
+                      ticks: {
+                        ...tickStyle.ticks,
+                        strokeOpacity: this.state.activeLines.length === 0 || this.state.activeLines.length > 0 && processedData.dependencies.lines.map(d => d.label.name).includes(...this.state.activeLines) ? 1 : inactiveOpacity
+                      },
+                      tickLabels: {
+                        ...tickStyle.tickLabels,
+                        fillOpacity: this.state.activeLines.length === 0 || this.state.activeLines.length > 0 && processedData.dependencies.lines.map(d => d.label.name).includes(...this.state.activeLines) ? 1 : inactiveOpacity
+                      }
+                    }}
                   />
                   <VictoryAxis
                     dependentAxis
@@ -213,15 +228,18 @@ class CountNpmDownloadsChart extends React.Component {
                     domain={[0, processedData.main.maxY]}
                     style={{
                       axis: {
-                        stroke: mainColor
+                        stroke: mainColor,
+                        strokeOpacity: this.state.activeLines.length > 0 && this.state.activeLines.indexOf(processedData.main.line.label.name) === -1 ? inactiveOpacity : 1
                       },
                       ticks: {
                         ...tickStyle.ticks,
-                        stroke: mainColor
+                        stroke: mainColor,
+                        strokeOpacity: this.state.activeLines.length > 0 && this.state.activeLines.indexOf(processedData.main.line.label.name) === -1 ? inactiveOpacity : 1
                       },
                       tickLabels: {
                         ...tickStyle.tickLabels,
-                        fill: mainColor
+                        fill: mainColor,
+                        fillOpacity: this.state.activeLines.length > 0 && this.state.activeLines.indexOf(processedData.main.line.label.name) === -1 ? inactiveOpacity : 1
                       }
                     }}
                   />
@@ -255,7 +273,7 @@ class CountNpmDownloadsChart extends React.Component {
                         stroke: mainColor,
                         strokeDasharray: '1, 7',
                         strokeWidth: '3px',
-                        strokeOpacity: this.state.activeLines.length > 0 && this.state.activeLines.indexOf(processedData.main.line.label.name) === -1 ? 0.3 : 1
+                        strokeOpacity: this.state.activeLines.length > 0 && this.state.activeLines.indexOf(processedData.main.line.label.name) === -1 ? inactiveOpacity : 1
                       }
                     }}
                     events={[
@@ -285,7 +303,7 @@ class CountNpmDownloadsChart extends React.Component {
                       style={{
                         data: {
                           stroke: colorHash.hex(line.label.name),
-                          strokeOpacity: this.state.activeLines.length > 0 && this.state.activeLines.indexOf(line.label.name) === -1 ? 0.3 : 1
+                          strokeOpacity: this.state.activeLines.length > 0 && this.state.activeLines.indexOf(line.label.name) === -1 ? inactiveOpacity : 1
                         }
                       }}
                       events={[
