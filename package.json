@@ -70,6 +70,7 @@
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
+    "array-includes": "^3.0.2",
     "bootstrap-sass": "^3.3.5",
     "color-hash": "^1.0.3",
     "d3-array": "^1.0.1",
