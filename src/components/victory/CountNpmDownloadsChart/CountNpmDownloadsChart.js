@@ -12,6 +12,47 @@ const inactiveOpacity = 0.3;
 
 const extractViewBox = (viewBox) => `${viewBox.minX} ${viewBox.minY} ${viewBox.width} ${viewBox.height}`;
 
+/**
+ * This function will return the correct handlers whether you're on touch or not
+ * The handlers are meant to be used in a component context (this)
+ * @param labelName
+ * @returns {*}
+ */
+const compileUserEvents = (context, labelName) => {
+  // check can be more advanced
+  if ('ontouchstart' in window) {
+    return {
+      onClick: () => {
+        // allow toggle on touch devices
+        if (context.state.activeLines.indexOf(labelName) > -1) {
+          return context.setState({
+            ...context.state,
+            activeLines: []
+          });
+        }
+        return context.setState({
+          ...context.state,
+          activeLines: [labelName]
+        });
+      }
+    };
+  }
+  return {
+    onMouseOver: () => {
+      context.setState({
+        ...context.state,
+        activeLines: [labelName]
+      });
+    },
+    onMouseOut: () => {
+      context.setState({
+        ...context.state,
+        activeLines: []
+      });
+    }
+  };
+};
+
 const processMain = (main) => {
   const minX = new Date(main.data.start);
   const maxX = new Date(main.data.end);
@@ -148,42 +189,23 @@ class CountNpmDownloadsChart extends React.Component {
         <div className="panel panel-default">
           <div className="panel-body">
             <p style={{color: mainColor}}>
-              <span style={{
+              <span title={processedData.main.line.label.name} style={{
+                cursor: 'pointer',
                 textTransform: this.state.activeLines.indexOf(processedData.main.line.label.name) > -1 ? 'uppercase' : 'none',
                 textDecoration: this.state.activeLines.indexOf(processedData.main.line.label.name) > -1 ? 'underline' : 'none'
-              }} onMouseOver={() => {
-                this.setState({
-                  ...this.state,
-                  activeLines: [processedData.main.line.label.name]
-                });
-              }} onMouseOut={() => {
-                this.setState({
-                  ...this.state,
-                  activeLines: []
-                });
-              }}>
+              }} {...compileUserEvents(this, processedData.main.line.label.name)}>
                 <span className="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span> {processedData.main.line.label.name}
               </span>
             </p>
             <ul className="list-unstyled list-inline">
               {processedData.dependencies.lines.map((line, index) => (
-                <li key={index} style={{
+                <li key={index} title={line.label.name} style={{
+                  cursor: 'pointer',
                   color: colorHash.hex(line.label.name),
                   textTransform: this.state.activeLines.indexOf(line.label.name) > -1 ? 'uppercase' : 'none',
                   textDecoration: this.state.activeLines.indexOf(line.label.name) > -1 ? 'underline' : 'none'
                 }}
-                onMouseOver={() => {
-                  this.setState({
-                    ...this.state,
-                    activeLines: [line.label.name]
-                  });
-                }}
-                onMouseOut={() => {
-                  this.setState({
-                    ...this.state,
-                    activeLines: []
-                  });
-                }}>
+                {...compileUserEvents(this, line.label.name)}>
                   <span className="glyphicon glyphicon-minus" aria-hidden="true"></span> {line.label.name}
                 </li>
               ))}
@@ -278,18 +300,7 @@ class CountNpmDownloadsChart extends React.Component {
                     }}
                     events={[
                     { target: 'data', eventHandlers: {
-                      onMouseOver: () => {
-                        this.setState({
-                          ...this.state,
-                          activeLines: [processedData.main.line.label.name]
-                        });
-                      },
-                      onMouseOut: () => {
-                        this.setState({
-                          ...this.state,
-                          activeLines: []
-                        });
-                      }
+                      ...compileUserEvents(this, processedData.main.line.label.name)
                     } } ]}
                   />
                   {processedData.dependencies.lines.map((line, index) => (
@@ -308,18 +319,7 @@ class CountNpmDownloadsChart extends React.Component {
                       }}
                       events={[
                       { target: 'data', eventHandlers: {
-                        onMouseOver: () => {
-                          this.setState({
-                            ...this.state,
-                            activeLines: [line.label.name]
-                          });
-                        },
-                        onMouseOut: () => {
-                          this.setState({
-                            ...this.state,
-                            activeLines: []
-                          });
-                        }
+                        ...compileUserEvents(this, line.label.name)
                       } } ]}
                     />
                   ))}
