@@ -18,6 +18,9 @@ const npmPackagesConfigs = {
   },
   'Task runners': {
     '*': ['gulp', 'grunt']
+  },
+  'Test *': {
+    '*': ['karma', 'mocha', 'chai', 'jasmine']
   }
 };
 
@@ -130,19 +133,17 @@ class VictoryCountNpmDownloads extends React.Component {
       };
     }
     const choices = (
-      <div className="panel-body text-center">
-        <Select
-          colorLabel={false}
-          clearable={false}
-          autoBlur
-          value={npmPackagesConfigsSelector}
-          options={Object.keys(npmPackagesConfigs).map((configKey) => ({
-            value: configKey,
-            label: configKey
-          }))}
-          onChange={({ value }) => this.onChangeNpmPackagesConfigsSelector(value)}
-        />
-      </div>
+      <Select
+        colorLabel={false}
+        clearable={false}
+        autoBlur
+        value={npmPackagesConfigsSelector}
+        options={Object.keys(npmPackagesConfigs).map((configKey) => ({
+          value: configKey,
+          label: configKey
+        }))}
+        onChange={({ value }) => this.onChangeNpmPackagesConfigsSelector(value)}
+      />
     );
     return (
       <div>
@@ -154,9 +155,12 @@ class VictoryCountNpmDownloads extends React.Component {
         <div className="panel panel-default">
           <div className="panel-heading">Npm downloads{period ? <span> - from <strong>{period.from}</strong> to <strong>{period.to}</strong></span> : null}</div>
           <ViewSourceOnGithub path="/src/components/victory/CountNpmDownloadsChart/CountNpmDownloadsChart.js"/>
-          {choices}
+          <div className="panel-body text-center">
+            <p>Pick a category to compare package downloads from last month. Data is comming from the npm registry.</p>
+            {choices}
+          </div>
           {!ready && !error && <p className="text-center">Loading ...</p>}
-          {ready && !error && <div className="panel-body text-center">
+          {ready && !error && <div className="panel-body text-center" style={{ paddingBottom: '0px' }}>
             {processedData && processedData.map((dataForIndividualChart, key) => {
               return (
                 <CountNpmDownloadsChart
@@ -171,7 +175,23 @@ class VictoryCountNpmDownloads extends React.Component {
               );
             })}
           </div>}
-          {choices}
+          <div className="panel-body text-center" style={{ paddingTop: '0px' }}>
+            {choices}
+            <div className="text-left panel-subtext" style={{ paddingTop: '10px' }}>
+              <p>This chart is a React Component based on <code>VictoryAxis</code> and <code>VictoryLine</code> from <a href="https://formidable.com/open-source/victory/" title="Victory home page">Victory</a>, a collection of composable React components for building interactive data visualizations.</p>
+              <p>It is an example of some <strong>more advanced charts</strong> you can produce with that library by <strong>composing its components and benefit from React's state management and JSX declarative syntax</strong>.</p>
+              <ul>
+                <li>It's responsive</li>
+                <li>It's interactive:<ul>
+                  <li>Desktop: hover lines or legends to highlight relevent data</li>
+                  <li>Touch devices: touch lines or legends to highlight relevent data</li>
+                </ul></li>
+                <li>Data is retrieved from the npm registry's API</li>
+                <li>A simple config will create all the charts</li>
+              </ul>
+              <p>See how the downloads drop on weekends ? ;)</p>
+            </div>
+          </div>
         </div>
         <p>Data comes from <a href="https://docs.npmjs.com/misc/registry" title="npm-registry">npm-registry</a> - <a href="https://chbrown.github.io/docs/npm" title="registry docs">see chbrown docs</a></p>
       </div>

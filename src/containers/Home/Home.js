@@ -22,7 +22,6 @@ const Home = () => {
       <p className="text-center"><Link to={defaultLinks[0]} className="btn btn-default btn-primary btn-lg">Start browsing</Link></p>
       <p><a href="http://dev.topheman.com/d3-react-chart-components/" title="Plain d3 code and React working together">Read the blog post about d3 and React working together</a></p>
       <p><strong>Some examples show the same chart, but were created different ways (checkout the sources).</strong></p>
-      <p className="lead"><strong>NEW in v2</strong> Examples with home-made components based on <strong>d3 v4</strong>:</p>
       <p>Examples directly based on d3:</p>
       <ul>
         <li><Link to="/d3/transition-multi-line-chart">d3 / TransitionMultiLineChart</Link>: POC of integration of plain d3 code, hooking transitions with React lifecycle</li>
@@ -33,7 +32,7 @@ const Home = () => {
       <ul>
         <li><Link to="/victory/world-population-by-age-range">Victory / World population by age range</Link>: Bar/Pie Chart</li>
         <li><Link to="/victory/transition-multi-line-chart">Victory / TransitionMultiLineChart</Link>: Same chart as above in d3, ported to Victory</li>
-        <li><Link to="/victory/count-npm-downloads">Victory / MixedAxisMultiLine</Link>: visualisation of some data from the npm registry</li>
+        <li><Link to="/victory/count-npm-downloads">Victory / DualAxisMultiLine</Link>: Visualisation of some data from the npm registry</li>
         <li><Link to="/d3act/bar-chart">d3act / Most popular technologies</Link>: Bar Chart</li>
         <li><Link to="/d3act/mixed-chart">d3act / Desktop Operating System</Link>: Bar/Pie Chart</li>
       </ul>
