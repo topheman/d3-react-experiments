@@ -4463,6 +4463,12 @@ react-router@^2.4.1:
     loose-envify "^1.2.0"
     warning "^3.0.0"
 
+react-scroll:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/react-scroll/-/react-scroll-1.4.0.tgz#05930e8b9965a31fcfc7b0a66ac6b5f5301e08c0"
+  dependencies:
+    object-assign "^4.0.1"
+
 react-select@^1.0.0-rc.1:
   version "1.0.0-rc.2"
   resolved "https://registry.yarnpkg.com/react-select/-/react-select-1.0.0-rc.2.tgz#9fc11b149a3dc1ac831289d21b40a59742f82f8d"
