@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Select } from '../Select/Select';
+import { ColoredMultiSelect } from '../Select';
 import ViewSourceOnGithub from '../ViewSourceOnGithub/ViewSourceOnGithub';
 
 export default class CountriesChartPanel extends React.Component {
@@ -54,8 +54,7 @@ export default class CountriesChartPanel extends React.Component {
         <ViewSourceOnGithub path={sourcesOnGithub}/>
         <div className="panel-body text-center">
           <p>Add / Remove any country from the list.</p>
-          <Select
-            multi
+          <ColoredMultiSelect
             value={selectedCountries}
             options={countryList.map(country => ({value: country, label: country}))}
             onChange={(currentCountries) => {

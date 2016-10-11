@@ -4,7 +4,7 @@ import navigator from '../../components/Navigator/injectNavigator';
 import ViewSourceOnGithub from '../../components/ViewSourceOnGithub/ViewSourceOnGithub';
 import { Link } from 'react-router';
 import { injectWindowInfos } from '../../components/WindowInfos';
-import { Select } from '../../components/Select/Select';
+import { Select } from '../../components/Select';
 
 import { bulkLoadNpmLastDownloadsInMonth } from '../../resources/loaders';
 import CountNpmDownloadsChart from '../../components/victory/CountNpmDownloadsChart/CountNpmDownloadsChart';
@@ -134,7 +134,6 @@ class VictoryCountNpmDownloads extends React.Component {
     }
     const choices = (
       <Select
-        colorLabel={false}
         clearable={false}
         autoBlur
         value={npmPackagesConfigsSelector}

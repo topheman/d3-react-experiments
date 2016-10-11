@@ -63,6 +63,7 @@ $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 
 @import "../components/d3act/MixedChartPanel/MixedChartPanel.scss";
 @import "../components/ViewSourceOnGithub/viewSourceOnGithub.css";
+@import "../components/Select/style/ColoredMultiSelect.scss";
 
 .summary a.active {
   font-weight: bold;

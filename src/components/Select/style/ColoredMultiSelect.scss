@@ -1,0 +1,9 @@
+.Select.color-label .Select-value {
+  position: relative;
+  & .Select-value-icon {
+    position: absolute;
+    background: transparent;
+    color: transparent;
+    width: 100%;
+  }
+}
