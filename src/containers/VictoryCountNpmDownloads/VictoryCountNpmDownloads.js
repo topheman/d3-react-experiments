@@ -147,7 +147,7 @@ class VictoryCountNpmDownloads extends React.Component {
     return (
       <div>
         <h2><Link to="/victory">Victory</Link> / DualAxisMultiLine</h2>
-        {!ready && error && <div className="alert alert-danger" onClick={this.loadData} style={{cursor: 'pointer'}}>
+        {!ready && error && <div className="alert alert-danger" onClick={() => this.loadData(false)} style={{cursor: 'pointer'}}>
           <span className="glyphicon glyphicon-exclamation-sign"></span>
           {' '}An error occured while loading data - Click here to retry
         </div>}
