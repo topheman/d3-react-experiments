@@ -12,47 +12,6 @@ const inactiveOpacity = 0.3;
 
 const extractViewBox = (viewBox) => `${viewBox.minX} ${viewBox.minY} ${viewBox.width} ${viewBox.height}`;
 
-/**
- * This function will return the correct handlers whether you're on touch or not
- * The handlers are meant to be used in a component context (this)
- * @param labelName
- * @returns {*}
- */
-const compileUserEvents = (context, labelName) => {
-  // check can be more advanced
-  if ('ontouchstart' in window) {
-    return {
-      onClick: () => {
-        // allow toggle on touch devices
-        if (context.state.activeLines.indexOf(labelName) > -1) {
-          return context.setState({
-            ...context.state,
-            activeLines: []
-          });
-        }
-        return context.setState({
-          ...context.state,
-          activeLines: [labelName]
-        });
-      }
-    };
-  }
-  return {
-    onMouseOver: () => {
-      context.setState({
-        ...context.state,
-        activeLines: [labelName]
-      });
-    },
-    onMouseOut: () => {
-      context.setState({
-        ...context.state,
-        activeLines: []
-      });
-    }
-  };
-};
-
 const processMain = (main) => {
   const minX = new Date(main.data.start);
   const maxX = new Date(main.data.end);
@@ -142,6 +101,47 @@ class CountNpmDownloadsChart extends React.Component {
     };
   }
 
+  /**
+   * This function will return the correct handlers whether you're on touch or not
+   * The handlers are meant to be used in a component context (this)
+   * @param labelName
+   * @returns {*}
+   */
+  getUserEvents(labelName) {
+    // check can be more advanced
+    if ('ontouchstart' in window) {
+      return {
+        onClick: () => {
+          // allow toggle on touch devices
+          if (this.state.activeLines.indexOf(labelName) > -1) {
+            return this.setState({
+              ...this.state,
+              activeLines: []
+            });
+          }
+          return this.setState({
+            ...this.state,
+            activeLines: [labelName]
+          });
+        }
+      };
+    }
+    return {
+      onMouseOver: () => {
+        this.setState({
+          ...this.state,
+          activeLines: [labelName]
+        });
+      },
+      onMouseOut: () => {
+        this.setState({
+          ...this.state,
+          activeLines: []
+        });
+      }
+    };
+  }
+
   render() {
     const {width: widthFromProps, main, dependencies, dependenciesScale, style} = this.props;
     const width = parseInt(widthFromProps, 10);
@@ -193,7 +193,7 @@ class CountNpmDownloadsChart extends React.Component {
                 cursor: 'pointer',
                 textTransform: this.state.activeLines.indexOf(processedData.main.line.label.name) > -1 ? 'uppercase' : 'none',
                 textDecoration: this.state.activeLines.indexOf(processedData.main.line.label.name) > -1 ? 'underline' : 'none'
-              }} {...compileUserEvents(this, processedData.main.line.label.name)}>
+              }} {...this.getUserEvents(processedData.main.line.label.name)}>
                 <span className="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span> {processedData.main.line.label.name}
               </span>
             </p>
@@ -205,7 +205,7 @@ class CountNpmDownloadsChart extends React.Component {
                   textTransform: this.state.activeLines.indexOf(line.label.name) > -1 ? 'uppercase' : 'none',
                   textDecoration: this.state.activeLines.indexOf(line.label.name) > -1 ? 'underline' : 'none'
                 }}
-                {...compileUserEvents(this, line.label.name)}>
+                {...this.getUserEvents(line.label.name)}>
                   <span className="glyphicon glyphicon-minus" aria-hidden="true"></span> {line.label.name}
                 </li>
               ))}
@@ -300,7 +300,7 @@ class CountNpmDownloadsChart extends React.Component {
                     }}
                     events={[
                     { target: 'data', eventHandlers: {
-                      ...compileUserEvents(this, processedData.main.line.label.name)
+                      ...this.getUserEvents(processedData.main.line.label.name)
                     } } ]}
                   />
                   {processedData.dependencies.lines.map((line, index) => (
@@ -319,7 +319,7 @@ class CountNpmDownloadsChart extends React.Component {
                       }}
                       events={[
                       { target: 'data', eventHandlers: {
-                        ...compileUserEvents(this, line.label.name)
+                        ...this.getUserEvents(line.label.name)
                       } } ]}
                     />
                   ))}
