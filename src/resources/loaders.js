@@ -27,21 +27,34 @@ export const asyncLoadLifeExpectancy = () => {
 /**
  * Retrieve the download infos of the last month for one package
  * Call to the npm registry API
+ * Results are cached in localStorage
  * @param packageName
  * @returns {Promise}
  */
 const asyncLoadNpmLastDownloadsInMonth = (packageName) => {
+  const currentDate = (new Date()).toISOString().substr(0, 10);
   const baseUrl = 'https://api.npmjs.org/downloads/range/last-month/';
   const url = `${baseUrl}${['*', ''].indexOf(packageName) > -1 ? '' : packageName}`;
-  if (resources[url]) {
-    return Promise.resolve(resources[url]);
+  // invalidate cache
+  if (localStorage.getItem('currentDate') !== currentDate) {
+    localStorage.removeItem(currentDate);
+  }
+  // return cached resource if cached
+  let resource = JSON.parse(localStorage.getItem(currentDate)) || {};
+  if (resource && resource[url]) {
+    return Promise.resolve(resource[url]);
   }
   return new Promise((res, rej) => {
     json(url, (error, data) => {
       if (error) {
         return rej(error);
       }
-      resources[url] = data;
+      // cache resource
+      resource = JSON.parse(localStorage.getItem(currentDate)) || {};
+      resource[url] = data;
+      localStorage.setItem(currentDate, JSON.stringify(resource));
+      // keep track of the date to be able to invalidate cache
+      localStorage.setItem('currentDate', currentDate);
       return res(data);
     });
   });
