@@ -16,6 +16,10 @@ const npmPackagesConfigs = {
     '*': ['d3'],
     'd3': ['victory', 'react-d3']
   },
+  'Package managers': {
+    '*': ['npm', 'bower', 'jspm', 'yarn'],
+    'npm': ['bower', 'jspm', 'yarn']
+  },
   'Task runners': {
     '*': ['gulp', 'grunt']
   },
