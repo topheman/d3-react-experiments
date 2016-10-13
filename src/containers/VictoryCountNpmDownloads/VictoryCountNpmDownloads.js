@@ -186,7 +186,7 @@ class VictoryCountNpmDownloads extends React.Component {
               <ul>
                 <li>It's responsive</li>
                 <li>It's interactive:<ul>
-                  <li>Desktop: hover lines or legends to highlight relevent data</li>
+                  <li>Desktop: hover lines or legends to highlight relevent data + display contextual infos</li>
                   <li>Touch devices: touch lines or legends to highlight relevent data</li>
                 </ul></li>
                 <li>Data is retrieved from the npm registry's API</li>

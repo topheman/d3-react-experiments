@@ -2,7 +2,7 @@ import React from 'react';
 
 import ColorHash from 'color-hash';
 
-import { VictoryAxis, VictoryLine } from 'victory';
+import { VictoryAxis, VictoryLine, VictoryBar } from 'victory';
 
 const colorHash = new ColorHash();
 
@@ -11,6 +11,10 @@ const chartBreakpoint = 500; // to change fonts and ticks number at some point
 const inactiveOpacity = 0.3;
 
 const extractViewBox = (viewBox) => `${viewBox.minX} ${viewBox.minY} ${viewBox.width} ${viewBox.height}`;
+
+const formatNumber = (number) => number.toString().split('').reverse().reduce((acc, num, i) => {
+  return num + (i && !(i % 3) ? ',' : '') + acc;
+}, '');
 
 const processMain = (main) => {
   const minX = new Date(main.data.start);
@@ -97,7 +101,9 @@ class CountNpmDownloadsChart extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeLines: []
+      activeLines: [],
+      tooltipCurrentDay: 0,
+      showToolTip: false
     };
   }
 
@@ -127,7 +133,11 @@ class CountNpmDownloadsChart extends React.Component {
       };
     }
     return {
-      onMouseOver: () => {
+      onMouseOver: (e) => {
+        // prevent mouseOver from bubbling up to the svg element
+        // - the VictoryBar catches all mouseOver to display the tooltip
+        // - the svg catches mouseOver to hide the tooltip
+        e.stopPropagation();
         this.setState({
           ...this.state,
           activeLines: [labelName]
@@ -143,14 +153,12 @@ class CountNpmDownloadsChart extends React.Component {
   }
 
   render() {
+    const { activeLines, showToolTip, tooltipCurrentDay } = this.state;
     const {width: widthFromProps, main, dependencies, dependenciesScale, style} = this.props;
     const width = parseInt(widthFromProps, 10);
     // const animationDuration = 200;
     const processedData = processData({main, dependencies});
-    console.log('width', width, 'processedData', processedData, 'dependenciesScale', dependenciesScale);
-    console.log(processedData.dependencies.maxY, processedData.main.maxY);
     const mainColor = colorHash.hex(processedData.main.line.label.name);
-    console.log('mainColor', mainColor);
 
     const tickModulo = width > chartBreakpoint ? 5 : 10;
     const hAxisTicks = processedData.main.line.data.map((d, index, arr) => {
@@ -191,8 +199,8 @@ class CountNpmDownloadsChart extends React.Component {
             <p style={{color: mainColor}}>
               <span title={processedData.main.line.label.name} style={{
                 cursor: 'pointer',
-                textTransform: this.state.activeLines.indexOf(processedData.main.line.label.name) > -1 ? 'uppercase' : 'none',
-                textDecoration: this.state.activeLines.indexOf(processedData.main.line.label.name) > -1 ? 'underline' : 'none'
+                textTransform: activeLines.indexOf(processedData.main.line.label.name) > -1 ? 'uppercase' : 'none',
+                textDecoration: activeLines.indexOf(processedData.main.line.label.name) > -1 ? 'underline' : 'none'
               }} {...this.getUserEvents(processedData.main.line.label.name)}>
                 <span className="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span> {processedData.main.line.label.name}
               </span>
@@ -202,8 +210,8 @@ class CountNpmDownloadsChart extends React.Component {
                 <li key={index} title={line.label.name} style={{
                   cursor: 'pointer',
                   color: colorHash.hex(line.label.name),
-                  textTransform: this.state.activeLines.indexOf(line.label.name) > -1 ? 'uppercase' : 'none',
-                  textDecoration: this.state.activeLines.indexOf(line.label.name) > -1 ? 'underline' : 'none'
+                  textTransform: activeLines.indexOf(line.label.name) > -1 ? 'uppercase' : 'none',
+                  textDecoration: activeLines.indexOf(line.label.name) > -1 ? 'underline' : 'none'
                 }}
                 {...this.getUserEvents(line.label.name)}>
                   <span className="glyphicon glyphicon-minus" aria-hidden="true"></span> {line.label.name}
@@ -224,6 +232,13 @@ class CountNpmDownloadsChart extends React.Component {
                   height: 'auto'
                 }}
                 viewBox={extractViewBox(viewBox)}
+                onMouseOver={() => {
+                  // histograms show the tooltip, the svg hides it
+                  this.setState({
+                    ...this.state,
+                    showToolTip: false
+                  });
+                }}
               >
                 <g transform="translate(0,0)">
                   <VictoryAxis
@@ -232,15 +247,15 @@ class CountNpmDownloadsChart extends React.Component {
                     style={{
                       axis: {
                         stroke: mainColor,
-                        strokeOpacity: this.state.activeLines.length === 0 || this.state.activeLines.length > 0 && processedData.dependencies.lines.map(d => d.label.name).includes(...this.state.activeLines) ? 1 : inactiveOpacity
+                        strokeOpacity: activeLines.length === 0 || activeLines.length > 0 && processedData.dependencies.lines.map(d => d.label.name).includes(...activeLines) ? 1 : inactiveOpacity
                       },
                       ticks: {
                         ...tickStyle.ticks,
-                        strokeOpacity: this.state.activeLines.length === 0 || this.state.activeLines.length > 0 && processedData.dependencies.lines.map(d => d.label.name).includes(...this.state.activeLines) ? 1 : inactiveOpacity
+                        strokeOpacity: activeLines.length === 0 || activeLines.length > 0 && processedData.dependencies.lines.map(d => d.label.name).includes(...activeLines) ? 1 : inactiveOpacity
                       },
                       tickLabels: {
                         ...tickStyle.tickLabels,
-                        fillOpacity: this.state.activeLines.length === 0 || this.state.activeLines.length > 0 && processedData.dependencies.lines.map(d => d.label.name).includes(...this.state.activeLines) ? 1 : inactiveOpacity
+                        fillOpacity: this.state.activeLines.length === 0 || this.state.activeLines.length > 0 && processedData.dependencies.lines.map(d => d.label.name).includes(...activeLines) ? 1 : inactiveOpacity
                       }
                     }}
                   />
@@ -251,17 +266,17 @@ class CountNpmDownloadsChart extends React.Component {
                     style={{
                       axis: {
                         stroke: mainColor,
-                        strokeOpacity: this.state.activeLines.length > 0 && this.state.activeLines.indexOf(processedData.main.line.label.name) === -1 ? inactiveOpacity : 1
+                        strokeOpacity: activeLines.length > 0 && activeLines.indexOf(processedData.main.line.label.name) === -1 ? inactiveOpacity : 1
                       },
                       ticks: {
                         ...tickStyle.ticks,
                         stroke: mainColor,
-                        strokeOpacity: this.state.activeLines.length > 0 && this.state.activeLines.indexOf(processedData.main.line.label.name) === -1 ? inactiveOpacity : 1
+                        strokeOpacity: activeLines.length > 0 && activeLines.indexOf(processedData.main.line.label.name) === -1 ? inactiveOpacity : 1
                       },
                       tickLabels: {
                         ...tickStyle.tickLabels,
                         fill: mainColor,
-                        fillOpacity: this.state.activeLines.length > 0 && this.state.activeLines.indexOf(processedData.main.line.label.name) === -1 ? inactiveOpacity : 1
+                        fillOpacity: activeLines.length > 0 && activeLines.indexOf(processedData.main.line.label.name) === -1 ? inactiveOpacity : 1
                       }
                     }}
                   />
@@ -283,6 +298,30 @@ class CountNpmDownloadsChart extends React.Component {
                     }
                   }
                   />
+                  <VictoryBar
+                    style={{
+                      data: {
+                        fill: 'transparent',
+                        width: 13
+                      }
+                    }}
+                    data={processedData.main.line.data.map(d => ({x: d.x, y: 1}))}
+                    domain={{
+                      x: [minX, maxX],
+                      y: [0, 1]
+                    }}
+                    events={[
+                    { target: 'data', eventHandlers: {
+                      onMouseOver: (event, data, index) => {
+                        event.stopPropagation();
+                        this.setState({
+                          ...this.state,
+                          tooltipCurrentDay: parseInt(index, 10),
+                          showToolTip: true
+                        });
+                      }
+                    }}]}
+                  />
                   <VictoryLine
                     data={processedData.main.line.data}
                     domain={{
@@ -295,7 +334,7 @@ class CountNpmDownloadsChart extends React.Component {
                         stroke: mainColor,
                         strokeDasharray: '1, 7',
                         strokeWidth: '3px',
-                        strokeOpacity: this.state.activeLines.length > 0 && this.state.activeLines.indexOf(processedData.main.line.label.name) === -1 ? inactiveOpacity : 1
+                        strokeOpacity: activeLines.length > 0 && activeLines.indexOf(processedData.main.line.label.name) === -1 ? inactiveOpacity : 1
                       }
                     }}
                     events={[
@@ -314,7 +353,7 @@ class CountNpmDownloadsChart extends React.Component {
                       style={{
                         data: {
                           stroke: colorHash.hex(line.label.name),
-                          strokeOpacity: this.state.activeLines.length > 0 && this.state.activeLines.indexOf(line.label.name) === -1 ? inactiveOpacity : 1
+                          strokeOpacity: activeLines.length > 0 && activeLines.indexOf(line.label.name) === -1 ? inactiveOpacity : 1
                         }
                       }}
                       events={[
@@ -325,6 +364,37 @@ class CountNpmDownloadsChart extends React.Component {
                   ))}
                 </g>
               </svg>
+            </div>
+            <div className="panel panel-default center-block" style={{
+              display: showToolTip ? 'block' : 'none',
+              width: '50%',
+              minWidth: '270px'
+            }}>
+              <div className="panel-body text-left">
+                <p style={{ fontWeight: 'bold' }}>{processedData.main.line.data[tooltipCurrentDay].x.toDateString()}</p>
+                <dl className="dl-horizontal">
+                  <dt style={{
+                    color: colorHash.hex(processedData.main.line.label.name)
+                  }}>
+                    {processedData.main.line.label.name}
+                  </dt>
+                  <dd>{processedData.main.line.data[tooltipCurrentDay] ? formatNumber(processedData.main.line.data[tooltipCurrentDay].y) : 0}</dd>
+                  {processedData.dependencies.lines.map(line => {
+                    return (
+                      <div key={line.label.name}>
+                        <dt style={{
+                          color: colorHash.hex(line.label.name)
+                        }}>
+                          {line.label.name}
+                        </dt>
+                        <dd>
+                        {line.data[line.data.length - processedData.main.line.data.length + tooltipCurrentDay] ? formatNumber(line.data[line.data.length - processedData.main.line.data.length + tooltipCurrentDay].y) : 0}
+                        </dd>
+                      </div>
+                    );
+                  })}
+                </dl>
+              </div>
             </div>
           </div>
         </div>
