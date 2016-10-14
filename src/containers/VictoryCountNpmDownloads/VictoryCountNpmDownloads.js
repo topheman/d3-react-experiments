@@ -184,10 +184,10 @@ class VictoryCountNpmDownloads extends React.Component {
               <p>This chart is a React Component based on <code>VictoryAxis</code> and <code>VictoryLine</code> from <a href="https://formidable.com/open-source/victory/" title="Victory home page">Victory</a>, a collection of composable React components for building interactive data visualizations.</p>
               <p>It is an example of some <strong>more advanced charts</strong> you can produce with that library by <strong>composing its components and benefit from React's state management and JSX declarative syntax</strong>.</p>
               <ul>
-                <li>It's responsive</li>
+                <li>It's fully responsive</li>
                 <li>It's interactive:<ul>
-                  <li>Desktop: hover lines or legends to highlight relevent data + display contextual infos</li>
-                  <li>Touch devices: touch lines or legends to highlight relevent data</li>
+                  <li>Mouse: hover lines or legends to highlight relevent data + display contextual infos</li>
+                  <li>Touch: touch lines or legends to highlight relevent data</li>
                 </ul></li>
                 <li>Data is retrieved from the npm registry's API</li>
                 <li>A simple config will create all the charts</li>

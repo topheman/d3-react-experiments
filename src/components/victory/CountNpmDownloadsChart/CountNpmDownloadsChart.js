@@ -319,6 +319,23 @@ class CountNpmDownloadsChart extends React.Component {
                           tooltipCurrentDay: parseInt(index, 10),
                           showToolTip: true
                         });
+                        return [
+                          {
+                            mutation: () => {
+                              return {style: {fill: 'black', fillOpacity: 0.1}};
+                            }
+                          }
+                        ];
+                      },
+                      onMouseOut: () => {
+                        event.stopPropagation();
+                        return [
+                          {
+                            mutation: () => {
+                              return {style: {fill: 'transparent'}};
+                            }
+                          }
+                        ];
                       }
                     }}]}
                   />
