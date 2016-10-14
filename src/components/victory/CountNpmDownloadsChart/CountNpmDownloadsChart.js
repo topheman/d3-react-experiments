@@ -193,6 +193,15 @@ class CountNpmDownloadsChart extends React.Component {
       <div style={{
         margin: '0',
         ...style
+      }}
+      onMouseOver={(e) => {
+        // histograms show the tooltip, hide it when hovering on this div (and not bubbling up from the chart)
+        if (e.relatedTarget && e.relatedTarget.nodeName !== 'path' || !e.relatedTarget) {
+          this.setState({
+            ...this.state,
+            showToolTip: false
+          });
+        }
       }}>
         <div className="panel panel-default">
           <div className="panel-body">
@@ -232,13 +241,6 @@ class CountNpmDownloadsChart extends React.Component {
                   height: 'auto'
                 }}
                 viewBox={extractViewBox(viewBox)}
-                onMouseOver={() => {
-                  // histograms show the tooltip, the svg hides it
-                  this.setState({
-                    ...this.state,
-                    showToolTip: false
-                  });
-                }}
               >
                 <g transform="translate(0,0)">
                   <VictoryAxis
@@ -327,7 +329,7 @@ class CountNpmDownloadsChart extends React.Component {
                           }
                         ];
                       },
-                      onMouseOut: () => {
+                      onMouseOut: (event) => {
                         event.stopPropagation();
                         return [
                           {
