@@ -3,8 +3,8 @@
  * 
  * Mix d3 & react
  * 
- * @version v2.2.0 - 15/10/2016
- * @revision #e037bb8 - https://github.com/topheman/d3-react-experiments/tree/e037bb8c23437cbb273561f6cfc82242dfe16dee
+ * @version v2.3.0 - 15/10/2016
+ * @revision #fc9cc89 - https://github.com/topheman/d3-react-experiments/tree/fc9cc8964ff131b7b48af4103b4087edabc94384
  * @author Christophe Rosset
  * @copyright 2016(c) Christophe Rosset
  * @license MIT
