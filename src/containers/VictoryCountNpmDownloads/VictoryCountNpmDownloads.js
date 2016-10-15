@@ -20,6 +20,9 @@ const npmPackagesConfigs = {
     '*': ['npm', 'bower', 'jspm', 'yarn'],
     'npm': ['bower', 'jspm', 'yarn']
   },
+  'Transpilers': {
+    '*': ['babel', 'typescript', 'coffee-script']
+  },
   'Task runners': {
     '*': ['gulp', 'grunt']
   },
@@ -193,6 +196,7 @@ class VictoryCountNpmDownloads extends React.Component {
                 <li>A simple config will create all the charts</li>
               </ul>
               <p>See how the downloads drop on weekends ? ;)</p>
+              <p><a href="http://dev.topheman.com/d3-react-components-with-victory-reusability-composability" title="D3 React Components with Victory – Reusability / Composability">Read the blog post about Reusability / Composability with D3, React and Victory</a></p>
             </div>
           </div>
         </div>

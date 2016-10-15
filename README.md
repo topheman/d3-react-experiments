@@ -5,20 +5,26 @@ d3-react-experiments
 
 <img src="https://cdn.rawgit.com/topheman/d3-react-experiments/master/src/assets/images/react-logo.svg" width="200"><img src="https://cdn.rawgit.com/topheman/d3-react-experiments/master/src/assets/images/d3-logo.png" width="200">
 
-**Changes in v2**
+###Introduction
 
-As I explain bellow, there are multiple approaches to handle d3 with React. In the v1, I started by integrating 3rd party libraries like [d3act](https://github.com/AnSavvides/d3act) and [victory](https://github.com/FormidableLabs/victory).
+As I explain bellow, there are multiple approaches to handle d3 with React. The goal of this repo is to explore them and provide examples:
 
-In the v2, I created some React components examples directly based on **plain d3 v4 code**. The goal being to expose some examples for both d3 and React users.
+* to test those different approaches
+* to help others choose the one that fit their needs
+
+What will you find in that project ?
+
+* Some [basic](https://topheman.github.io/d3-react-experiments/#/victory/world-population-by-age-range) and [advanced](https://topheman.github.io/d3-react-experiments/#/victory/count-npm-downloads) Victory based charts
+* Some [vanilla d3](https://topheman.github.io/d3-react-experiments/#/d3) components based charts
+* Some [react-faux-dom based](https://topheman.github.io/d3-react-experiments/#/d3/react-faux-dom) component charts
+* Some [d3act](https://topheman.github.io/d3-react-experiments/#/d3act) based charts
+
+Some blog posts I wrote about this project:
+
+* [D3 React Components with Victory – Reusability / Composability](http://dev.topheman.com/d3-react-components-with-victory-reusability-composability)
+* [Plain d3 code and React working together](http://dev.topheman.com/d3-react-chart-components/)
 
 [This is still a work in progress](https://topheman.github.io/d3-react-experiments/#/), more examples / blog posts will come ...
-
-[Read the blog post on the v2 explaining plain d3 code working with React](http://dev.topheman.com/d3-react-chart-components/)
-
-**Updates:** 
-
-* [New example](https://topheman.github.io/d3-react-experiments/#/d3/react-faux-dom/static-multi-line-chart) using [react-faux-dom](https://github.com/Olical/react-faux-dom), *a library that provides a DOM like structure that renders into React*. That way, the DOM isn't directly manipulated via d3, the render is left to React. I still have to do the animated version.
-* [New example](https://topheman.github.io/d3-react-experiments/#/victory/transition-multi-line-chart) where I ported some of my existing d3 code based chart components to **full JSX**, using [Victory](https://formidable.com/open-source/victory/), *a collection of composable React components for building interactive data visualizations*.
 
 ###React & D3
 
@@ -52,6 +58,8 @@ git clone https://github.com/topheman/d3-react-experiments.git
 cd d3-react-experiments
 npm install
 ```
+
+You will notice this project is shipped with a `yarn.lock` file, so instead of `npm install`, you can simply run `yarn` (this will ensure everybody has the exact same dependencies - [see more here](https://code.facebook.com/posts/1840075619545360)).
 
 ####Run
 
@@ -91,5 +99,6 @@ You can disable the linter by `LINTER=false npm start` (though it will still be 
 * [http://stackoverflow.com/research/developer-survey-2015](http://stackoverflow.com/research/developer-survey-2015)
 * [http://www.census.gov/](http://www.census.gov/population/international/data/idb/informationGateway.php): I wrote a little routine to process the csv
 * [ourworldindata.org](https://ourworldindata.org)
+* [npm registry](https://docs.npmjs.com/misc/registry)
 * [topheman/webpack-babel-starter](https://github.com/topheman/webpack-babel-starter)
 

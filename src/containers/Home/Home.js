@@ -20,6 +20,7 @@ const Home = () => {
       <p>In the last year, a lot of projects have risen with the goal of making those two work gently together ...</p>
       <p>It doesn't seem like there is a clear winner yet. I tried some of those libraries and also created home-made components. <a href="https://github.com/topheman/d3-react-experiments#d3-react-experiments" title="d3-react-experiments on github">More in the README</a>.</p>
       <p className="text-center"><Link to={defaultLinks[0]} className="btn btn-default btn-primary btn-lg">Start browsing</Link></p>
+      <p><a href="http://dev.topheman.com/d3-react-components-with-victory-reusability-composability" title="D3 React Components with Victory – Reusability / Composability">Read the blog post about Reusability / Composability with D3, React and Victory</a></p>
       <p><a href="http://dev.topheman.com/d3-react-chart-components/" title="Plain d3 code and React working together">Read the blog post about d3 and React working together</a></p>
       <p><strong>Some examples show the same chart, but were created different ways (checkout the sources).</strong></p>
       <p>Examples directly based on d3:</p>
