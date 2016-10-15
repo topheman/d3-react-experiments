@@ -3,8 +3,8 @@
  * 
  * Mix d3 & react
  * 
- * @version v2.2.0 - 01/10/2016
- * @revision #c0fcc4c - https://github.com/topheman/d3-react-experiments/tree/c0fcc4c47b1909c7a1f90a88a9b425c4d386d54b
+ * @version v2.2.0 - 15/10/2016
+ * @revision #e037bb8 - https://github.com/topheman/d3-react-experiments/tree/e037bb8c23437cbb273561f6cfc82242dfe16dee
  * @author Christophe Rosset
  * @copyright 2016(c) Christophe Rosset
  * @license MIT
@@ -6641,6 +6641,17 @@ table .Select-control {
   font-size: 50%;
 }
 
+.Select.color-label .Select-value {
+  position: relative;
+}
+
+.Select.color-label .Select-value .Select-value-icon {
+  position: absolute;
+  background: transparent;
+  color: transparent;
+  width: 100%;
+}
+
 .summary a.active {
   font-weight: bold;
 }
@@ -6651,4 +6662,4 @@ table .Select-control {
   }
 }
 
-/*# sourceMappingURL=main-devtools-9d0e1f9a5f1659be7524.css.map*/
+/*# sourceMappingURL=main-devtools-3f03905c254bb037e887.css.map*/
