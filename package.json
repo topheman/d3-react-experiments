@@ -89,6 +89,7 @@
     "react-router": "^2.4.1",
     "react-scroll": "^1.4.0",
     "react-select": "^1.0.0-rc.1",
+    "recharts": "^0.21.2",
     "victory": "^0.12.1"
   },
   "private": true

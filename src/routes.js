@@ -5,6 +5,7 @@ import {
   AppHome,
   D3actBarChart,
   D3actMixedChart,
+  RechartsTransitionMultiLineChart,
   VictoryWorldPopulationByAgeRange,
   VictoryTransitionMultiLineChart,
   VictoryCountNpmDownloads,
@@ -19,6 +20,8 @@ export default (
     <Route path="d3act/bar-chart" component={D3actBarChart}/>
     <Route path="d3act/mixed-chart" component={D3actMixedChart}/>
     <Redirect from="d3act" to="d3act/bar-chart"/>
+    <Route path="recharts/transition-multi-line-chart" component={RechartsTransitionMultiLineChart}/>
+    <Redirect from="recharts" to="recharts/transition-multi-line-chart"/>
     <Route path="victory/world-population-by-age-range" component={VictoryWorldPopulationByAgeRange}/>
     <Route path="victory/transition-multi-line-chart" component={VictoryTransitionMultiLineChart}/>
     <Route path="victory/count-npm-downloads" component={VictoryCountNpmDownloads}/>

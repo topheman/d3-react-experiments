@@ -31,11 +31,23 @@ const Home = () => {
       </ul>
       <p>Examples with third party libraries:</p>
       <ul>
-        <li><Link to="/victory/world-population-by-age-range">Victory / World population by age range</Link>: Bar/Pie Chart</li>
-        <li><Link to="/victory/transition-multi-line-chart">Victory / TransitionMultiLineChart</Link>: Same chart as above in d3, ported to Victory</li>
-        <li><Link to="/victory/count-npm-downloads">Victory / DualAxisMultiLine</Link>: Visualisation of some data from the npm registry</li>
-        <li><Link to="/d3act/bar-chart">d3act / Most popular technologies</Link>: Bar Chart</li>
-        <li><Link to="/d3act/mixed-chart">d3act / Desktop Operating System</Link>: Bar/Pie Chart</li>
+        <li>Recharts:
+          <ul>
+            <li><Link to="/recharts/transition-multi-line-chart">Recharts / TransitionMultiLineChart</Link>: Same chart as above in d3, ported to Recharts 🆕</li>
+          </ul>
+        </li>
+        <li>Victory:
+          <ul><li><Link to="/victory/world-population-by-age-range">Victory / World population by age range</Link>: Bar/Pie Chart</li>
+            <li><Link to="/victory/transition-multi-line-chart">Victory / TransitionMultiLineChart</Link>: Same chart as above in d3, ported to Victory</li>
+            <li><Link to="/victory/count-npm-downloads">Victory / DualAxisMultiLine</Link>: Visualisation of some data from the npm registry</li>
+          </ul>
+        </li>
+        <li>d3act:
+          <ul>
+            <li><Link to="/d3act/bar-chart">d3act / Most popular technologies</Link>: Bar Chart</li>
+            <li><Link to="/d3act/mixed-chart">d3act / Desktop Operating System</Link>: Bar/Pie Chart</li>
+          </ul>
+        </li>
       </ul>
       <br/>
       {process.env.DEVTOOLS ? devtoolsMessage : prodMessage }
