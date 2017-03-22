@@ -4,6 +4,7 @@ export const defaultLinks = [
   '/d3/transition-multi-line-chart',
   '/d3/static-multi-line-chart',
   '/d3/react-faux-dom/static-multi-line-chart',
+  '/recharts/transition-multi-line-chart',
   '/victory/world-population-by-age-range',
   '/victory/transition-multi-line-chart',
   '/victory/count-npm-downloads',
