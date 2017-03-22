@@ -41,7 +41,7 @@ const TransitionMultiLineChart = ({data, width, height, minX, maxX, maxY}) => {
   const rechartsData = prepareDataForRecharts(data);
   console.debug(rechartsData);
   return (
-    <div style={{maxWidth: width}}>
+    <div style={{maxWidth: width, margin: '0 auto'}}>
       <LineChart data={rechartsData} width={width} height={height} margin={{ top: 20 }}>
         <XAxis dataKey="year" tickCount={11} type="number" domain={[minX, maxX]} />
         <YAxis type="number" domain={[0, maxY]} />
