@@ -31,6 +31,11 @@ const Home = () => {
       </ul>
       <p>Examples with third party libraries:</p>
       <ul>
+        <li>Recharts:
+          <ul>
+            <li><Link to="/recharts/transition-multi-line-chart">Recharts / TransitionMultiLineChart</Link>: Same chart as above in d3, ported to Recharts 🆕</li>
+          </ul>
+        </li>
         <li>Victory:
           <ul><li><Link to="/victory/world-population-by-age-range">Victory / World population by age range</Link>: Bar/Pie Chart</li>
             <li><Link to="/victory/transition-multi-line-chart">Victory / TransitionMultiLineChart</Link>: Same chart as above in d3, ported to Victory</li>
