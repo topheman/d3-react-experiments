@@ -1,12 +1,13 @@
 import React from 'react';
 import Home from '../Home';
-import renderer from 'react-test-renderer';
+import { mount } from 'enzyme';
+import toJson from 'enzyme-to-json';
 
 describe('containers/Home', () => {
-  it('renders correctly', () => {
-    const tree = renderer.create(
+  it('should render correctly', () => {
+    const wrapper = mount(
       <Home/>
-    ).toJSON();
-    expect(tree).toMatchSnapshot();
+    );
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 });
