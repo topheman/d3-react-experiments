@@ -1,0 +1,1258 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/recharts/TransitionMultiLineChart should render correctly [shallow] 1`] = `
+<div
+  style={
+    Object {
+      "margin": "0 auto",
+      "maxWidth": 700,
+    }
+  }
+>
+  <AnimationDecorator(ComposedDataDecorator(LineChart))
+    data={
+      Array [
+        Object {
+          "France": 40.05,
+          "year": 1816,
+        },
+        Object {
+          "France": 39.18,
+          "year": 1817,
+        },
+        Object {
+          "France": 38.55,
+          "year": 1818,
+        },
+        Object {
+          "France": 37.28,
+          "year": 1819,
+        },
+        Object {
+          "France": 39.23,
+          "year": 1820,
+        },
+        Object {
+          "France": 39.84,
+          "year": 1821,
+        },
+        Object {
+          "France": 38.31,
+          "year": 1822,
+        },
+        Object {
+          "France": 39.99,
+          "year": 1823,
+        },
+        Object {
+          "France": 39.16,
+          "year": 1824,
+        },
+        Object {
+          "France": 38.53,
+          "year": 1825,
+        },
+        Object {
+          "France": 37.76,
+          "year": 1826,
+        },
+        Object {
+          "France": 39.36,
+          "year": 1827,
+        },
+        Object {
+          "France": 37.56,
+          "year": 1828,
+        },
+        Object {
+          "France": 39.4,
+          "year": 1829,
+        },
+        Object {
+          "France": 39.59,
+          "year": 1830,
+        },
+        Object {
+          "France": 39.69,
+          "year": 1831,
+        },
+        Object {
+          "France": 35.83,
+          "year": 1832,
+        },
+        Object {
+          "France": 38.84,
+          "year": 1833,
+        },
+        Object {
+          "France": 35.04,
+          "year": 1834,
+        },
+        Object {
+          "France": 39.48,
+          "year": 1835,
+        },
+        Object {
+          "France": 41.96,
+          "year": 1836,
+        },
+        Object {
+          "France": 39.38,
+          "year": 1837,
+        },
+        Object {
+          "France": 39.33,
+          "year": 1838,
+        },
+        Object {
+          "France": 40.92,
+          "year": 1839,
+        },
+        Object {
+          "France": 40.38,
+          "year": 1840,
+        },
+        Object {
+          "France": 40.68,
+          "year": 1841,
+        },
+        Object {
+          "France": 39.99,
+          "year": 1842,
+        },
+        Object {
+          "France": 40.76,
+          "year": 1843,
+        },
+        Object {
+          "France": 42.3,
+          "year": 1844,
+        },
+        Object {
+          "France": 43.58,
+          "year": 1845,
+        },
+        Object {
+          "France": 40.66,
+          "year": 1846,
+        },
+        Object {
+          "France": 40.42,
+          "year": 1847,
+        },
+        Object {
+          "France": 40.29,
+          "year": 1848,
+        },
+        Object {
+          "France": 35.92,
+          "year": 1849,
+        },
+        Object {
+          "France": 43.28,
+          "year": 1850,
+        },
+        Object {
+          "France": 41.77,
+          "year": 1851,
+        },
+        Object {
+          "France": 41.31,
+          "year": 1852,
+        },
+        Object {
+          "France": 42.52,
+          "year": 1853,
+        },
+        Object {
+          "France": 36.13,
+          "year": 1854,
+        },
+        Object {
+          "France": 37.53,
+          "year": 1855,
+        },
+        Object {
+          "France": 40.15,
+          "year": 1856,
+        },
+        Object {
+          "France": 39.56,
+          "year": 1857,
+        },
+        Object {
+          "France": 39.67,
+          "year": 1858,
+        },
+        Object {
+          "France": 35.27,
+          "year": 1859,
+        },
+        Object {
+          "France": 43.32,
+          "year": 1860,
+        },
+        Object {
+          "France": 40.42,
+          "year": 1861,
+        },
+        Object {
+          "France": 42.67,
+          "year": 1862,
+        },
+        Object {
+          "France": 41.72,
+          "year": 1863,
+        },
+        Object {
+          "France": 41.97,
+          "year": 1864,
+        },
+        Object {
+          "France": 40.12,
+          "year": 1865,
+        },
+        Object {
+          "France": 41.81,
+          "year": 1866,
+        },
+        Object {
+          "France": 42.32,
+          "year": 1867,
+        },
+        Object {
+          "France": 40.21,
+          "year": 1868,
+        },
+        Object {
+          "France": 41.13,
+          "year": 1869,
+        },
+        Object {
+          "France": 36.39,
+          "year": 1870,
+        },
+        Object {
+          "France": 29.58,
+          "year": 1871,
+        },
+        Object {
+          "France": 42.63,
+          "year": 1872,
+        },
+        Object {
+          "France": 41.76,
+          "year": 1873,
+        },
+        Object {
+          "France": 44.3,
+          "year": 1874,
+        },
+        Object {
+          "France": 43.12,
+          "Germany": 38.37,
+          "year": 1875,
+        },
+        Object {
+          "France": 43.51,
+          "year": 1876,
+        },
+        Object {
+          "France": 44.29,
+          "year": 1877,
+        },
+        Object {
+          "France": 43.31,
+          "year": 1878,
+        },
+        Object {
+          "France": 43.95,
+          "year": 1879,
+        },
+        Object {
+          "France": 42.69,
+          "year": 1880,
+        },
+        Object {
+          "France": 43.49,
+          "India": 25.4424,
+          "year": 1881,
+        },
+        Object {
+          "France": 43.08,
+          "year": 1882,
+        },
+        Object {
+          "France": 43.21,
+          "year": 1883,
+        },
+        Object {
+          "France": 42.43,
+          "year": 1884,
+        },
+        Object {
+          "France": 43.9,
+          "Germany": 39.44,
+          "year": 1885,
+        },
+        Object {
+          "France": 43.1,
+          "year": 1886,
+        },
+        Object {
+          "France": 43.69,
+          "year": 1887,
+        },
+        Object {
+          "France": 44.07,
+          "year": 1888,
+        },
+        Object {
+          "France": 45.49,
+          "year": 1889,
+        },
+        Object {
+          "France": 43.32,
+          "year": 1890,
+        },
+        Object {
+          "France": 44.07,
+          "India": 24.2664,
+          "year": 1891,
+        },
+        Object {
+          "France": 43.51,
+          "year": 1892,
+        },
+        Object {
+          "France": 43.51,
+          "year": 1893,
+        },
+        Object {
+          "France": 45.45,
+          "year": 1894,
+        },
+        Object {
+          "France": 45.13,
+          "Germany": 42.38,
+          "year": 1895,
+        },
+        Object {
+          "France": 47.49,
+          "year": 1896,
+        },
+        Object {
+          "France": 47.86,
+          "year": 1897,
+        },
+        Object {
+          "France": 45.92,
+          "year": 1898,
+        },
+        Object {
+          "France": 45.15,
+          "year": 1899,
+        },
+        Object {
+          "France": 45.01,
+          "year": 1900,
+        },
+        Object {
+          "France": 46.93,
+          "India": 23.4856,
+          "year": 1901,
+        },
+        Object {
+          "France": 47.96,
+          "year": 1902,
+        },
+        Object {
+          "France": 48.37,
+          "year": 1903,
+        },
+        Object {
+          "France": 48.03,
+          "year": 1904,
+        },
+        Object {
+          "France": 48.3,
+          "Germany": 45.45,
+          "India": 23.98,
+          "year": 1905,
+        },
+        Object {
+          "France": 47.68,
+          "year": 1906,
+        },
+        Object {
+          "France": 48.24,
+          "year": 1907,
+        },
+        Object {
+          "France": 49.27,
+          "year": 1908,
+        },
+        Object {
+          "France": 49.96,
+          "year": 1909,
+        },
+        Object {
+          "France": 51.33,
+          "year": 1910,
+        },
+        Object {
+          "France": 48.13,
+          "Germany": 49,
+          "India": 23.1464,
+          "year": 1911,
+        },
+        Object {
+          "France": 51.57,
+          "year": 1912,
+        },
+        Object {
+          "France": 51.31,
+          "year": 1913,
+        },
+        Object {
+          "France": 38.2,
+          "year": 1914,
+        },
+        Object {
+          "France": 36.25,
+          "Germany": 40.52,
+          "India": 24.02,
+          "year": 1915,
+        },
+        Object {
+          "France": 40.22,
+          "year": 1916,
+        },
+        Object {
+          "France": 43.08,
+          "year": 1917,
+        },
+        Object {
+          "France": 34.84,
+          "year": 1918,
+        },
+        Object {
+          "France": 47.6,
+          "year": 1919,
+        },
+        Object {
+          "France": 51.53,
+          "year": 1920,
+        },
+        Object {
+          "France": 52.62,
+          "India": 24.8584,
+          "year": 1921,
+        },
+        Object {
+          "France": 54.85,
+          "year": 1922,
+        },
+        Object {
+          "Algeria": 28.8224,
+          "France": 54.59,
+          "year": 1923,
+        },
+        Object {
+          "France": 55.21,
+          "year": 1924,
+        },
+        Object {
+          "France": 54.33,
+          "Germany": 57.42,
+          "India": 27.61,
+          "year": 1925,
+        },
+        Object {
+          "France": 53.97,
+          "year": 1926,
+        },
+        Object {
+          "France": 55.74,
+          "year": 1927,
+        },
+        Object {
+          "France": 55.38,
+          "year": 1928,
+        },
+        Object {
+          "France": 54.23,
+          "year": 1929,
+        },
+        Object {
+          "France": 56.83,
+          "year": 1930,
+        },
+        Object {
+          "France": 56.89,
+          "India": 29.3144,
+          "year": 1931,
+        },
+        Object {
+          "France": 57.22,
+          "year": 1932,
+        },
+        Object {
+          "Algeria": 31.22,
+          "France": 57.66,
+          "year": 1933,
+        },
+        Object {
+          "France": 58.32,
+          "year": 1934,
+        },
+        Object {
+          "France": 58.29,
+          "Germany": 61.5,
+          "India": 30.95,
+          "year": 1935,
+        },
+        Object {
+          "France": 58.78,
+          "year": 1936,
+        },
+        Object {
+          "France": 59.14,
+          "year": 1937,
+        },
+        Object {
+          "France": 58.95,
+          "year": 1938,
+        },
+        Object {
+          "France": 59.59,
+          "year": 1939,
+        },
+        Object {
+          "France": 49.55,
+          "year": 1940,
+        },
+        Object {
+          "France": 57.66,
+          "India": 32.5928,
+          "year": 1941,
+        },
+        Object {
+          "France": 57.41,
+          "year": 1942,
+        },
+        Object {
+          "Algeria": 33.72,
+          "France": 53.33,
+          "year": 1943,
+        },
+        Object {
+          "France": 47.2,
+          "year": 1944,
+        },
+        Object {
+          "France": 54.94,
+          "year": 1945,
+        },
+        Object {
+          "France": 62.35,
+          "Germany": 60.5114,
+          "year": 1946,
+        },
+        Object {
+          "France": 63.94,
+          "year": 1947,
+        },
+        Object {
+          "France": 65.8,
+          "year": 1948,
+        },
+        Object {
+          "France": 64.89,
+          "year": 1949,
+        },
+        Object {
+          "Algeria": 42.886,
+          "Ethiopia": 34.08,
+          "France": 66.37,
+          "Germany": 67.53,
+          "India": 36.185,
+          "year": 1950,
+        },
+        Object {
+          "Algeria": 42.886,
+          "Ethiopia": 34.08,
+          "France": 66.1,
+          "Germany": 67.53,
+          "India": 36.185,
+          "year": 1951,
+        },
+        Object {
+          "Algeria": 42.886,
+          "Ethiopia": 34.08,
+          "France": 67.39,
+          "Germany": 67.53,
+          "India": 36.185,
+          "year": 1952,
+        },
+        Object {
+          "Algeria": 42.886,
+          "Ethiopia": 34.08,
+          "France": 67.32,
+          "Germany": 67.53,
+          "India": 36.185,
+          "year": 1953,
+        },
+        Object {
+          "Algeria": 42.886,
+          "Ethiopia": 34.08,
+          "France": 68.19,
+          "Germany": 67.53,
+          "India": 36.185,
+          "year": 1954,
+        },
+        Object {
+          "Algeria": 44.999,
+          "Ethiopia": 36.675,
+          "France": 68.44,
+          "Germany": 68.914,
+          "India": 39.63,
+          "year": 1955,
+        },
+        Object {
+          "Algeria": 44.999,
+          "Ethiopia": 36.675,
+          "France": 68.47,
+          "Germany": 68.914,
+          "India": 39.63,
+          "year": 1956,
+        },
+        Object {
+          "Algeria": 44.999,
+          "Ethiopia": 36.675,
+          "France": 68.9,
+          "Germany": 68.914,
+          "India": 39.63,
+          "year": 1957,
+        },
+        Object {
+          "Algeria": 44.999,
+          "Ethiopia": 36.675,
+          "France": 70.11,
+          "Germany": 68.914,
+          "India": 39.63,
+          "year": 1958,
+        },
+        Object {
+          "Algeria": 44.999,
+          "Ethiopia": 36.675,
+          "France": 70.16,
+          "Germany": 68.914,
+          "India": 39.63,
+          "year": 1959,
+        },
+        Object {
+          "Algeria": 47.284,
+          "Ethiopia": 40.08,
+          "France": 70.37,
+          "Germany": 69.1,
+          "India": 43.213,
+          "year": 1960,
+        },
+        Object {
+          "Algeria": 47.284,
+          "Ethiopia": 40.08,
+          "France": 70.95,
+          "Germany": 69.7,
+          "India": 43.213,
+          "year": 1961,
+        },
+        Object {
+          "Algeria": 47.284,
+          "Ethiopia": 40.08,
+          "France": 70.47,
+          "Germany": 69.9,
+          "India": 43.213,
+          "year": 1962,
+        },
+        Object {
+          "Algeria": 47.284,
+          "Ethiopia": 40.08,
+          "France": 70.32,
+          "Germany": 70,
+          "India": 43.213,
+          "year": 1963,
+        },
+        Object {
+          "Algeria": 47.284,
+          "Ethiopia": 40.08,
+          "France": 71.28,
+          "Germany": 70.5,
+          "India": 43.213,
+          "year": 1964,
+        },
+        Object {
+          "Algeria": 49.464,
+          "Ethiopia": 42.144,
+          "France": 71.1,
+          "Germany": 70.5,
+          "India": 47.058,
+          "year": 1965,
+        },
+        Object {
+          "Algeria": 49.464,
+          "Ethiopia": 42.144,
+          "France": 71.51,
+          "Germany": 70.6,
+          "India": 47.058,
+          "year": 1966,
+        },
+        Object {
+          "Algeria": 49.464,
+          "Ethiopia": 42.144,
+          "France": 71.5,
+          "Germany": 70.8,
+          "India": 47.058,
+          "year": 1967,
+        },
+        Object {
+          "Algeria": 49.464,
+          "Ethiopia": 42.144,
+          "France": 71.49,
+          "Germany": 70.4,
+          "India": 47.058,
+          "year": 1968,
+        },
+        Object {
+          "Algeria": 49.464,
+          "Ethiopia": 42.144,
+          "France": 71.21,
+          "Germany": 70.3,
+          "India": 47.058,
+          "year": 1969,
+        },
+        Object {
+          "Algeria": 51.483,
+          "Ethiopia": 43.53,
+          "France": 72.1,
+          "Germany": 70.6,
+          "India": 50.566,
+          "year": 1970,
+        },
+        Object {
+          "Algeria": 51.483,
+          "Ethiopia": 43.53,
+          "France": 72.07,
+          "Germany": 70.8,
+          "India": 50.566,
+          "year": 1971,
+        },
+        Object {
+          "Algeria": 51.483,
+          "Ethiopia": 43.53,
+          "France": 72.32,
+          "Germany": 71,
+          "India": 50.566,
+          "year": 1972,
+        },
+        Object {
+          "Algeria": 51.483,
+          "Ethiopia": 43.53,
+          "France": 72.47,
+          "Germany": 71.2,
+          "India": 50.566,
+          "year": 1973,
+        },
+        Object {
+          "Algeria": 51.483,
+          "Ethiopia": 43.53,
+          "France": 72.81,
+          "Germany": 71.5,
+          "India": 50.566,
+          "year": 1974,
+        },
+        Object {
+          "Algeria": 54.934,
+          "Ethiopia": 44.255,
+          "France": 72.9,
+          "Germany": 71.4,
+          "India": 54.154,
+          "year": 1975,
+        },
+        Object {
+          "Algeria": 54.934,
+          "Ethiopia": 44.255,
+          "France": 73.14,
+          "Germany": 71.8,
+          "India": 54.154,
+          "year": 1976,
+        },
+        Object {
+          "Algeria": 54.934,
+          "Ethiopia": 44.255,
+          "France": 73.73,
+          "Germany": 72.4,
+          "India": 54.154,
+          "year": 1977,
+        },
+        Object {
+          "Algeria": 54.934,
+          "Ethiopia": 44.255,
+          "France": 73.85,
+          "Germany": 72.4,
+          "India": 54.154,
+          "year": 1978,
+        },
+        Object {
+          "Algeria": 54.934,
+          "Ethiopia": 44.255,
+          "France": 74.13,
+          "Germany": 72.8,
+          "India": 54.154,
+          "year": 1979,
+        },
+        Object {
+          "Algeria": 61.581,
+          "Ethiopia": 43.52,
+          "France": 74.24,
+          "Germany": 72.9,
+          "India": 56.261,
+          "year": 1980,
+        },
+        Object {
+          "Algeria": 61.581,
+          "Ethiopia": 43.52,
+          "France": 74.4,
+          "Germany": 73.2,
+          "India": 56.261,
+          "year": 1981,
+        },
+        Object {
+          "Algeria": 61.581,
+          "Ethiopia": 43.52,
+          "France": 74.77,
+          "Germany": 73.5,
+          "India": 56.261,
+          "year": 1982,
+        },
+        Object {
+          "Algeria": 61.581,
+          "Ethiopia": 43.52,
+          "France": 74.74,
+          "Germany": 73.8,
+          "India": 56.261,
+          "year": 1983,
+        },
+        Object {
+          "Algeria": 61.581,
+          "Ethiopia": 43.52,
+          "France": 75.23,
+          "Germany": 74.2,
+          "India": 56.261,
+          "year": 1984,
+        },
+        Object {
+          "Algeria": 65.868,
+          "Ethiopia": 46.057,
+          "France": 75.31,
+          "Germany": 74.3,
+          "India": 57.831,
+          "year": 1985,
+        },
+        Object {
+          "Algeria": 65.868,
+          "Ethiopia": 46.057,
+          "France": 75.58,
+          "Germany": 74.6,
+          "India": 57.831,
+          "year": 1986,
+        },
+        Object {
+          "Algeria": 65.868,
+          "Ethiopia": 46.057,
+          "France": 76.15,
+          "Germany": 75,
+          "India": 57.831,
+          "year": 1987,
+        },
+        Object {
+          "Algeria": 65.868,
+          "Ethiopia": 46.057,
+          "France": 76.4,
+          "Germany": 75.2,
+          "India": 57.831,
+          "year": 1988,
+        },
+        Object {
+          "Algeria": 65.868,
+          "Ethiopia": 46.057,
+          "France": 76.55,
+          "Germany": 75.4,
+          "India": 57.831,
+          "year": 1989,
+        },
+        Object {
+          "Algeria": 67.237,
+          "Ethiopia": 47.918,
+          "France": 76.84,
+          "Germany": 75.36,
+          "India": 59.252,
+          "year": 1990,
+        },
+        Object {
+          "Algeria": 67.237,
+          "Ethiopia": 47.918,
+          "France": 77.02,
+          "Germany": 75.58,
+          "India": 59.252,
+          "year": 1991,
+        },
+        Object {
+          "Algeria": 67.237,
+          "Ethiopia": 47.918,
+          "France": 77.3,
+          "Germany": 76.03,
+          "India": 59.252,
+          "year": 1992,
+        },
+        Object {
+          "Algeria": 67.237,
+          "Ethiopia": 47.918,
+          "France": 77.36,
+          "Germany": 76.12,
+          "India": 59.252,
+          "year": 1993,
+        },
+        Object {
+          "Algeria": 67.237,
+          "Ethiopia": 47.918,
+          "France": 77.78,
+          "Germany": 76.42,
+          "India": 59.252,
+          "year": 1994,
+        },
+        Object {
+          "Algeria": 68.464,
+          "Ethiopia": 50.814,
+          "France": 77.88,
+          "Germany": 76.6,
+          "India": 61.153,
+          "year": 1995,
+        },
+        Object {
+          "Algeria": 68.464,
+          "Ethiopia": 50.814,
+          "France": 78.07,
+          "Germany": 76.84,
+          "India": 61.153,
+          "year": 1996,
+        },
+        Object {
+          "Algeria": 68.464,
+          "Ethiopia": 50.814,
+          "France": 78.43,
+          "Germany": 77.27,
+          "India": 61.153,
+          "year": 1997,
+        },
+        Object {
+          "Algeria": 68.464,
+          "Ethiopia": 50.814,
+          "France": 78.59,
+          "Germany": 77.63,
+          "India": 61.153,
+          "year": 1998,
+        },
+        Object {
+          "Algeria": 68.464,
+          "Ethiopia": 50.814,
+          "France": 78.75,
+          "Germany": 77.87,
+          "India": 61.153,
+          "year": 1999,
+        },
+        Object {
+          "Algeria": 69.403,
+          "Ethiopia": 54.033,
+          "France": 79.05,
+          "Germany": 78.13,
+          "India": 63.095,
+          "year": 2000,
+        },
+        Object {
+          "Algeria": 69.403,
+          "Ethiopia": 54.033,
+          "France": 79.23,
+          "Germany": 78.48,
+          "India": 63.095,
+          "year": 2001,
+        },
+        Object {
+          "Algeria": 69.403,
+          "Ethiopia": 54.033,
+          "France": 79.42,
+          "Germany": 78.57,
+          "India": 63.095,
+          "year": 2002,
+        },
+        Object {
+          "Algeria": 69.403,
+          "Ethiopia": 54.033,
+          "France": 79.43,
+          "Germany": 78.64,
+          "India": 63.095,
+          "year": 2003,
+        },
+        Object {
+          "Algeria": 69.403,
+          "Ethiopia": 54.033,
+          "France": 80.36,
+          "Germany": 79.23,
+          "India": 63.095,
+          "year": 2004,
+        },
+        Object {
+          "Algeria": 70.261,
+          "Ethiopia": 59.259,
+          "France": 80.36,
+          "Germany": 79.37,
+          "India": 64.925,
+          "year": 2005,
+        },
+        Object {
+          "Algeria": 70.261,
+          "Ethiopia": 59.259,
+          "France": 80.77,
+          "Germany": 79.71,
+          "India": 64.925,
+          "year": 2006,
+        },
+        Object {
+          "Algeria": 70.261,
+          "Ethiopia": 59.259,
+          "France": 80.99,
+          "Germany": 79.87,
+          "India": 64.925,
+          "year": 2007,
+        },
+        Object {
+          "Algeria": 70.261,
+          "Ethiopia": 59.259,
+          "France": 81.06,
+          "Germany": 79.96,
+          "India": 64.925,
+          "year": 2008,
+        },
+        Object {
+          "Algeria": 70.261,
+          "Ethiopia": 59.259,
+          "France": 81.2,
+          "Germany": 80.07,
+          "India": 64.925,
+          "year": 2009,
+        },
+        Object {
+          "France": 81.46,
+          "Germany": 80.23,
+          "year": 2010,
+        },
+        Object {
+          "France": 82.2,
+          "Germany": 80.52,
+          "year": 2011,
+        },
+      ]
+    }
+    height={400}
+    layout="horizontal"
+    margin={
+      Object {
+        "top": 20,
+      }
+    }
+    stackOffset="none"
+    width={700}
+  >
+    <XAxis
+      allowDataOverflow={false}
+      allowDecimals={true}
+      dataKey="year"
+      domain={
+        Array [
+          1816,
+          2011,
+        ]
+      }
+      height={30}
+      hide={false}
+      mirror={false}
+      orientation="bottom"
+      padding={
+        Object {
+          "left": 0,
+          "right": 0,
+        }
+      }
+      scale="auto"
+      tickCount={11}
+      type="number"
+      width={0}
+      xAxisId={0}
+    />
+    <YAxis
+      allowDataOverflow={false}
+      allowDecimals={true}
+      domain={
+        Array [
+          0,
+          82.2,
+        ]
+      }
+      height={0}
+      hide={false}
+      mirror={false}
+      orientation="left"
+      padding={
+        Object {
+          "bottom": 0,
+          "top": 0,
+        }
+      }
+      scale="auto"
+      tickCount={5}
+      type="number"
+      width={60}
+      yAxisId={0}
+    />
+    <Tooltip
+      active={false}
+      animationDuration={400}
+      animationEasing="ease"
+      content={[Function]}
+      coordinate={
+        Object {
+          "x": 0,
+          "y": 0,
+        }
+      }
+      cursor={true}
+      cursorStyle={Object {}}
+      isAnimationActive={true}
+      itemSorter={[Function]}
+      itemStyle={Object {}}
+      labelStyle={Object {}}
+      offset={10}
+      separator=" : "
+      viewBox={
+        Object {
+          "x1": 0,
+          "x2": 0,
+          "y1": 0,
+          "y2": 0,
+        }
+      }
+      wrapperStyle={Object {}}
+    />
+    <Line
+      activeDot={true}
+      animationBegin={0}
+      animationDuration={1500}
+      animationEasing="ease"
+      connectNulls={true}
+      dataKey="Algeria"
+      dot={false}
+      fill="#fff"
+      isAnimationActive={true}
+      legendType="line"
+      onAnimationEnd={[Function]}
+      onAnimationStart={[Function]}
+      points={Array []}
+      stroke="#87a9c5"
+      strokeWidth={2}
+      type="linear"
+      xAxisId={0}
+      yAxisId={0}
+    />
+    <Line
+      activeDot={true}
+      animationBegin={0}
+      animationDuration={1500}
+      animationEasing="ease"
+      connectNulls={true}
+      dataKey="Ethiopia"
+      dot={false}
+      fill="#fff"
+      isAnimationActive={true}
+      legendType="line"
+      onAnimationEnd={[Function]}
+      onAnimationStart={[Function]}
+      points={Array []}
+      stroke="#401f93"
+      strokeWidth={2}
+      type="linear"
+      xAxisId={0}
+      yAxisId={0}
+    />
+    <Line
+      activeDot={true}
+      animationBegin={0}
+      animationDuration={1500}
+      animationEasing="ease"
+      connectNulls={true}
+      dataKey="France"
+      dot={false}
+      fill="#fff"
+      isAnimationActive={true}
+      legendType="line"
+      onAnimationEnd={[Function]}
+      onAnimationStart={[Function]}
+      points={Array []}
+      stroke="#86612d"
+      strokeWidth={2}
+      type="linear"
+      xAxisId={0}
+      yAxisId={0}
+    />
+    <Line
+      activeDot={true}
+      animationBegin={0}
+      animationDuration={1500}
+      animationEasing="ease"
+      connectNulls={true}
+      dataKey="Germany"
+      dot={false}
+      fill="#fff"
+      isAnimationActive={true}
+      legendType="line"
+      onAnimationEnd={[Function]}
+      onAnimationStart={[Function]}
+      points={Array []}
+      stroke="#2d4a86"
+      strokeWidth={2}
+      type="linear"
+      xAxisId={0}
+      yAxisId={0}
+    />
+    <Line
+      activeDot={true}
+      animationBegin={0}
+      animationDuration={1500}
+      animationEasing="ease"
+      connectNulls={true}
+      dataKey="India"
+      dot={false}
+      fill="#fff"
+      isAnimationActive={true}
+      legendType="line"
+      onAnimationEnd={[Function]}
+      onAnimationStart={[Function]}
+      points={Array []}
+      stroke="#81d279"
+      strokeWidth={2}
+      type="linear"
+      xAxisId={0}
+      yAxisId={0}
+    />
+  </AnimationDecorator(ComposedDataDecorator(LineChart))>
+</div>
+`;

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`components/victory/TransitionMultiLineChart should render correctly 1`] = `
+exports[`components/victory/TransitionMultiLineChart should render correctly [shallow] 1`] = `
 <div
   style={
     Object {

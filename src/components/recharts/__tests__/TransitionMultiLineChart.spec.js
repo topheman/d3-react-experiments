@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import { mockDataLifeExpectancy } from '../../../test/jestHelpers';
 
-describe('components/victory/TransitionMultiLineChart', () => {
+describe('components/recharts/TransitionMultiLineChart', () => {
   it('should render correctly [shallow]', () => {
     const wrapper = shallow(
       <TransitionMultiLineChart
