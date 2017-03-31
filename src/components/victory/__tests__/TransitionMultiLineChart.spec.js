@@ -1,8 +1,8 @@
 import React from 'react';
-import TransitionMultiLineChart from '../TransitionMultiLineChart';
+import TransitionMultiLineChart from '../TransitionMultiLineChart/TransitionMultiLineChart';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import { mockDataLifeExpectancy } from '../../../../test/jestHelpers';
+import { mockDataLifeExpectancy } from '../../../test/jestHelpers';
 
 describe('components/victory/TransitionMultiLineChart', () => {
   it('should render correctly', () => {
