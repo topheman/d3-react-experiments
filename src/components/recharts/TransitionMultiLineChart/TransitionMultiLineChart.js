@@ -39,7 +39,6 @@ const renderTooltip = ({payload: [{payload: infos} = {}], label}) => {
 
 const TransitionMultiLineChart = ({data, width, height, minX, maxX, maxY}) => {
   const rechartsData = prepareDataForRecharts(data);
-  console.debug(rechartsData);
   return (
     <div style={{maxWidth: width, margin: '0 auto'}}>
       <LineChart data={rechartsData} width={width} height={height} margin={{ top: 20 }}>

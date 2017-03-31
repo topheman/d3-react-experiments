@@ -1,0 +1,258 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`containers/Home should render correctly [deep] 1`] = `
+<Home>
+  <div>
+    <p>
+      D3 is a very powerfull visualisation library. But since it mutates the DOM, it doesn't really get along with React ...
+    </p>
+    <p>
+      In the last year, a lot of projects have risen with the goal of making those two work gently together ...
+    </p>
+    <p>
+      It doesn't seem like there is a clear winner yet. I tried some of those libraries and also created home-made components. 
+      <a
+        href="https://github.com/topheman/d3-react-experiments#d3-react-experiments"
+        title="d3-react-experiments on github"
+      >
+        More in the README
+      </a>
+      .
+    </p>
+    <p
+      className="text-center"
+    >
+      <Link
+        className="btn btn-default btn-primary btn-lg"
+        onlyActiveOnIndex={false}
+        style={Object {}}
+        to="/d3/transition-multi-line-chart"
+      >
+        <a
+          className="btn btn-default btn-primary btn-lg"
+          onClick={[Function]}
+          style={Object {}}
+        >
+          Start browsing
+        </a>
+      </Link>
+    </p>
+    <p>
+      <a
+        href="http://dev.topheman.com/d3-react-components-with-victory-reusability-composability"
+        title="D3 React Components with Victory – Reusability / Composability"
+      >
+        Read the blog post about Reusability / Composability with D3, React and Victory
+      </a>
+    </p>
+    <p>
+      <a
+        href="http://dev.topheman.com/d3-react-chart-components/"
+        title="Plain d3 code and React working together"
+      >
+        Read the blog post about d3 and React working together
+      </a>
+    </p>
+    <p>
+      <strong>
+        Some examples show the same chart, but were created different ways (checkout the sources).
+      </strong>
+    </p>
+    <p>
+      Examples directly based on d3:
+    </p>
+    <ul>
+      <li>
+        <Link
+          onlyActiveOnIndex={false}
+          style={Object {}}
+          to="/d3/transition-multi-line-chart"
+        >
+          <a
+            onClick={[Function]}
+            style={Object {}}
+          >
+            d3 / TransitionMultiLineChart
+          </a>
+        </Link>
+        : POC of integration of plain d3 code, hooking transitions with React lifecycle
+      </li>
+      <li>
+        <Link
+          onlyActiveOnIndex={false}
+          style={Object {}}
+          to="/d3/static-multi-line-chart"
+        >
+          <a
+            onClick={[Function]}
+            style={Object {}}
+          >
+            d3 / StaticMultiLineChart
+          </a>
+        </Link>
+        : POC of integration of plain d3 code that plays well with React
+      </li>
+      <li>
+        <Link
+          onlyActiveOnIndex={false}
+          style={Object {}}
+          to="/d3/react-faux-dom/static-multi-line-chart"
+        >
+          <a
+            onClick={[Function]}
+            style={Object {}}
+          >
+            d3 / react-faux-dom / StaticMultiLineChart
+          </a>
+        </Link>
+        : POC of integration of plain d3 code with 
+        <strong>
+          react-faux-dom
+        </strong>
+      </li>
+    </ul>
+    <p>
+      Examples with third party libraries:
+    </p>
+    <ul>
+      <li>
+        Recharts:
+        <ul>
+          <li>
+            <Link
+              onlyActiveOnIndex={false}
+              style={Object {}}
+              to="/recharts/transition-multi-line-chart"
+            >
+              <a
+                onClick={[Function]}
+                style={Object {}}
+              >
+                Recharts / TransitionMultiLineChart
+              </a>
+            </Link>
+            : Same chart as above in d3, ported to Recharts 🆕
+          </li>
+        </ul>
+      </li>
+      <li>
+        Victory:
+        <ul>
+          <li>
+            <Link
+              onlyActiveOnIndex={false}
+              style={Object {}}
+              to="/victory/world-population-by-age-range"
+            >
+              <a
+                onClick={[Function]}
+                style={Object {}}
+              >
+                Victory / World population by age range
+              </a>
+            </Link>
+            : Bar/Pie Chart
+          </li>
+          <li>
+            <Link
+              onlyActiveOnIndex={false}
+              style={Object {}}
+              to="/victory/transition-multi-line-chart"
+            >
+              <a
+                onClick={[Function]}
+                style={Object {}}
+              >
+                Victory / TransitionMultiLineChart
+              </a>
+            </Link>
+            : Same chart as above in d3, ported to Victory
+          </li>
+          <li>
+            <Link
+              onlyActiveOnIndex={false}
+              style={Object {}}
+              to="/victory/count-npm-downloads"
+            >
+              <a
+                onClick={[Function]}
+                style={Object {}}
+              >
+                Victory / DualAxisMultiLine
+              </a>
+            </Link>
+            : Visualisation of some data from the npm registry
+          </li>
+        </ul>
+      </li>
+      <li>
+        d3act:
+        <ul>
+          <li>
+            <Link
+              onlyActiveOnIndex={false}
+              style={Object {}}
+              to="/d3act/bar-chart"
+            >
+              <a
+                onClick={[Function]}
+                style={Object {}}
+              >
+                d3act / Most popular technologies
+              </a>
+            </Link>
+            : Bar Chart
+          </li>
+          <li>
+            <Link
+              onlyActiveOnIndex={false}
+              style={Object {}}
+              to="/d3act/mixed-chart"
+            >
+              <a
+                onClick={[Function]}
+                style={Object {}}
+              >
+                d3act / Desktop Operating System
+              </a>
+            </Link>
+            : Bar/Pie Chart
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <br />
+    <div>
+      <p>
+        This is the 
+        <strong>
+          production packaged
+        </strong>
+         version (html/css/js uglified). You can 
+        <a
+          href="./devtools/"
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+          title="Test with devtools & sourcemaps"
+        >
+          test the site in debug mode here
+        </a>
+        , where you'll have access to sourcemaps.
+      </p>
+      <p
+        className="text-center"
+      >
+        <a
+          href="./devtools/"
+          title="Test with devtools & sourcemaps"
+        >
+          I'm a developer, I want to see what's under the hood!
+        </a>
+      </p>
+    </div>
+  </div>
+</Home>
+`;

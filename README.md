@@ -20,6 +20,9 @@ What will you find in that project ?
 * Some [react-faux-dom based](https://topheman.github.io/d3-react-experiments/#/d3/react-faux-dom) component charts
 * Some [d3act](https://topheman.github.io/d3-react-experiments/#/d3act) based charts
 
+* Unit tests with [Jest](#tests)
+
+
 Some blog posts I wrote about this project:
 
 * [D3 React Components with Victory – Reusability / Composability](http://dev.topheman.com/d3-react-components-with-victory-reusability-composability)
@@ -94,6 +97,16 @@ I'm using eslint, based on [eslint-config-airbnb](https://github.com/airbnb/java
 * `npm run lint-watch`: same in watch mode
 
 You can disable the linter by `LINTER=false npm start` (though it will still be run a pre-commit hook)
+
+#### Tests
+
+This project is unit tested using the [Jest](https://facebook.github.io/jest/) framework:
+
+* To run those tests: `npm test`
+* To run those tests in watch mode: `npm run jest-watch`
+* To update snapshots: `npm run jest -- -u`
+
+Those unit tests are run each time you commit and will be run on [travis-ci](https://travis-ci.org/topheman/d3-react-experiments) when you'll push.
 
 ## Resources
 
