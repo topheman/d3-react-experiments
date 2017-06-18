@@ -1,10 +1,17 @@
 {
-  "presets": ["es2015", "react"],
-  "plugins": ["transform-class-properties", "transform-es2015-destructuring", "transform-object-rest-spread", "add-module-exports"],
   "env": {
+    "production": {
+      "presets": ["es2015", "react"],
+      "plugins": ["transform-class-properties", "transform-es2015-destructuring", "transform-object-rest-spread", "add-module-exports"]
+    },
+    "test": {
+      "presets": ["es2015", "react"],
+      "plugins": ["transform-class-properties", "transform-es2015-destructuring", "transform-object-rest-spread", "add-module-exports"]
+    },
     // only enable it when process.env.NODE_ENV is 'development' or undefined
     "development": {
-      "presets": ["react-hmre"]
+      "presets": ["es2015", "react", "react-hmre"],
+      "plugins": ["transform-class-properties", "transform-es2015-destructuring", "transform-object-rest-spread", "add-module-exports"]
     }
   }
 }
