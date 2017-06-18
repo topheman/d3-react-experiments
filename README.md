@@ -1,9 +1,12 @@
 d3-react-experiments
 ====================
 
-[![Build Status](https://travis-ci.org/topheman/d3-react-experiments.svg?branch=master)](https://travis-ci.org/topheman/d3-react-experiments)
+[![Build Status](https://travis-ci.org/topheman/d3-react-experiments.svg?branch=v2.x)](https://travis-ci.org/topheman/d3-react-experiments)
+![Release](https://img.shields.io/badge/release-v2-blue.svg)
 
 <img src="https://cdn.rawgit.com/topheman/d3-react-experiments/master/src/assets/images/react-logo.svg" width="200"><img src="https://cdn.rawgit.com/topheman/d3-react-experiments/master/src/assets/images/d3-logo.png" width="200">
+
+**A new version relying on webpack 2 is now available!** [Check it out](https://github.com/topheman/d3-react-experiments)
 
 ### Introduction
 
