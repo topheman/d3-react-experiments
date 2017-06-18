@@ -1,10 +1,10 @@
-##d3-react-experiments - distribution version (gh-pages branch)
+## d3-react-experiments - distribution version (gh-pages branch)
 
-This is the distribution version of [topheman/d3-react-experiments](https://github.com/topheman/d3-react-experiments) - v2.3.0 - [#969a2d6](https://github.com/topheman/d3-react-experiments/tree/969a2d699c5280111a44358c4595957bdb4a2441).
+This is the distribution version of [topheman/d3-react-experiments](https://github.com/topheman/d3-react-experiments) - v2.3.0 - [#8153b2d](https://github.com/topheman/d3-react-experiments/tree/8153b2dc2186c64ccfa0004220bb83f865f2ffd4).
 
 **Warning**: This is the **generated** code, versionned on the `gh-pages` branch, testable online [here](https://topheman.github.io/d3-react-experiments/). If you wish to see the original source code, switch to the [master branch](https://github.com/topheman/d3-react-experiments).
 
-###Infos:
+### Infos:
 
 Those informations are available on the [topheman/webpack-babel-starter](https://github.com/topheman/webpack-babel-starter) project:
 
