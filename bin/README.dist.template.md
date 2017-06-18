@@ -1,10 +1,10 @@
-##d3-react-experiments - distribution version (gh-pages branch)
+## d3-react-experiments - distribution version (gh-pages branch)
 
 This is the distribution version of [topheman/d3-react-experiments](https://github.com/topheman/d3-react-experiments) - v<%= pkg.version %><% if (urlToCommit !== null) { %> - [#<%= gitRevisionShort %>](<%= urlToCommit %>)<% } %>.
 
 **Warning**: This is the **generated** code, versionned on the `gh-pages` branch, testable online [here](https://topheman.github.io/d3-react-experiments/). If you wish to see the original source code, switch to the [master branch](https://github.com/topheman/d3-react-experiments).
 
-###Infos:
+### Infos:
 
 Those informations are available on the [topheman/webpack-babel-starter](https://github.com/topheman/webpack-babel-starter) project:
 
