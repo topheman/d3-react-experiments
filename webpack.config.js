@@ -150,7 +150,10 @@ else {
 const config = {
   bail: FAIL_ON_ERROR,
   entry: {
-    'bundle': './src/bootstrap.js',
+    'bundle': [
+      'react-hot-loader/patch', // noop in 'production' mode (or without --hot flag)
+      './src/bootstrap.js'
+    ],
     'main': './src/style/main.scss'
   },
   output: {
