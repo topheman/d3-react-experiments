@@ -1,8 +1,8 @@
 import React from 'react';
+import { VictoryBar, VictoryPie } from 'victory';
 
 import ViewSourceOnGithub from '../../ViewSourceOnGithub/ViewSourceOnGithub';
 import Slider from '../../Slider/Slider';
-import { VictoryBar, VictoryPie } from 'victory';
 
 export default class WorldPopulation extends React.Component {
 
@@ -27,6 +27,9 @@ export default class WorldPopulation extends React.Component {
     this.state = {
       ...this.defaultValues
     };
+    this.updateYear = this.updateYear.bind(this);
+    this.updateYearPlayingInterval = this.updateYearPlayingInterval.bind(this);
+    this.updateInnerRadius = this.updateInnerRadius.bind(this);
   }
 
   updateYear(year) {
@@ -62,13 +65,13 @@ export default class WorldPopulation extends React.Component {
         <div className="panel-body text-center">
           <div className="row">
             <div className="col-md-8">
-              <Slider min={2010} max={2034} step={1} defaultValue={this.defaultValues.year} label="Year: %value" update={this.updateYear.bind(this)} showPlayButton playing playingInterval={this.state.yearPlayingInterval} />
-              <Slider min={20} max={2000} step={10} defaultValue={1000} label="Refresh: 1/%valuems" update={this.updateYearPlayingInterval.bind(this)} />
-              <Slider min={0} max={80} step={1} defaultValue={this.defaultValues.innerRadius} label="InnerRadius: %valuepx" update={this.updateInnerRadius.bind(this)} />
+              <Slider min={2010} max={2034} step={1} defaultValue={this.defaultValues.year} label="Year: %value" update={this.updateYear} showPlayButton playing playingInterval={this.state.yearPlayingInterval} />
+              <Slider min={20} max={2000} step={10} defaultValue={1000} label="Refresh: 1/%valuems" update={this.updateYearPlayingInterval} />
+              <Slider min={0} max={80} step={1} defaultValue={this.defaultValues.innerRadius} label="InnerRadius: %valuepx" update={this.updateInnerRadius} />
             </div>
             <div className="col-md-4" style={{ paddingTop: '20px' }}>
-              {labelColorConfig.map((info, index) => (
-                <span key={index} style={{ padding: '0px 5px' }}>
+              {labelColorConfig.map((info) => (
+                <span key={info.label} style={{ padding: '0px 5px' }}>
                   <span className="glyphicon glyphicon-stop" style={{ color: info.fill }} /> {info.label}
                 </span>
               ))}

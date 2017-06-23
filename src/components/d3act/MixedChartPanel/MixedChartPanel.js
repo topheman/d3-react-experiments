@@ -1,7 +1,7 @@
 import React from 'react';
+import Chart from 'd3act';
 
 import ViewSourceOnGithub from '../../ViewSourceOnGithub/ViewSourceOnGithub';
-import Chart from 'd3act';
 
 export default class d3actPieChartPanel extends React.Component {
 

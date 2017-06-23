@@ -76,7 +76,7 @@ class CountNpmDownloadsChart extends React.Component {
 
   static propTypes = {
     style: React.PropTypes.object,
-    margin: React.PropTypes.object,
+    margin: React.PropTypes.object, // eslint-disable-line react/no-unused-prop-types
     width: React.PropTypes.number,
     main: React.PropTypes.object.isRequired,
     dependencies: React.PropTypes.array.isRequired,
@@ -217,9 +217,9 @@ class CountNpmDownloadsChart extends React.Component {
               </span>
             </p>
             <ul className="list-unstyled list-inline">
-              {processedData.dependencies.lines.map((line, index) => (
+              {processedData.dependencies.lines.map((line) => (
                 <li
-                  key={index}
+                  key={line.label.name}
                   title={line.label.name}
                   style={{
                     cursor: 'pointer',
@@ -364,9 +364,9 @@ class CountNpmDownloadsChart extends React.Component {
                           ...this.getUserEvents(processedData.main.line.label.name)
                         } }]}
                   />
-                  {processedData.dependencies.lines.map((line, index) => (
+                  {processedData.dependencies.lines.map((line) => (
                     <VictoryLine
-                      key={index}
+                      key={line.label.name}
                       data={line.data}
                       domain={{
                         x: [minX, maxX],

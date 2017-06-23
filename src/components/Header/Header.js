@@ -31,7 +31,7 @@ export default class Header extends React.Component {
 
     return (
       <div>
-        <nav className="navbar navbar-default" role="navigation">
+        <nav className="navbar navbar-default">
           <div className="container-fluid">
             <div className="navbar-header">
               <button type="button" onClick={this.handleClick} className="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">

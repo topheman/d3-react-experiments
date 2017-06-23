@@ -1,7 +1,8 @@
 import React from 'react';
-import WorldPopulationByAgeRange from '../WorldPopulationByAgeRange/WorldPopulationByAgeRange';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
+
+import WorldPopulationByAgeRange from '../WorldPopulationByAgeRange/WorldPopulationByAgeRange';
 import {
   victoryWorldPopulationByAgeRange,
   victoryLabelWorldPopulationByAgeRange,

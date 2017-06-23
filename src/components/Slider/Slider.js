@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/label-has-for */
+
 import React from 'react';
 
 export default class Slider extends React.Component {
@@ -31,6 +33,12 @@ export default class Slider extends React.Component {
       value: props.defaultValue,
       playing: props.playing
     };
+    this.updateValue = this.updateValue.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.run = this.run.bind(this);
+    this.play = this.play.bind(this);
+    this.pause = this.pause.bind(this);
+    this.handleClickPlay = this.handleClickPlay.bind(this);
   }
 
   componentDidMount() {
@@ -77,7 +85,7 @@ export default class Slider extends React.Component {
       next = min;
     }
     this.updateValue(next);
-    this.timer = setTimeout(this.play.bind(this), playingInterval);
+    this.timer = setTimeout(this.play, playingInterval);
   }
 
   pause() {
@@ -103,7 +111,7 @@ export default class Slider extends React.Component {
           max={max}
           step={step}
           value={this.state.value}
-          onChange={this.handleChange.bind(this)}
+          onChange={this.handleChange}
           style={{
             width: '200px',
             display: 'inline',
@@ -111,7 +119,7 @@ export default class Slider extends React.Component {
             marginLeft: '10px'
           }}
         />
-        {showPlayButton ? <button className="btn btn-default" style={{ display: 'inline-block', marginLeft: '10px' }} onClick={this.handleClickPlay.bind(this)}>{this.state.playing ? 'Pause' : 'Play'}</button> : null}
+        {showPlayButton ? <button className="btn btn-default" style={{ display: 'inline-block', marginLeft: '10px' }} onClick={this.handleClickPlay}>{this.state.playing ? 'Pause' : 'Play'}</button> : null}
       </div>
     );
   }

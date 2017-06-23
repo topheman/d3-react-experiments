@@ -1,8 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 import navigator from '../../components/Navigator/injectNavigator';
 import ViewSourceOnGithub from '../../components/ViewSourceOnGithub/ViewSourceOnGithub';
-import { Link } from 'react-router';
 import { injectWindowInfos } from '../../components/WindowInfos';
 import { Select } from '../../components/Select';
 
@@ -66,7 +66,7 @@ class VictoryCountNpmDownloads extends React.Component {
   static propTypes = {
     // injected by injectWindowInfos
     windowWidth: React.PropTypes.number,
-    windowHeight: React.PropTypes.number
+    windowHeight: React.PropTypes.number // eslint-disable-line react/no-unused-prop-types
   }
 
   constructor() {
@@ -148,7 +148,7 @@ class VictoryCountNpmDownloads extends React.Component {
     return (
       <div>
         <h2><Link to="/victory">Victory</Link> / DualAxisMultiLine</h2>
-        {!ready && error && <div className="alert alert-danger" onClick={() => this.loadData(false)} style={{ cursor: 'pointer' }}>
+        {!ready && error && <div className="alert alert-danger" onClick={() => this.loadData(false)} style={{ cursor: 'pointer' }} role="button" tabIndex={0}>
           <span className="glyphicon glyphicon-exclamation-sign" />
           {' '}An error occured while loading data - Click here to retry
         </div>}
@@ -161,9 +161,9 @@ class VictoryCountNpmDownloads extends React.Component {
           </div>
           {!ready && !error && <p className="text-center">Loading ...</p>}
           {ready && !error && <div className="panel-body text-center" style={{ paddingBottom: '0px' }}>
-            {processedData && processedData.map((dataForIndividualChart, key) => (
+            {processedData && processedData.map((dataForIndividualChart) => (
               <CountNpmDownloadsChart
-                key={key}
+                key={dataForIndividualChart.mainPackage.name}
                 style={{
                   display: 'inline-block'
                 }}
@@ -177,14 +177,14 @@ class VictoryCountNpmDownloads extends React.Component {
             {choices}
             <div className="text-left panel-subtext" style={{ paddingTop: '10px' }}>
               <p>This chart is a React Component based on <code>VictoryAxis</code> and <code>VictoryLine</code> from <a href="https://formidable.com/open-source/victory/" title="Victory home page">Victory</a>, a collection of composable React components for building interactive data visualizations.</p>
-              <p>It is an example of some <strong>more advanced charts</strong> you can produce with that library by <strong>composing its components and benefit from React's state management and JSX declarative syntax</strong>.</p>
+              <p>It is an example of some <strong>more advanced charts</strong> you can produce with that library by <strong>composing its components and benefit from React{'\''}s state management and JSX declarative syntax</strong>.</p>
               <ul>
-                <li>It's fully responsive</li>
-                <li>It's interactive:<ul>
+                <li>It{'\''}s fully responsive</li>
+                <li>It{'\''}s interactive:<ul>
                   <li>Mouse: hover lines or legends to highlight relevent data + display contextual infos</li>
                   <li>Touch: touch lines or legends to highlight relevent data</li>
                 </ul></li>
-                <li>Data is retrieved from the npm registry's API</li>
+                <li>Data is retrieved from the npm registry{'\''}s API</li>
                 <li>A simple config will create all the charts</li>
               </ul>
               <p>See how the downloads drop on weekends ? ;)</p>

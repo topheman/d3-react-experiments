@@ -1,7 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 import navigator from '../../components/Navigator/injectNavigator';
-import { Link } from 'react-router';
 import LifeExpectancy from '../../components/LifeExpectancy/LifeExpectancy';
 
 import TransitionMultiLineChart from '../../components/recharts/TransitionMultiLineChart/TransitionMultiLineChart';

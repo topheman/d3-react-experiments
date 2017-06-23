@@ -19,7 +19,7 @@ export default class TransitionMultiLineChart extends React.Component {
     data: React.PropTypes.object.isRequired,
     minX: React.PropTypes.number,
     maxX: React.PropTypes.number,
-    minY: React.PropTypes.number,
+    minY: React.PropTypes.number, // eslint-disable-line react/no-unused-prop-types
     maxY: React.PropTypes.number
   }
 

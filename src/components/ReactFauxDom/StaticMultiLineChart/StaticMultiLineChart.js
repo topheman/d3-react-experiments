@@ -34,10 +34,6 @@ export default class StaticMultiLineChart extends React.Component {
     height: 400
   }
 
-  constructor() {
-    super();
-  }
-
   drawLineChart() {
     const { margin, width: widthIncludingMargins, height: heightIncludingMargins, data, minX, maxX, minY, maxY } = this.props;
     console.log('margin', margin, minX, maxX, minY, maxY, 'data', data);

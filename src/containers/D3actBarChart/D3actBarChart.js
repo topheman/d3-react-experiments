@@ -1,7 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 import navigator from '../../components/Navigator/injectNavigator';
-import { Link } from 'react-router';
 import BarChartPanel from '../../components/d3act/BarChartPanel/BarChartPanel';
 
 import { d3actBarExtractMostPopularTechnologiesByYear } from '../../resources/helper';

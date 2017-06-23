@@ -4,8 +4,8 @@ import { Link } from 'react-router';
 import { defaultLinks } from '../../components/Navigator/injectNavigator';
 
 const prodMessage = (<div>
-  <p>This is the <strong>production packaged</strong> version (html/css/js uglified). You can <a href="./devtools/" title="Test with devtools & sourcemaps" style={{ fontWeight: 'bold' }}>test the site in debug mode here</a>, where you'll have access to sourcemaps.</p>
-  <p className="text-center"><a href="./devtools/" title="Test with devtools & sourcemaps">I'm a developer, I want to see what's under the hood!</a></p>
+  <p>This is the <strong>production packaged</strong> version (html/css/js uglified). You can <a href="./devtools/" title="Test with devtools & sourcemaps" style={{ fontWeight: 'bold' }}>test the site in debug mode here</a>, where you{'\''}ll have access to sourcemaps.</p>
+  <p className="text-center"><a href="./devtools/" title="Test with devtools & sourcemaps">I{'\''}m a developer, I want to see what{'\''}s under the hood!</a></p>
 </div>);
 
 const devtoolsMessage = (<div>
@@ -15,9 +15,9 @@ const devtoolsMessage = (<div>
 
 const Home = () => (
   <div>
-    <p>D3 is a very powerfull visualisation library. But since it mutates the DOM, it doesn't really get along with React ...</p>
+    <p>D3 is a very powerfull visualisation library. But since it mutates the DOM, it doesn{'\''}t really get along with React ...</p>
     <p>In the last year, a lot of projects have risen with the goal of making those two work gently together ...</p>
-    <p>It doesn't seem like there is a clear winner yet. I tried some of those libraries and also created home-made components. <a href="https://github.com/topheman/d3-react-experiments#d3-react-experiments" title="d3-react-experiments on github">More in the README</a>.</p>
+    <p>It doesn{'\''}t seem like there is a clear winner yet. I tried some of those libraries and also created home-made components. <a href="https://github.com/topheman/d3-react-experiments#d3-react-experiments" title="d3-react-experiments on github">More in the README</a>.</p>
     <p className="text-center"><Link to={defaultLinks[0]} className="btn btn-default btn-primary btn-lg">Start browsing</Link></p>
     <p><a href="http://dev.topheman.com/d3-react-components-with-victory-reusability-composability" title="D3 React Components with Victory – Reusability / Composability">Read the blog post about Reusability / Composability with D3, React and Victory</a></p>
     <p><a href="http://dev.topheman.com/d3-react-chart-components/" title="Plain d3 code and React working together">Read the blog post about d3 and React working together</a></p>
@@ -32,7 +32,7 @@ const Home = () => (
     <ul>
       <li>Recharts:
           <ul>
-            <li><Link to="/recharts/transition-multi-line-chart">Recharts / TransitionMultiLineChart</Link>: Same chart as above in d3, ported to Recharts 🆕</li>
+            <li><Link to="/recharts/transition-multi-line-chart">Recharts / TransitionMultiLineChart</Link>: Same chart as above in d3, ported to Recharts <span role="img" aria-label="new">🆕</span></li>
           </ul>
       </li>
       <li>Victory:

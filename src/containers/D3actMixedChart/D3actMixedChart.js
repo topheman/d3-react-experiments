@@ -1,7 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 import navigator from '../../components/Navigator/injectNavigator';
-import { Link } from 'react-router';
 import MixedChartPanel from '../../components/d3act/MixedChartPanel/MixedChartPanel';
 
 import {

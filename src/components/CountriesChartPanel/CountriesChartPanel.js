@@ -21,8 +21,7 @@ export default class CountriesChartPanel extends React.Component {
     ]),
     defaultSelectedCountries: React.PropTypes.array,
     // injected by injectWindowInfos
-    windowWidth: React.PropTypes.number,
-    windowHeight: React.PropTypes.number
+    windowWidth: React.PropTypes.number
   }
 
   constructor({ defaultSelectedCountries = ['Algeria', 'Ethiopia', 'France', 'Germany', 'India'] }) {

@@ -76,7 +76,7 @@ class LifeExpectancy extends React.Component {
       <div>
         <h2>{title}</h2>
         {!ready && !error && <p>Loading ...</p>}
-        {!ready && error && <div className="alert alert-danger" onClick={this.loadData} style={{ cursor: 'pointer' }}>
+        {!ready && error && <div className="alert alert-danger" onClick={this.loadData} style={{ cursor: 'pointer' }} role="button" tabIndex={0}>
           <span className="glyphicon glyphicon-exclamation-sign" />
           {' '}An error occured while loading data - Click here to retry
         </div>}

@@ -36,6 +36,10 @@ const renderTooltip = ({ payload: [{ payload: infos } = {}], label }) => {
     </div>
   );
 };
+renderTooltip.propTypes = {
+  payload: React.PropTypes.array,
+  label: React.PropTypes.string
+};
 
 const TransitionMultiLineChart = ({ data, width, height, minX, maxX, maxY }) => {
   const rechartsData = prepareDataForRecharts(data);
@@ -62,13 +66,13 @@ const TransitionMultiLineChart = ({ data, width, height, minX, maxX, maxY }) => 
 };
 
 TransitionMultiLineChart.propTypes = {
-  margin: React.PropTypes.object,
+  margin: React.PropTypes.object, // eslint-disable-line react/no-unused-prop-types
   width: React.PropTypes.number,
   height: React.PropTypes.number,
   data: React.PropTypes.object.isRequired,
   minX: React.PropTypes.number,
   maxX: React.PropTypes.number,
-  minY: React.PropTypes.number,
+  minY: React.PropTypes.number, // eslint-disable-line react/no-unused-prop-types
   maxY: React.PropTypes.number
 };
 

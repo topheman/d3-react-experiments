@@ -1,10 +1,9 @@
 /* eslint-disable react/no-multi-comp */
 
 import React from 'react';
-
-import { Select as OriginalSelect } from './Select.js';
-
 import ColorHash from 'color-hash';
+
+import { Select as OriginalSelect } from './Select';
 
 const colorHash = new ColorHash();
 
