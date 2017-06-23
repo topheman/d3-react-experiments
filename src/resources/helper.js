@@ -13,17 +13,13 @@ const censusPreparedData = censusFixtures.data.reduce((acc, curr) => {
   return acc;
 }, {});
 
-export const censusRawData = () => {
-  return censusPreparedData;
-};
+export const censusRawData = () => censusPreparedData;
 
-export const victoryLabelSetupPopulationByAgeRange = () => {
-  return [
-    {fill: '#F66D3B', label: '0-14'},
-    {fill: '#D92E1D', label: '15-64'},
-    {fill: '#FFAF59', label: '65+'}
-  ];
-};
+export const victoryLabelSetupPopulationByAgeRange = () => [
+    { fill: '#F66D3B', label: '0-14' },
+    { fill: '#D92E1D', label: '15-64' },
+    { fill: '#FFAF59', label: '65+' }
+];
 
 export const victoryWorldPopulationByAgeRange = (mode) => (fillInfos) => {
   const results = Object.keys(censusPreparedData).reduce((acc, year) => {
@@ -53,60 +49,48 @@ export const victoryWorldPopulationByAgeRange = (mode) => (fillInfos) => {
     }, []);
     return acc;
   }, {});
-  return (year) => {
-    return results[year];
-  };
+  return (year) => results[year];
 };
 
 export const victoryLabelWorldPopulationByAgeRange = () => {
   const results = Object.keys(censusPreparedData).reduce((acc, year) => {
     acc[year] = Object.keys(censusPreparedData[year]).reduce((accRange, range) => {
       if (range !== 'Total') {
-        accRange.push(range + ' - ' + (censusPreparedData[year][range]['Both Sexes Population']).toString().replace(/\B(?=(\d{3})+\b)/g, ' '));
+        accRange.push(`${range} - ${(censusPreparedData[year][range]['Both Sexes Population']).toString().replace(/\B(?=(\d{3})+\b)/g, ' ')}`);
         return accRange;
       }
       return accRange;
     }, []);
     return acc;
   }, {});
-  return (year) => {
-    return results[year];
-  };
+  return (year) => results[year];
 };
 
-export const d3actPieExtractMostPopularTechnologiesByYear = (year) => {
-  return stackoverflowFixtures.mostPopularTechnologies[year].reduce((accumulator, current) => {
-    accumulator[current.name] = (current.score * 100).toPrecision(4);// 0.544 * 100 = 54.400000000000006 :(
-    return accumulator;
-  }, {});
-};
+export const d3actPieExtractMostPopularTechnologiesByYear = (year) => stackoverflowFixtures.mostPopularTechnologies[year].reduce((accumulator, current) => {
+  accumulator[current.name] = (current.score * 100).toPrecision(4);// 0.544 * 100 = 54.400000000000006 :(
+  return accumulator;
+}, {});
 
-export const d3actBarExtractMostPopularTechnologiesByYear = (year) => {
-  return stackoverflowFixtures.mostPopularTechnologies[year].reduce((accumulator, current) => {
-    accumulator.push({
-      xValue: current.name,
-      yValue: parseFloat((current.score * 100).toPrecision(4))// 0.544 * 100 = 54.400000000000006 :(
-    });
-    return accumulator;
-  }, []);
-};
+export const d3actBarExtractMostPopularTechnologiesByYear = (year) => stackoverflowFixtures.mostPopularTechnologies[year].reduce((accumulator, current) => {
+  accumulator.push({
+    xValue: current.name,
+    yValue: parseFloat((current.score * 100).toPrecision(4))// 0.544 * 100 = 54.400000000000006 :(
+  });
+  return accumulator;
+}, []);
 
-export const d3actPieExtractDesktopOperatingSystemByYear = (year) => {
-  return stackoverflowFixtures.desktopOperatingSystem[year].reduce((accumulator, current) => {
-    accumulator[current.name] = (current.score * 100).toPrecision(4);// 0.544 * 100 = 54.400000000000006 :(
-    return accumulator;
-  }, {});
-};
+export const d3actPieExtractDesktopOperatingSystemByYear = (year) => stackoverflowFixtures.desktopOperatingSystem[year].reduce((accumulator, current) => {
+  accumulator[current.name] = (current.score * 100).toPrecision(4);// 0.544 * 100 = 54.400000000000006 :(
+  return accumulator;
+}, {});
 
-export const d3actBarExtractDesktopOperatingSystemByYear = (year) => {
-  return stackoverflowFixtures.desktopOperatingSystem[year].reduce((accumulator, current) => {
-    accumulator.push({
-      xValue: current.name,
-      yValue: parseFloat((current.score * 100).toPrecision(4))// 0.544 * 100 = 54.400000000000006 :(
-    });
-    return accumulator;
-  }, []);
-};
+export const d3actBarExtractDesktopOperatingSystemByYear = (year) => stackoverflowFixtures.desktopOperatingSystem[year].reduce((accumulator, current) => {
+  accumulator.push({
+    xValue: current.name,
+    yValue: parseFloat((current.score * 100).toPrecision(4))// 0.544 * 100 = 54.400000000000006 :(
+  });
+  return accumulator;
+}, []);
 
 export const prepareDataLifeExpectancy = (rawData = {}, selectedCountries = []) => {
   // prepare data
@@ -125,7 +109,7 @@ export const prepareDataLifeExpectancy = (rawData = {}, selectedCountries = []) 
       minY = (minY === null || cur['Life Expectancy at Birth (both genders)'] < minY) ? cur['Life Expectancy at Birth (both genders)'] : minY;
       maxY = (maxY === null || cur['Life Expectancy at Birth (both genders)'] > maxY) ? cur['Life Expectancy at Birth (both genders)'] : maxY;
       // the current line is part of a selected country, add it to the final accumulator, format it like {x, y}
-      acc[cur.Country].push({x: parseInt(cur.Year, 10), y: parseFloat(cur['Life Expectancy at Birth (both genders)'], 10)});
+      acc[cur.Country].push({ x: parseInt(cur.Year, 10), y: parseFloat(cur['Life Expectancy at Birth (both genders)'], 10) });
     }
     return acc;
   }, {});

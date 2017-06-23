@@ -20,13 +20,11 @@ export default class ResizeProvider extends React.Component {
       windowHeight: global.height || 640
     };
     // create the debounced handle resize, to prevent flooding with resize event and pass down some computed width and height to the children
-    this.debouncedHandleResize = debounce(function handleResize() {
-      return this.setState({
-        ...this.state,
-        windowWidth: window.innerWidth,
-        windowHeight: window.innerHeight
-      });
-    }.bind(this), 500);
+    this.debouncedHandleResize = debounce(() => this.setState({
+      ...this.state,
+      windowWidth: window.innerWidth,
+      windowHeight: window.innerHeight
+    }), 500);
   }
 
   getChildContext() {

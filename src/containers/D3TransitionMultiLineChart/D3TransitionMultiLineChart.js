@@ -27,17 +27,15 @@ const panelSubText = (
   </div>
 );
 
-const D3TransitionMultiLineChart = (props) => {
-  return (
-    <LifeExpectancy
-      {...props}
-      title={<span><Link to="/d3">d3</Link> / TransitionMultiLineChart</span>}
-      prepareData={prepareDataLifeExpectancy}
-      sourcesOnGithub={sourcesOnGithub}
-      component={TransitionMultiLineChart}
-      panelSubText={panelSubText}
-    />
+const D3TransitionMultiLineChart = (props) => (
+  <LifeExpectancy
+    {...props}
+    title={<span><Link to="/d3">d3</Link> / TransitionMultiLineChart</span>}
+    prepareData={prepareDataLifeExpectancy}
+    sourcesOnGithub={sourcesOnGithub}
+    component={TransitionMultiLineChart}
+    panelSubText={panelSubText}
+  />
   );
-};
 
 export default navigator()(D3TransitionMultiLineChart);

@@ -19,17 +19,15 @@ const panelSubText = (
   </div>
 );
 
-const D3StaticMultiLineChart = (props) => {
-  return (
-    <LifeExpectancy
-      {...props}
-      title={<span><Link to="/d3">d3</Link> / StaticMultiLineChart</span>}
-      prepareData={prepareDataLifeExpectancy}
-      sourcesOnGithub={sourcesOnGithub}
-      component={StaticMultiLineChart}
-      panelSubText={panelSubText}
-    />
+const D3StaticMultiLineChart = (props) => (
+  <LifeExpectancy
+    {...props}
+    title={<span><Link to="/d3">d3</Link> / StaticMultiLineChart</span>}
+    prepareData={prepareDataLifeExpectancy}
+    sourcesOnGithub={sourcesOnGithub}
+    component={StaticMultiLineChart}
+    panelSubText={panelSubText}
+  />
   );
-};
 
 export default navigator()(D3StaticMultiLineChart);

@@ -6,7 +6,7 @@ import toJson from 'enzyme-to-json';
 describe('containers/Home', () => {
   it('should render correctly [deep]', () => {
     const wrapper = mount(
-      <Home/>
+      <Home />
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });

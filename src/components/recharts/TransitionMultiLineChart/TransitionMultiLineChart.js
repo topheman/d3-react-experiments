@@ -11,25 +11,25 @@ const colorHash = new ColorHash();
 const prepareDataForRecharts = data => {
   const countryDataPerYear = Object.keys(data).reduce((acc, currentCountry) => {
     data[currentCountry].forEach(d => {
-      acc[d.x] = acc[d.x] ? {...acc[d.x], [currentCountry]: d.y} : {[currentCountry]: d.y};
+      acc[d.x] = acc[d.x] ? { ...acc[d.x], [currentCountry]: d.y } : { [currentCountry]: d.y };
     });
     return acc;
   }, {});
   return Object.keys(countryDataPerYear).reduce((acc, currentYear) => {
-    acc.push({year: Number(currentYear), ...countryDataPerYear[currentYear]});
+    acc.push({ year: Number(currentYear), ...countryDataPerYear[currentYear] });
     return acc;
   }, []);
 };
 
-const renderTooltip = ({payload: [{payload: infos} = {}], label}) => {
+const renderTooltip = ({ payload: [{ payload: infos } = {}], label }) => {
   const countries = Object.keys(infos || []).filter(key => key !== 'year');
   return (
     <div className="panel panel-default">
-      <div className="panel-heading" style={{fontSize: '130%', fontWeight: 'bold'}}>{label}</div>
+      <div className="panel-heading" style={{ fontSize: '130%', fontWeight: 'bold' }}>{label}</div>
       <div className="panel-body">
-        <ul style={{paddingLeft: '0'}} >
-        {countries.map(country => (
-          <li key={country} style={{color: colorHash.hex(country), listStyle: 'none', margin: '5px auto'}}><strong>{country}</strong>: {infos[country]}</li>
+        <ul style={{ paddingLeft: '0' }} >
+          {countries.map(country => (
+            <li key={country} style={{ color: colorHash.hex(country), listStyle: 'none', margin: '5px auto' }}><strong>{country}</strong>: {infos[country]}</li>
         ))}
         </ul>
       </div>
@@ -37,10 +37,10 @@ const renderTooltip = ({payload: [{payload: infos} = {}], label}) => {
   );
 };
 
-const TransitionMultiLineChart = ({data, width, height, minX, maxX, maxY}) => {
+const TransitionMultiLineChart = ({ data, width, height, minX, maxX, maxY }) => {
   const rechartsData = prepareDataForRecharts(data);
   return (
-    <div style={{maxWidth: width, margin: '0 auto'}}>
+    <div style={{ maxWidth: width, margin: '0 auto' }}>
       <LineChart data={rechartsData} width={width} height={height} margin={{ top: 20 }}>
         <XAxis dataKey="year" tickCount={11} type="number" domain={[minX, maxX]} />
         <YAxis type="number" domain={[0, maxY]} />

@@ -133,7 +133,7 @@ export default class TransitionMultiLineChart extends React.Component {
       .attr('height', height + margin.top + margin.bottom);
     this.lineGroup
       .attr('transform',
-        'translate(' + margin.left + ',' + margin.top + ')');
+        `translate(${margin.left},${margin.top})`);
 
     // set domain for axis
     const xScale = scaleLinear().range([0, width]);
@@ -145,7 +145,7 @@ export default class TransitionMultiLineChart extends React.Component {
 
     // Update the X Axis
     this.axisBottomGroup.transition()
-      .attr('transform', 'translate(0,' + height + ')')
+      .attr('transform', `translate(0,${height})`)
       .call(axisBottom(xScale).ticks(width > 500 ? Math.floor(width / 80) : 4)); // prevent from having too much ticks on small screens
 
     // Update the Y Axis
@@ -167,7 +167,7 @@ export default class TransitionMultiLineChart extends React.Component {
     // prepare data to [ [{x, y, color}, {x, y, color}], [{x, y, color}, {x, y, color}] ... ]
     const processedData = [];
     Object.keys(data).forEach(countryName => {
-      processedData.push(data[countryName].map((infos) => ({ color: colorHash.hex(countryName), ...infos})));
+      processedData.push(data[countryName].map((infos) => ({ color: colorHash.hex(countryName), ...infos })));
     });
 
     // generate line paths
@@ -206,7 +206,7 @@ export default class TransitionMultiLineChart extends React.Component {
   render() {
     console.log('render');
     return (
-      <svg ref={(node) => this.rootNode = select(node)}></svg>
+      <svg ref={(node) => this.rootNode = select(node)} />
     );
   }
 

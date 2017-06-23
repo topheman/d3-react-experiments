@@ -7,7 +7,7 @@ import { VictoryChart, VictoryAxis, VictoryLine } from 'victory';
 const colorHash = new ColorHash();
 
 const TransitionMultiLineChart = (props) => {
-  const {width, height, margin: padding, maxY, minX, maxX, data} = props;
+  const { width, height, margin: padding, maxY, minX, maxX, data } = props;
   const lineIds = Object.keys(data);
   const animationDuration = 200;
   const xAxisTickCount = width > 500 ? parseInt(width / 80, 10) : 4;
@@ -15,7 +15,7 @@ const TransitionMultiLineChart = (props) => {
   console.log('xAxisTickCount', xAxisTickCount, 'yAxisTickCount', yAxisTickCount);
   const xDomain = [minX, maxX];
   const yDomain = [0, maxY];
-  const linesDomain = {x: xDomain, y: yDomain};
+  const linesDomain = { x: xDomain, y: yDomain };
   const tickStyle = {
     ticks: {
       size: 6,
@@ -28,14 +28,15 @@ const TransitionMultiLineChart = (props) => {
   };
   return (
     <div style={{
-      width: width,
+      width,
       margin: '0 auto'
-    }}>
+    }}
+    >
       <VictoryChart
         width={width}
         height={height}
         padding={padding}
-        animate={{duration: animationDuration}}
+        animate={{ duration: animationDuration }}
       >
         <VictoryAxis
           dependentAxis

@@ -17,17 +17,15 @@ const panelSubText = (
   </div>
 );
 
-const VictoryTransitionMultiLineChart = (props) => {
-  return (
-    <LifeExpectancy
-      {...props}
-      title={<span><Link to="/victory">Victory</Link> / TransitionMultiLineChart</span>}
-      prepareData={prepareDataLifeExpectancy}
-      sourcesOnGithub={sourcesOnGithub}
-      component={TransitionMultiLineChart}
-      panelSubText={panelSubText}
-    />
+const VictoryTransitionMultiLineChart = (props) => (
+  <LifeExpectancy
+    {...props}
+    title={<span><Link to="/victory">Victory</Link> / TransitionMultiLineChart</span>}
+    prepareData={prepareDataLifeExpectancy}
+    sourcesOnGithub={sourcesOnGithub}
+    component={TransitionMultiLineChart}
+    panelSubText={panelSubText}
+  />
   );
-};
 
 export default navigator()(VictoryTransitionMultiLineChart);

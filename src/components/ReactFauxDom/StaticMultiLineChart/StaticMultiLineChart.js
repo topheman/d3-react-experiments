@@ -72,7 +72,7 @@ export default class StaticMultiLineChart extends React.Component {
       .attr('height', height + margin.top + margin.bottom)
       .append('g')
       .attr('transform',
-        'translate(' + margin.left + ',' + margin.top + ')');
+        `translate(${margin.left},${margin.top})`);
 
     // Scale the range of the data
     x.domain([minX, maxX]);
@@ -89,7 +89,7 @@ export default class StaticMultiLineChart extends React.Component {
 
     // Add the X Axis
     svg.append('g')
-      .attr('transform', 'translate(0,' + height + ')')
+      .attr('transform', `translate(0,${height})`)
       .call(axisBottom(x).ticks(width > 500 ? Math.floor(width / 80) : 4)); // prevent from having too much ticks on small screens
 
     // Add the Y Axis

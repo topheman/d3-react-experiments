@@ -14,13 +14,13 @@ const windowBreakpoint = 750;
 const npmPackagesConfigs = {
   'd3 / react': {
     '*': ['d3'],
-    'd3': ['victory', 'react-d3']
+    d3: ['victory', 'react-d3']
   },
   'Package managers': {
     '*': ['npm', 'bower', 'jspm', 'yarn'],
-    'npm': ['bower', 'jspm', 'yarn']
+    npm: ['bower', 'jspm', 'yarn']
   },
-  'Transpilers': {
+  Transpilers: {
     '*': ['babel', 'typescript', 'coffee-script']
   },
   'Task runners': {
@@ -33,39 +33,33 @@ const npmPackagesConfigs = {
 
 const getTitleFromPackageId = (packageId) => packageId === '*' ? 'All npm packages' : packageId;
 
-const flattenNpmPackagesConfig = (npmPackagesConfig) => {
-  return Object.keys(npmPackagesConfig).reduce((acc, currentKey) => {
-    if (acc.indexOf(currentKey) < 0) {
-      acc.push(currentKey);
+const flattenNpmPackagesConfig = (npmPackagesConfig) => Object.keys(npmPackagesConfig).reduce((acc, currentKey) => {
+  if (acc.indexOf(currentKey) < 0) {
+    acc.push(currentKey);
+  }
+  npmPackagesConfig[currentKey].forEach(packageName => {
+    if (acc.indexOf(packageName) < 0) {
+      acc.push(packageName);
     }
-    npmPackagesConfig[currentKey].forEach(packageName => {
-      if (acc.indexOf(packageName) < 0) {
-        acc.push(packageName);
-      }
-    });
-    return acc;
-  }, []);
-};
+  });
+  return acc;
+}, []);
 
-const processData = (npmPackagesConfig, data) => {
-  return Object.keys(npmPackagesConfig).reduce((acc, currentKey) => {
-    const mainPackage = {
-      name: getTitleFromPackageId(currentKey),
-      data: data[currentKey]
-    };
-    const dependentPackages = npmPackagesConfig[currentKey].map(packageName => {
-      return {
-        name: getTitleFromPackageId(packageName),
-        data: data[packageName]
-      };
-    });
-    acc.push({
-      mainPackage,
-      dependentPackages
-    });
-    return acc;
-  }, []);
-};
+const processData = (npmPackagesConfig, data) => Object.keys(npmPackagesConfig).reduce((acc, currentKey) => {
+  const mainPackage = {
+    name: getTitleFromPackageId(currentKey),
+    data: data[currentKey]
+  };
+  const dependentPackages = npmPackagesConfig[currentKey].map(packageName => ({
+    name: getTitleFromPackageId(packageName),
+    data: data[packageName]
+  }));
+  acc.push({
+    mainPackage,
+    dependentPackages
+  });
+  return acc;
+}, []);
 
 class VictoryCountNpmDownloads extends React.Component {
 
@@ -114,7 +108,7 @@ class VictoryCountNpmDownloads extends React.Component {
         this.setState({
           ...this.state,
           ready: true,
-          data: data
+          data
         });
       })
       .catch(e => {
@@ -154,32 +148,30 @@ class VictoryCountNpmDownloads extends React.Component {
     return (
       <div>
         <h2><Link to="/victory">Victory</Link> / DualAxisMultiLine</h2>
-        {!ready && error && <div className="alert alert-danger" onClick={() => this.loadData(false)} style={{cursor: 'pointer'}}>
-          <span className="glyphicon glyphicon-exclamation-sign"></span>
+        {!ready && error && <div className="alert alert-danger" onClick={() => this.loadData(false)} style={{ cursor: 'pointer' }}>
+          <span className="glyphicon glyphicon-exclamation-sign" />
           {' '}An error occured while loading data - Click here to retry
         </div>}
         <div className="panel panel-default">
           <div className="panel-heading">Npm downloads{period ? <span> - from <strong>{period.from}</strong> to <strong>{period.to}</strong></span> : null}</div>
-          <ViewSourceOnGithub path="/src/components/victory/CountNpmDownloadsChart/CountNpmDownloadsChart.js"/>
+          <ViewSourceOnGithub path="/src/components/victory/CountNpmDownloadsChart/CountNpmDownloadsChart.js" />
           <div className="panel-body text-center">
             <p>Pick a category to compare package downloads from last month. Data is comming from the npm registry.</p>
             {choices}
           </div>
           {!ready && !error && <p className="text-center">Loading ...</p>}
           {ready && !error && <div className="panel-body text-center" style={{ paddingBottom: '0px' }}>
-            {processedData && processedData.map((dataForIndividualChart, key) => {
-              return (
-                <CountNpmDownloadsChart
-                  key={key}
-                  style={{
-                    display: 'inline-block'
-                  }}
-                  width={windowWidth > windowBreakpoint ? (windowBreakpoint - 90) : windowWidth - 90}
-                  main={dataForIndividualChart.mainPackage}
-                  dependencies={dataForIndividualChart.dependentPackages}
-                />
-              );
-            })}
+            {processedData && processedData.map((dataForIndividualChart, key) => (
+              <CountNpmDownloadsChart
+                key={key}
+                style={{
+                  display: 'inline-block'
+                }}
+                width={windowWidth > windowBreakpoint ? (windowBreakpoint - 90) : windowWidth - 90}
+                main={dataForIndividualChart.mainPackage}
+                dependencies={dataForIndividualChart.dependentPackages}
+              />
+              ))}
           </div>}
           <div className="panel-body text-center" style={{ paddingTop: '0px' }}>
             {choices}

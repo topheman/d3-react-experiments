@@ -20,17 +20,15 @@ const panelSubText = (
   </div>
 );
 
-const RechartsTransitionMultiLineChart = (props) => {
-  return (
-    <LifeExpectancy
-      {...props}
-      title={<span><Link to="/recharts">Recharts</Link> / TransitionMultiLineChart</span>}
-      prepareData={prepareDataLifeExpectancy}
-      sourcesOnGithub={sourcesOnGithub}
-      component={TransitionMultiLineChart}
-      panelSubText={panelSubText}
-    />
+const RechartsTransitionMultiLineChart = (props) => (
+  <LifeExpectancy
+    {...props}
+    title={<span><Link to="/recharts">Recharts</Link> / TransitionMultiLineChart</span>}
+    prepareData={prepareDataLifeExpectancy}
+    sourcesOnGithub={sourcesOnGithub}
+    component={TransitionMultiLineChart}
+    panelSubText={panelSubText}
+  />
   );
-};
 
 export default navigator()(RechartsTransitionMultiLineChart);

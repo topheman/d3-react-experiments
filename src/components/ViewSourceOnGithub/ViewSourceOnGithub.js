@@ -2,12 +2,15 @@ import React from 'react';
 
 export const urlFromViewSourceOnGithub = (path) => `${process.env.VIEW_SOURCE_ON_GITHUB_BASE_URL}${path}`;
 
-const ViewSourceOnGithub = ({path}) => {
+const ViewSourceOnGithub = ({ path }) => {
   if (typeof path === 'string') {
     return (
       <div className="zero-clipboard">
-        <a className="btn-clipboard btn-view-source" href={`${process.env.VIEW_SOURCE_ON_GITHUB_BASE_URL}${path}`}
-           title="View sources on github">sources on github</a>
+        <a
+          className="btn-clipboard btn-view-source"
+          href={`${process.env.VIEW_SOURCE_ON_GITHUB_BASE_URL}${path}`}
+          title="View sources on github"
+        >sources on github</a>
       </div>
     );
   }
@@ -15,7 +18,7 @@ const ViewSourceOnGithub = ({path}) => {
   const links = [];
   Object.keys(path).forEach((title) => links.push({
     href: urlFromViewSourceOnGithub(path[title]),
-    title: title
+    title
   }));
   return (
     <div className="zero-clipboard">

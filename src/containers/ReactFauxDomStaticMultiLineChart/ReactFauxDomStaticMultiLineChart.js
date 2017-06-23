@@ -19,17 +19,15 @@ const panelSubText = (
   </div>
 );
 
-const ReactFauxDomStaticMultiLineChart = (props) => {
-  return (
-    <LifeExpectancy
-      {...props}
-      title={<span><Link to="/d3">d3</Link> / <Link to="/d3/react-faux-dom">react-faux-dom</Link> / StaticMultiLineChart</span>}
-      prepareData={prepareDataLifeExpectancy}
-      sourcesOnGithub={sourcesOnGithub}
-      component={StaticMultiLineChart}
-      panelSubText={panelSubText}
-    />
+const ReactFauxDomStaticMultiLineChart = (props) => (
+  <LifeExpectancy
+    {...props}
+    title={<span><Link to="/d3">d3</Link> / <Link to="/d3/react-faux-dom">react-faux-dom</Link> / StaticMultiLineChart</span>}
+    prepareData={prepareDataLifeExpectancy}
+    sourcesOnGithub={sourcesOnGithub}
+    component={StaticMultiLineChart}
+    panelSubText={panelSubText}
+  />
   );
-};
 
 export default navigator()(ReactFauxDomStaticMultiLineChart);

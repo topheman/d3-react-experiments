@@ -67,8 +67,8 @@ export default class Slider extends React.Component {
   }
 
   play() {
-    const {value} = this.state;
-    const {min, max, step, playingInterval} = this.props;
+    const { value } = this.state;
+    const { min, max, step, playingInterval } = this.props;
     let next;
     if ((value + step) <= max) {
       next = value + step;
@@ -111,7 +111,7 @@ export default class Slider extends React.Component {
             marginLeft: '10px'
           }}
         />
-        {showPlayButton ? <button className="btn btn-default" style={{display: 'inline-block', marginLeft: '10px'}} onClick={this.handleClickPlay.bind(this)}>{this.state.playing ? 'Pause' : 'Play'}</button> : null}
+        {showPlayButton ? <button className="btn btn-default" style={{ display: 'inline-block', marginLeft: '10px' }} onClick={this.handleClickPlay.bind(this)}>{this.state.playing ? 'Pause' : 'Play'}</button> : null}
       </div>
     );
   }

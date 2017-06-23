@@ -28,7 +28,7 @@ export default class CountriesChartPanel extends React.Component {
   constructor({ defaultSelectedCountries = ['Algeria', 'Ethiopia', 'France', 'Germany', 'India'] }) {
     super();
     this.state = {
-      selectedCountries: defaultSelectedCountries.map(country => ({label: country, value: country}))
+      selectedCountries: defaultSelectedCountries.map(country => ({ label: country, value: country }))
     };
   }
 
@@ -41,7 +41,7 @@ export default class CountriesChartPanel extends React.Component {
         acc.push(cur.Country);
       }
       return acc;
-    }, []).sort((a, b) => a > b ? 1 : -1 );
+    }, []).sort((a, b) => a > b ? 1 : -1);
 
     const { selectedCountries } = this.state;
 
@@ -51,22 +51,24 @@ export default class CountriesChartPanel extends React.Component {
     return (
       <div className="panel panel-default bar-chart-panel" ref={node => this.rootNode = node}>
         <div className="panel-heading">{title}{selectedCountries.length > 0 ? <span> from <strong>{chartData.minX}</strong> to <strong>{chartData.maxX}</strong></span> : null}</div>
-        <ViewSourceOnGithub path={sourcesOnGithub}/>
+        <ViewSourceOnGithub path={sourcesOnGithub} />
         <div className="panel-body text-center">
           <p>Add / Remove any country from the list.</p>
           <ColoredMultiSelect
             value={selectedCountries}
-            options={countryList.map(country => ({value: country, label: country}))}
+            options={countryList.map(country => ({ value: country, label: country }))}
             onChange={(currentCountries) => {
               this.setState({
                 ...this.state,
                 selectedCountries: currentCountries
               });
-            }}/>
+            }}
+          />
           <Chart
             {...props}
             width={windowWidth > 700 ? 630 : windowWidth - 70}
-            {...chartData}/>
+            {...chartData}
+          />
           <div className="text-left panel-subtext">
             {panelSubText}
           </div>

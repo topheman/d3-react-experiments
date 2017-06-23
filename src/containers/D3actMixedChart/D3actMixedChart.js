@@ -31,7 +31,7 @@ const data = {
 const D3actMixed = () => (
   <div>
     <h2><Link to="d3act">d3act</Link> / MixedChart</h2>
-    <MixedChartPanel data={data}/>
+    <MixedChartPanel data={data} />
     <p>Data comes from <a href="http://stackoverflow.com/research/developer-survey-2015" title="2015 Developer Survey">stackoverflow 2015 Developer Survey</a></p>
   </div>
 );

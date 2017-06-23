@@ -56,7 +56,7 @@ class LifeExpectancy extends React.Component {
         this.setState({
           ...this.state,
           ready: true,
-          data: data
+          data
         });
       })
       .catch(e => {
@@ -76,8 +76,8 @@ class LifeExpectancy extends React.Component {
       <div>
         <h2>{title}</h2>
         {!ready && !error && <p>Loading ...</p>}
-        {!ready && error && <div className="alert alert-danger" onClick={this.loadData} style={{cursor: 'pointer'}}>
-          <span className="glyphicon glyphicon-exclamation-sign"></span>
+        {!ready && error && <div className="alert alert-danger" onClick={this.loadData} style={{ cursor: 'pointer' }}>
+          <span className="glyphicon glyphicon-exclamation-sign" />
           {' '}An error occured while loading data - Click here to retry
         </div>}
         {ready && !error && <WindowAwareCountriesChartPanel
@@ -87,7 +87,8 @@ class LifeExpectancy extends React.Component {
           sourcesOnGithub={sourcesOnGithub}
           props={{}}
           component={component}
-          panelSubText={panelSubText}/>}
+          panelSubText={panelSubText}
+        />}
         <p>Data comes from <a href="https://ourworldindata.org/life-expectancy/" title="ourworldindata.org">ourworldindata.org</a></p>
       </div>
     );

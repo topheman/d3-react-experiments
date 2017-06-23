@@ -22,11 +22,11 @@ export default class Header extends React.Component {
   }
   handleClick() {
     const { collapsed } = this.state;
-    this.setState({collapsed: !collapsed});
+    this.setState({ collapsed: !collapsed });
   }
   render() {
 
-    const collapsedMenuClassName = 'collapse navbar-collapse' + (this.state.collapsed === true ? '' : ' in');
+    const collapsedMenuClassName = `collapse navbar-collapse${this.state.collapsed === true ? '' : ' in'}`;
     const { title } = this.props;
 
     return (
@@ -36,9 +36,9 @@ export default class Header extends React.Component {
             <div className="navbar-header">
               <button type="button" onClick={this.handleClick} className="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                 <span className="sr-only">Toggle navigation</span>
-                <span className="icon-bar"></span>
-                <span className="icon-bar"></span>
-                <span className="icon-bar"></span>
+                <span className="icon-bar" />
+                <span className="icon-bar" />
+                <span className="icon-bar" />
               </button>
               <IndexLink to="/" className="navbar-brand logo">
                 <span>{title}</span>
@@ -56,13 +56,13 @@ export default class Header extends React.Component {
         <ul className="site-networks">
           <li className="twitter">
             <a href="https://twitter.com/topheman" title="@topheman on twitter">
-              <span className="icon"></span>
+              <span className="icon" />
               <span className="desc">Twitter</span>
             </a>
           </li>
           <li className="github">
             <a href="https://github.com/topheman/d3-react-experiments" title="Fork on github">
-              <span className="icon"></span>
+              <span className="icon" />
               <span className="desc">Github</span>
             </a>
           </li>
