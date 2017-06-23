@@ -2,6 +2,7 @@ d3-react-experiments
 ====================
 
 [![Build Status](https://travis-ci.org/topheman/d3-react-experiments.svg?branch=master)](https://travis-ci.org/topheman/d3-react-experiments)
+![Release](https://img.shields.io/badge/release-v3-blue.svg)
 
 <img src="https://cdn.rawgit.com/topheman/d3-react-experiments/master/src/assets/images/react-logo.svg" width="200"><img src="https://cdn.rawgit.com/topheman/d3-react-experiments/master/src/assets/images/d3-logo.png" width="200">
 
@@ -19,14 +20,18 @@ What will you find in that project ?
 * Some [vanilla d3](https://topheman.github.io/d3-react-experiments/#/d3) components based charts
 * Some [react-faux-dom based](https://topheman.github.io/d3-react-experiments/#/d3/react-faux-dom) component charts
 * Some [d3act](https://topheman.github.io/d3-react-experiments/#/d3act) based charts
-
 * Unit tests with [Jest](#tests)
-
 
 Some blog posts I wrote about this project:
 
 * [D3 React Components with Victory – Reusability / Composability](http://dev.topheman.com/d3-react-components-with-victory-reusability-composability)
 * [Plain d3 code and React working together](http://dev.topheman.com/d3-react-chart-components/)
+
+What's new from v2 ?
+
+* Upgraded to [webpack2](https://webpack.js.org/)
+* Setup [react-hot-loader@3](https://gaearon.github.io/react-hot-loader/getstarted/)
+* Upgraded to latest [eslint](http://eslint.org/) + latest [eslint-config-airbnb](https://www.npmjs.com/package/eslint-config-airbnb)
 
 [This is still a work in progress](https://topheman.github.io/d3-react-experiments/#/), more examples / blog posts will come ...
 
@@ -47,23 +52,17 @@ There are two main approaches, both of them using d3 for the processing:
 
 Both approaches have their pros and cons (I won't talk about that here - people with more experience in that field than me have written posts on that).
 
-### Prerequisite
-
-You must have npm3 (enforced by Victory). You may have some peerDependency errors at `npm install` that won't affect the project, the problem is tracked on [this issue](https://github.com/FormidableLabs/victory/issues/275).
-
 ### Setup
 
-This project now follows the same development workflow as the one explained in [topheman/webpack-babel-starter](https://github.com/topheman/webpack-babel-starter) (with some additions, specific to the project), and it runs with **Babel v6**.
+This project now follows the same development workflow as the one explained in [topheman/webpack-babel-starter](https://github.com/topheman/webpack-babel-starter) (the v2 using **webpack 2**).
 
 #### Install
 
 ```shell
 git clone https://github.com/topheman/d3-react-experiments.git
 cd d3-react-experiments
-npm install
+yarn
 ```
-
-You will notice this project is shipped with a `yarn.lock` file, so instead of `npm install`, you can simply run `yarn` (this will ensure everybody has the exact same dependencies - [see more here](https://code.facebook.com/posts/1840075619545360)).
 
 #### Run
 
