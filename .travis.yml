@@ -2,13 +2,6 @@ language: node_js
 node_js:
   - "5"
   - "6"
-before_install:
-  - echo "Updating npm (need at least v3), because of the following problem - https://github.com/npm/npm/issues/11088"
-  - npm update -g
-  - npm --version
-  - time npm i -g yarn --cache-min 999999999
-install:
-  - time yarn
 before_script:
   - npm run build
   - npm run build-prod-all

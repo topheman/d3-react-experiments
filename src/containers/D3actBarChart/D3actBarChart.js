@@ -1,7 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 import navigator from '../../components/Navigator/injectNavigator';
-import { Link } from 'react-router';
 import BarChartPanel from '../../components/d3act/BarChartPanel/BarChartPanel';
 
 import { d3actBarExtractMostPopularTechnologiesByYear } from '../../resources/helper';
@@ -16,14 +16,12 @@ const data = {
   2013: d3actBarExtractMostPopularTechnologiesByYear(2013)
 };
 
-const D3actBarChart = () => {
-  return (
-    <div>
-      <h2><Link to="d3act">d3act</Link> / BarChart</h2>
-      <BarChartPanel data={data}/>
-      <p>Data comes from <a href="http://stackoverflow.com/research/developer-survey-2015" title="2015 Developer Survey">stackoverflow 2015 Developer Survey</a></p>
-    </div>
+const D3actBarChart = () => (
+  <div>
+    <h2><Link to="d3act">d3act</Link> / BarChart</h2>
+    <BarChartPanel data={data} />
+    <p>Data comes from <a href="http://stackoverflow.com/research/developer-survey-2015" title="2015 Developer Survey">stackoverflow 2015 Developer Survey</a></p>
+  </div>
   );
-};
 
 export default navigator()(D3actBarChart);

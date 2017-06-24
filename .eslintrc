@@ -2,7 +2,8 @@
   "env": {
     "mocha": true,
     "jasmine": true,
-    "protractor": true
+    "protractor": true,
+    "browser": true
   },
   "globals": {
     "goToUrl": true,
@@ -18,9 +19,20 @@
     "no-console": 0,
     "padded-blocks": 0,
     "indent": [2, 2, {"SwitchCase": 1}],
-    "spaced-comment": 1
-  },
-  "plugins":[
-    "react"
-  ]
+    "spaced-comment": 1,
+    "max-len": 0,
+    "arrow-parens": 0,
+    "react/forbid-prop-types": 0,
+    "no-mixed-operators": 0,
+    "react/jsx-filename-extension": 0,
+    "no-confusing-arrow": 0,
+    "react/jsx-max-props-per-line": [1, { "when": "multiline" }],
+    "no-return-assign": 0,
+    "no-param-reassign": 0,
+    "no-plusplus": 0,
+    "import/no-extraneous-dependencies": 0, // needed in case of using some devDependencies
+    "import/prefer-default-export": 0,
+    "global-require": 0,
+    "react/require-default-props": 0 // @todo enforce it ?
+  }
 }

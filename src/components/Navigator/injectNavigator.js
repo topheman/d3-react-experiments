@@ -1,4 +1,10 @@
-/* eslint-disable react/no-multi-comp */
+/* eslint-disable react/no-multi-comp, react/prop-types */
+
+import React from 'react';
+import { Link } from 'react-router';
+import { Link as ScrollLink, Element as ScrollElement, animateScroll } from 'react-scroll';
+
+import { getDisplayName } from '../../utils/helpers';
 
 export const defaultLinks = [
   '/d3/transition-multi-line-chart',
@@ -11,12 +17,6 @@ export const defaultLinks = [
   '/d3act/bar-chart',
   '/d3act/mixed-chart'
 ];
-
-import React from 'react';
-import { Link } from 'react-router';
-import { getDisplayName } from '../../utils/helpers';
-
-import { Link as ScrollLink, Element as ScrollElement, animateScroll } from 'react-scroll';
 
 const getPrevNextLinks = (location, links = defaultLinks) => {
   const currentPath = location.pathname;
@@ -47,7 +47,7 @@ const getPrevNextLinks = (location, links = defaultLinks) => {
   return prevNextLinks;
 };
 
-const prevNext = ({prev, next, middle}) => (
+const prevNext = ({ prev, next, middle }) => (
   <nav>
     <ul className="pager">
       {prev ? <li className="previous"><Link to={prev}>Previous</Link></li> : null}
@@ -58,20 +58,20 @@ const prevNext = ({prev, next, middle}) => (
 );
 
 const navigator = (links) => WrappedComponent => {
-  const Navigator = ({location, ...props}) => {
-    const {prev, next} = getPrevNextLinks(location, links);
+  const Navigator = ({ location, ...props }) => {
+    const { prev, next } = getPrevNextLinks(location, links);
     if (prev || next) {
       return (
         <div>
-          {prevNext({prev, next, middle: <ScrollLink to="bottom-links" smooth style={{ cursor: 'pointer', fontSize: '80%' }}>Description <span className="glyphicon glyphicon-menu-down" aria-hidden="true"></span></ScrollLink>})}
-          <WrappedComponent {...props}/>
+          {prevNext({ prev, next, middle: <ScrollLink to="bottom-links" smooth style={{ cursor: 'pointer', fontSize: '80%' }}>Description <span className="glyphicon glyphicon-menu-down" aria-hidden="true" /></ScrollLink> })}
+          <WrappedComponent {...props} />
           <ScrollElement name="bottom-links">
-            {prevNext({prev, next, middle: <a onClick={() => animateScroll.scrollToTop()} style={{ cursor: 'pointer', fontSize: '80%' }}>Back to top <span className="glyphicon glyphicon-menu-up" aria-hidden="true"></span></a>})}
+            {prevNext({ prev, next, middle: <a onClick={() => animateScroll.scrollToTop()} style={{ cursor: 'pointer', fontSize: '80%' }} role="button" tabIndex={0}>Back to top <span className="glyphicon glyphicon-menu-up" aria-hidden="true" /></a> })}
           </ScrollElement>
         </div>
       );
     }
-    return (<WrappedComponent {...props}/>);
+    return (<WrappedComponent {...props} />);
   };
   Navigator.displayName = `Navigator(${getDisplayName(WrappedComponent)})`;
   Navigator.contextTypes = {

@@ -1,7 +1,8 @@
 import React from 'react';
-import StaticMultiLineChart from '../StaticMultiLineChart/StaticMultiLineChart';
 import { mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
+
+import StaticMultiLineChart from '../StaticMultiLineChart/StaticMultiLineChart';
 import { mockDataLifeExpectancy } from '../../../test/jestHelpers';
 
 describe('components/d3/StaticMultiLineChart', () => {
